@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab"
+  ],
+  "key": {
+    "a": {
+      "tag": "minecraft:coloured_end_rod"
+    },
+    "b": {
+      "item": "minecraft:light_gray_dye"
+    }
+  },
+  "result": {
+    "item": "moreandmoreendrods:light_gray_end_rod",
+    "count": 1
+  }
+}

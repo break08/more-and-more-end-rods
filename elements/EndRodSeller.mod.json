@@ -1,0 +1,16 @@
+{
+  "_fv": 79,
+  "_type": "villagerprofession",
+  "definition": {
+    "displayName": "End Rod Seller",
+    "pointOfInterest": {
+      "value": "CUSTOM:EmeraldEndRod"
+    },
+    "actionSound": {
+      "value": "entity.villager.work_toolsmith"
+    },
+    "hat": "None",
+    "professionTextureFile": "end_rod_seller.png",
+    "zombifiedProfessionTextureFile": "end_rod_seller.png"
+  }
+}

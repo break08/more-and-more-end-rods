@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "moreandmoreendrods:blocks/acacia_end_rod",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "moreandmoreendrods:acacia_end_rod"
+        }
+      ]
+    }
+  ]
+}

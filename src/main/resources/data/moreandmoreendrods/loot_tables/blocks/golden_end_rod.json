@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "moreandmoreendrods:blocks/golden_end_rod",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "moreandmoreendrods:golden_end_rod"
+        }
+      ]
+    }
+  ]
+}
