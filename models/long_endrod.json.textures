@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "0": "long_end_rod",
+        "1": "rod_under"
+      }
+    }
+  }
+}

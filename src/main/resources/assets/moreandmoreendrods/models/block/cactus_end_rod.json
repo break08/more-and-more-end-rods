@@ -1,0 +1,9 @@
+{
+  "parent": "moreandmoreendrods:custom/cactus_end_rpd",
+  "textures": {
+    "all": "moreandmoreendrods:block/cactus_end_rod",
+    "particle": "moreandmoreendrods:block/cactus_end_rod",
+    "0": "moreandmoreendrods:block/cactus_end_rod"
+  },
+  "render_type": "cutout"
+}

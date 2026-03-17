@@ -1,0 +1,8 @@
+{
+  "parent": "block/end_rod",
+  "textures": {
+    "end_rod": "moreandmoreendrods:block/shulker_end_rod",
+    "particle": "moreandmoreendrods:block/shulker_end_rod"
+  },
+  "render_type": "cutout"
+}
