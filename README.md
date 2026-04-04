@@ -1,12 +1,8 @@
 # More and more End Rods
 Add more end rods in Minecraft !
 
-This is source code of mod for **Forge 1.20.1** version
+This is source code of mod for **NeoForge 1.21.1 and 1.21.8** version
 
 Modrinth: https://modrinth.com/mod/more-and-more-end-rods
 
-**Note** in In development version:
-
-- Glass End Rod can just be obtained in Creative
-
-- Blaze End Rod currently are not exist in game although the texture and model in archive folder
+**Note** in In development version: Read in mod's description on Modrinth
