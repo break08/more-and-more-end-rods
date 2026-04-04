@@ -1,0 +1,39 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="MIT License"
+
+[[mods]]
+modId="moreandmoreendrods"
+version="2.0.0"
+displayName="MoreAndMoreEndRods"
+displayURL="https://modrinth.com/mod/more-and-more-end-rods"
+credits="Created using mod maker MCreator - https://mcreator.net/about"
+authors="break08"
+description="Add More End Rods Variants in Minecraft"
+
+# Start of user code block mod configuration
+# End of user code block mod configuration
+
+
+# Start of user code block custom mixins
+# End of user code block custom mixins
+
+[[dependencies.moreandmoreendrods]]
+    modId="neoforge"
+    type="required"
+    versionRange="[21.8.31,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.moreandmoreendrods]]
+    modId="minecraft"
+    type="required"
+    versionRange="[1.21.8]"
+    ordering="AFTER"
+    side="BOTH"
+
+
+
+
+# Start of user code block dependencies configuration
+# End of user code block dependencies configuration

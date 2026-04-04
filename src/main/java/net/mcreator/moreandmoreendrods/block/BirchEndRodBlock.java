@@ -9,13 +9,8 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 public class BirchEndRodBlock extends EndRodBlock {
-	public BirchEndRodBlock() {
-		super(BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).ignitedByLava().forceSolidOff());
-	}
-
-	@Override
-	public int getLightBlock(BlockState state, BlockGetter worldIn, BlockPos pos) {
-		return 0;
+	public BirchEndRodBlock(BlockBehaviour.Properties properties) {
+		super(properties.sound(SoundType.WOOD).strength(1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).ignitedByLava().forceSolidOff());
 	}
 
 	@Override

@@ -3,8 +3,8 @@
  */
 package net.mcreator.moreandmoreendrods.init;
 
-import net.minecraftforge.registries.RegistryObject;
-import net.minecraftforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.CreativeModeTab;
@@ -15,7 +15,7 @@ import net.mcreator.moreandmoreendrods.MoreandmoreendrodsMod;
 
 public class MoreandmoreendrodsModTabs {
 	public static final DeferredRegister<CreativeModeTab> REGISTRY = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MoreandmoreendrodsMod.MODID);
-	public static final RegistryObject<CreativeModeTab> EXTRA_END_ROD = REGISTRY.register("extra_end_rod",
+	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXTRA_END_ROD = REGISTRY.register("extra_end_rod",
 			() -> CreativeModeTab.builder().title(Component.translatable("item_group.moreandmoreendrods.extra_end_rod")).icon(() -> new ItemStack(MoreandmoreendrodsModBlocks.OAK_END_ROD.get())).displayItems((parameters, tabData) -> {
 				tabData.accept(MoreandmoreendrodsModBlocks.OAK_END_ROD.get().asItem());
 				tabData.accept(MoreandmoreendrodsModBlocks.CHERRY_END_ROD.get().asItem());
@@ -63,5 +63,7 @@ public class MoreandmoreendrodsModTabs {
 				tabData.accept(MoreandmoreendrodsModBlocks.STONE_BRICK_END_ROD.get().asItem());
 				tabData.accept(MoreandmoreendrodsModBlocks.CACTUS_END_ROD.get().asItem());
 				tabData.accept(MoreandmoreendrodsModBlocks.GLASS_END_ROD.get().asItem());
+				tabData.accept(MoreandmoreendrodsModBlocks.SLIME_END_ROD.get().asItem());
+				tabData.accept(MoreandmoreendrodsModBlocks.DISPENSER_END_ROD.get().asItem());
 			}).withSearchBar().build());
 }

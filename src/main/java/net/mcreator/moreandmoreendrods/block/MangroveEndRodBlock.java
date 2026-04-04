@@ -9,13 +9,8 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 public class MangroveEndRodBlock extends EndRodBlock {
-	public MangroveEndRodBlock() {
-		super(BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).ignitedByLava().forceSolidOff());
-	}
-
-	@Override
-	public int getLightBlock(BlockState state, BlockGetter worldIn, BlockPos pos) {
-		return 0;
+	public MangroveEndRodBlock(BlockBehaviour.Properties properties) {
+		super(properties.sound(SoundType.WOOD).strength(1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).ignitedByLava().forceSolidOff());
 	}
 
 	@Override

@@ -1,0 +1,9 @@
+{
+  "parent": "moreandmoreendrods:custom/dispenserendrod",
+  "textures": {
+    "all": "moreandmoreendrods:block/dispenser_end_rod",
+    "particle": "moreandmoreendrods:block/dispenser_end_rod",
+    "0": "moreandmoreendrods:block/dispenser_end_rod"
+  },
+  "render_type": "solid"
+}

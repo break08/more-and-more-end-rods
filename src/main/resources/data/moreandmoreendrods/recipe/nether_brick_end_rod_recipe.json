@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:nether_bricks",
+  "result": {
+    "id": "moreandmoreendrods:nether_brick_end_rod",
+    "count": 1
+  }
+}

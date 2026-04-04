@@ -3,20 +3,23 @@
 */
 package net.mcreator.moreandmoreendrods.init;
 
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.event.village.VillagerTradesEvent;
-import net.minecraftforge.common.BasicItemListing;
+import net.neoforged.neoforge.event.village.VillagerTradesEvent;
+import net.neoforged.neoforge.common.BasicItemListing;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.bus.api.SubscribeEvent;
 
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.core.registries.Registries;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
+@EventBusSubscriber
 public class MoreandmoreendrodsModTrades {
 	@SubscribeEvent
 	public static void registerTrades(VillagerTradesEvent event) {
-		if (event.getType() == MoreandmoreendrodsModVillagerProfessions.END_ROD_SELLER.get()) {
+		if (event.getType() == ResourceKey.create(Registries.VILLAGER_PROFESSION, ResourceLocation.parse("moreandmoreendrods:end_rod_seller"))) {
 			event.getTrades().get(1).add(new BasicItemListing(new ItemStack(Items.EMERALD), new ItemStack(MoreandmoreendrodsModBlocks.OAK_END_ROD.get(), 5), 20, 4, 0.05f));
 			event.getTrades().get(1).add(new BasicItemListing(new ItemStack(Items.EMERALD), new ItemStack(MoreandmoreendrodsModBlocks.SPRUCE_END_ROD.get(), 5), 20, 4, 0.05f));
 			event.getTrades().get(1).add(new BasicItemListing(new ItemStack(Blocks.END_ROD, 6), new ItemStack(Items.EMERALD), 10, 10, 0.05f));

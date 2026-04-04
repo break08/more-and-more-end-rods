@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "#minecraft:coloured_end_rod",
+    "minecraft:red_dye"
+  ],
+  "result": {
+    "id": "moreandmoreendrods:red_end_rod",
+    "count": 1
+  }
+}

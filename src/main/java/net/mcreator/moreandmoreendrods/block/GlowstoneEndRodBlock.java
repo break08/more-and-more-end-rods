@@ -1,21 +1,11 @@
 package net.mcreator.moreandmoreendrods.block;
 
-import org.checkerframework.checker.units.qual.s;
-
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.EndRodBlock;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.core.BlockPos;
 
 public class GlowstoneEndRodBlock extends EndRodBlock {
-	public GlowstoneEndRodBlock() {
-		super(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).strength(1f, 10f).lightLevel(s -> 12).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).forceSolidOff());
-	}
-
-	@Override
-	public int getLightBlock(BlockState state, BlockGetter worldIn, BlockPos pos) {
-		return 0;
+	public GlowstoneEndRodBlock(BlockBehaviour.Properties properties) {
+		super(properties.sound(SoundType.LANTERN).strength(1f, 10f).lightLevel(blockstate -> 12).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).forceSolidOff());
 	}
 }

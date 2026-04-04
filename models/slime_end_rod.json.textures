@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "0": "slime_end_rod",
+        "1": "under_sl-endrod"
+      }
+    }
+  }
+}

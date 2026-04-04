@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:amethyst_shard",
+    "minecraft:amethyst_block"
+  ],
+  "result": {
+    "id": "moreandmoreendrods:amethyst_end_rod",
+    "count": 1
+  }
+}

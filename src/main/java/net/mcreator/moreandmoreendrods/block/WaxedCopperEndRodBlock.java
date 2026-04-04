@@ -1,13 +1,12 @@
 package net.mcreator.moreandmoreendrods.block;
 
-import net.minecraftforge.common.ToolActions;
-import net.minecraftforge.common.ToolAction;
+import net.neoforged.neoforge.common.ItemAbility;
+import net.neoforged.neoforge.common.ItemAbilities;
 
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.EndRodBlock;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.util.RandomSource;
 import net.minecraft.server.level.ServerLevel;
@@ -17,29 +16,21 @@ import net.mcreator.moreandmoreendrods.procedures.CopperEndRodOnTickUpdateProced
 import net.mcreator.moreandmoreendrods.init.MoreandmoreendrodsModBlocks;
 
 public class WaxedCopperEndRodBlock extends EndRodBlock {
-	public WaxedCopperEndRodBlock() {
-		super(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(2f, 10f).noOcclusion().randomTicks().isRedstoneConductor((bs, br, bp) -> false).forceSolidOff());
+	public WaxedCopperEndRodBlock(BlockBehaviour.Properties properties) {
+		super(properties.sound(SoundType.METAL).strength(2f, 10f).noOcclusion().randomTicks().isRedstoneConductor((bs, br, bp) -> false).forceSolidOff());
 	}
 
 	@Override
-	public int getLightBlock(BlockState state, BlockGetter worldIn, BlockPos pos) {
-		return 0;
-	}
-
-	@Override
-	public BlockState getToolModifiedState(BlockState blockstate, UseOnContext context, ToolAction itemAbility, boolean simulate) {
-		if (ToolActions.AXE_STRIP == itemAbility && context.getItemInHand().canPerformAction(itemAbility)) {
+	public BlockState getToolModifiedState(BlockState blockstate, UseOnContext context, ItemAbility itemAbility, boolean simulate) {
+		if (ItemAbilities.AXE_STRIP == itemAbility && context.getItemInHand().canPerformAction(itemAbility)) {
 			return MoreandmoreendrodsModBlocks.COPPER_END_ROD.get().withPropertiesOf(blockstate);
 		}
 		return super.getToolModifiedState(blockstate, context, itemAbility, simulate);
 	}
 
 	@Override
-	public void tick(BlockState blockstate, ServerLevel world, BlockPos pos, RandomSource random) {
-		super.tick(blockstate, world, pos, random);
-		int x = pos.getX();
-		int y = pos.getY();
-		int z = pos.getZ();
-		CopperEndRodOnTickUpdateProcedure.execute(world, x, y, z);
+	public void randomTick(BlockState blockstate, ServerLevel world, BlockPos pos, RandomSource random) {
+		super.randomTick(blockstate, world, pos, random);
+		CopperEndRodOnTickUpdateProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
 	}
 }

@@ -8,13 +8,8 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 public class StoneEndRodBlock extends EndRodBlock {
-	public StoneEndRodBlock() {
-		super(BlockBehaviour.Properties.of().strength(1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).forceSolidOff());
-	}
-
-	@Override
-	public int getLightBlock(BlockState state, BlockGetter worldIn, BlockPos pos) {
-		return 0;
+	public StoneEndRodBlock(BlockBehaviour.Properties properties) {
+		super(properties.strength(1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).forceSolidOff());
 	}
 
 	@Override

@@ -99,5 +99,22 @@
   "death.attack.pocked_by_cactus_end_rod.item": "%1$s was killed by %2$s using %3$s",
   "death.attack.pocked_by_cactus_end_rod.player": "%1$s died whilst trying to escape %2$s",
   "item.moreandmoreendrods.cactus_end_rod": "Cactus End Rod",
-  "block.moreandmoreendrods.glass_end_rod": "Glass End Rod"
+  "block.moreandmoreendrods.glass_end_rod": "Glass End Rod",
+  "item.moreandmoreendrods.glass_end_rod": "Glass End Rod",
+  "item.moreandmoreendrods.slime_end_rod": "Slime End Rod",
+  "block.moreandmoreendrods.slime_end_rod": "Slime End Rod",
+  "block.moreandmoreendrods.dispenser_end_rod": "Dispenser End Rod",
+  "gui.moreandmoreendrods.dispenser_end_rod_archive_item_gui.label_dispenser_end_rod": "Dispenser End Rod:",
+  "item.moreandmoreendrods.dispenser_end_rod": "Dispenser End Rod",
+  "painting.moreandmoreendrods.three_end_rods.author": "break08",
+  "painting.moreandmoreendrods.three_end_rods.title": "Three End Rods",
+  "gui.moreandmoreendrods.dispenser_end_rod_archive_item_gui.label_shooter_mod": "Shooter Mod",
+  "gui.moreandmoreendrods.dispenser_end_rod_archive_item_gui.label_fluid_mod": "Fluid Mod",
+  "gui.moreandmoreendrods.dispenser_end_rod_archive_item_gui.Mod_suffix": "",
+  "gui.moreandmoreendrods.dispenser_end_rod_archive_item_gui.Mod_prefix": "",
+  "gui.moreandmoreendrods.dispenser_end_rod_archive_item_gui.label_normal_mod": "Normal Mod",
+  "gui.moreandmoreendrods.dispenser_end_rod_archive_item_gui.label_power_archive": "Power Archive",
+  "gui.moreandmoreendrods.dispenser_end_rod_archive_item_gui.TickCooldownSlide_suffix": "",
+  "gui.moreandmoreendrods.dispenser_end_rod_archive_item_gui.TickCooldownSlide_prefix": "",
+  "gui.moreandmoreendrods.dispenser_end_rod_archive_item_gui.label_tick_cooldown": "Tick Cooldown"
 }

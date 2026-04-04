@@ -3,9 +3,9 @@
  */
 package net.mcreator.moreandmoreendrods.init;
 
-import net.minecraftforge.registries.RegistryObject;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.DeferredItem;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.item.Item;
@@ -13,55 +13,59 @@ import net.minecraft.world.item.BlockItem;
 
 import net.mcreator.moreandmoreendrods.MoreandmoreendrodsMod;
 
+import java.util.function.Function;
+
 public class MoreandmoreendrodsModItems {
-	public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, MoreandmoreendrodsMod.MODID);
-	public static final RegistryObject<Item> OAK_END_ROD;
-	public static final RegistryObject<Item> CHERRY_END_ROD;
-	public static final RegistryObject<Item> BIRCH_END_ROD;
-	public static final RegistryObject<Item> SPRUCE_END_ROD;
-	public static final RegistryObject<Item> STONE_END_ROD;
-	public static final RegistryObject<Item> IRON_END_ROD;
-	public static final RegistryObject<Item> COPPER_END_ROD;
-	public static final RegistryObject<Item> GLOWSTONE_END_ROD;
-	public static final RegistryObject<Item> EMERALD_END_ROD;
-	public static final RegistryObject<Item> DIAMOND_END_ROD;
-	public static final RegistryObject<Item> NETHERITE_END_ROD;
-	public static final RegistryObject<Item> CRIMSON_END_ROD;
-	public static final RegistryObject<Item> WARPED_END_ROD;
-	public static final RegistryObject<Item> EXPOSED_COPPER_END_ROD;
-	public static final RegistryObject<Item> WEATHERED_COPPER_END_ROD;
-	public static final RegistryObject<Item> OXIDIZED_COPPER_END_ROD;
-	public static final RegistryObject<Item> WAXED_COPPER_END_ROD;
-	public static final RegistryObject<Item> WAXED_EXPOSED_COPPER_END_ROD;
-	public static final RegistryObject<Item> WAXED_WEATHERED_COPPER_END_ROD;
-	public static final RegistryObject<Item> JUNGLE_END_ROD;
-	public static final RegistryObject<Item> ACACIA_END_ROD;
-	public static final RegistryObject<Item> DARK_OAK_END_ROD;
-	public static final RegistryObject<Item> MANGROVE_END_ROD;
-	public static final RegistryObject<Item> PRISMARINE_END_ROD;
-	public static final RegistryObject<Item> GOLDEN_END_ROD;
-	public static final RegistryObject<Item> SHULKER_END_ROD;
-	public static final RegistryObject<Item> PINK_END_ROD;
-	public static final RegistryObject<Item> BLUE_END_ROD;
-	public static final RegistryObject<Item> LIGHT_BLUE_END_ROD;
-	public static final RegistryObject<Item> PURPLE_END_ROD;
-	public static final RegistryObject<Item> YELLOW_END_ROD;
-	public static final RegistryObject<Item> GRAY_END_ROD;
-	public static final RegistryObject<Item> LIGHT_GRAY_END_ROD;
-	public static final RegistryObject<Item> BLACK_END_ROD;
-	public static final RegistryObject<Item> ORANGE_END_ROD;
-	public static final RegistryObject<Item> RED_END_ROD;
-	public static final RegistryObject<Item> CYAN_END_ROD;
-	public static final RegistryObject<Item> GREEN_END_ROD;
-	public static final RegistryObject<Item> LIME_END_ROD;
-	public static final RegistryObject<Item> AMETHYST_END_ROD;
-	public static final RegistryObject<Item> BRICK_END_ROD;
-	public static final RegistryObject<Item> NETHER_BRICK_END_ROD;
-	public static final RegistryObject<Item> MAGENTA_END_ROD;
-	public static final RegistryObject<Item> STONE_BRICK_END_ROD;
-	public static final RegistryObject<Item> LONG_END_ROD;
-	public static final RegistryObject<Item> CACTUS_END_ROD;
-	public static final RegistryObject<Item> GLASS_END_ROD;
+	public static final DeferredRegister.Items REGISTRY = DeferredRegister.createItems(MoreandmoreendrodsMod.MODID);
+	public static final DeferredItem<Item> OAK_END_ROD;
+	public static final DeferredItem<Item> CHERRY_END_ROD;
+	public static final DeferredItem<Item> BIRCH_END_ROD;
+	public static final DeferredItem<Item> SPRUCE_END_ROD;
+	public static final DeferredItem<Item> STONE_END_ROD;
+	public static final DeferredItem<Item> IRON_END_ROD;
+	public static final DeferredItem<Item> COPPER_END_ROD;
+	public static final DeferredItem<Item> GLOWSTONE_END_ROD;
+	public static final DeferredItem<Item> EMERALD_END_ROD;
+	public static final DeferredItem<Item> DIAMOND_END_ROD;
+	public static final DeferredItem<Item> NETHERITE_END_ROD;
+	public static final DeferredItem<Item> CRIMSON_END_ROD;
+	public static final DeferredItem<Item> WARPED_END_ROD;
+	public static final DeferredItem<Item> EXPOSED_COPPER_END_ROD;
+	public static final DeferredItem<Item> WEATHERED_COPPER_END_ROD;
+	public static final DeferredItem<Item> OXIDIZED_COPPER_END_ROD;
+	public static final DeferredItem<Item> WAXED_COPPER_END_ROD;
+	public static final DeferredItem<Item> WAXED_EXPOSED_COPPER_END_ROD;
+	public static final DeferredItem<Item> WAXED_WEATHERED_COPPER_END_ROD;
+	public static final DeferredItem<Item> JUNGLE_END_ROD;
+	public static final DeferredItem<Item> ACACIA_END_ROD;
+	public static final DeferredItem<Item> DARK_OAK_END_ROD;
+	public static final DeferredItem<Item> MANGROVE_END_ROD;
+	public static final DeferredItem<Item> PRISMARINE_END_ROD;
+	public static final DeferredItem<Item> GOLDEN_END_ROD;
+	public static final DeferredItem<Item> SHULKER_END_ROD;
+	public static final DeferredItem<Item> PINK_END_ROD;
+	public static final DeferredItem<Item> BLUE_END_ROD;
+	public static final DeferredItem<Item> LIGHT_BLUE_END_ROD;
+	public static final DeferredItem<Item> PURPLE_END_ROD;
+	public static final DeferredItem<Item> YELLOW_END_ROD;
+	public static final DeferredItem<Item> GRAY_END_ROD;
+	public static final DeferredItem<Item> LIGHT_GRAY_END_ROD;
+	public static final DeferredItem<Item> BLACK_END_ROD;
+	public static final DeferredItem<Item> ORANGE_END_ROD;
+	public static final DeferredItem<Item> RED_END_ROD;
+	public static final DeferredItem<Item> CYAN_END_ROD;
+	public static final DeferredItem<Item> GREEN_END_ROD;
+	public static final DeferredItem<Item> LIME_END_ROD;
+	public static final DeferredItem<Item> AMETHYST_END_ROD;
+	public static final DeferredItem<Item> BRICK_END_ROD;
+	public static final DeferredItem<Item> NETHER_BRICK_END_ROD;
+	public static final DeferredItem<Item> MAGENTA_END_ROD;
+	public static final DeferredItem<Item> STONE_BRICK_END_ROD;
+	public static final DeferredItem<Item> LONG_END_ROD;
+	public static final DeferredItem<Item> CACTUS_END_ROD;
+	public static final DeferredItem<Item> GLASS_END_ROD;
+	public static final DeferredItem<Item> SLIME_END_ROD;
+	public static final DeferredItem<Item> DISPENSER_END_ROD;
 	static {
 		OAK_END_ROD = block(MoreandmoreendrodsModBlocks.OAK_END_ROD);
 		CHERRY_END_ROD = block(MoreandmoreendrodsModBlocks.CHERRY_END_ROD);
@@ -110,15 +114,21 @@ public class MoreandmoreendrodsModItems {
 		LONG_END_ROD = block(MoreandmoreendrodsModBlocks.LONG_END_ROD);
 		CACTUS_END_ROD = block(MoreandmoreendrodsModBlocks.CACTUS_END_ROD);
 		GLASS_END_ROD = block(MoreandmoreendrodsModBlocks.GLASS_END_ROD);
+		SLIME_END_ROD = block(MoreandmoreendrodsModBlocks.SLIME_END_ROD);
+		DISPENSER_END_ROD = block(MoreandmoreendrodsModBlocks.DISPENSER_END_ROD);
 	}
 
 	// Start of user code block custom items
 	// End of user code block custom items
-	private static RegistryObject<Item> block(RegistryObject<Block> block) {
+	private static <I extends Item> DeferredItem<I> register(String name, Function<Item.Properties, ? extends I> supplier) {
+		return REGISTRY.registerItem(name, supplier, new Item.Properties());
+	}
+
+	private static DeferredItem<Item> block(DeferredHolder<Block, Block> block) {
 		return block(block, new Item.Properties());
 	}
 
-	private static RegistryObject<Item> block(RegistryObject<Block> block, Item.Properties properties) {
-		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), properties));
+	private static DeferredItem<Item> block(DeferredHolder<Block, Block> block, Item.Properties properties) {
+		return REGISTRY.registerItem(block.getId().getPath(), prop -> new BlockItem(block.get(), prop), properties);
 	}
 }

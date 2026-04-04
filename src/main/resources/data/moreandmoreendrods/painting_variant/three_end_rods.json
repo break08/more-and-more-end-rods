@@ -1,0 +1,11 @@
+{
+  "asset_id": "moreandmoreendrods:three_end_rods",
+  "height": 1,
+  "width": 1,
+  "title": {
+    "translate": "painting.moreandmoreendrods.three_end_rods.title"
+  },
+  "author": {
+    "translate": "painting.moreandmoreendrods.three_end_rods.author"
+  }
+}
