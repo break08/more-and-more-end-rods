@@ -1,0 +1,9 @@
+{
+  "parent": "moreandmoreendrods:custom/glass_end_rod",
+  "textures": {
+    "all": "moreandmoreendrods:block/glass_end_rod",
+    "particle": "moreandmoreendrods:block/glass_end_rod",
+    "0": "moreandmoreendrods:block/glass_end_rod"
+  },
+  "render_type": "cutout"
+}

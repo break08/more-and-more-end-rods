@@ -199,12 +199,6 @@
         }
       }
     ],
-    "onOpen": {
-      "name": "DispenserEndRodArchiveItemGUIThisGUIIsOpened"
-    },
-    "onTick": {
-      "name": "DispenserEndRodItemTaken"
-    },
     "gridSettings": {
       "sx": 18,
       "sy": 18,

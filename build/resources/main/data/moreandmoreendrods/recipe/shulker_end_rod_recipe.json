@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:shulker_shell",
+    "minecraft:end_rod"
+  ],
+  "result": {
+    "id": "moreandmoreendrods:shulker_end_rod",
+    "count": 1
+  }
+}

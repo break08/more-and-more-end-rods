@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": "minecraft:netherite_upgrade_smithing_template",
+  "base": "moreandmoreendrods:diamond_end_rod",
+  "addition": "minecraft:netherite_ingot",
+  "result": {
+    "id": "moreandmoreendrods:netherite_end_rod"
+  }
+}

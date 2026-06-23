@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:stick",
+    "minecraft:acacia_slab"
+  ],
+  "result": {
+    "id": "moreandmoreendrods:acacia_end_rod",
+    "count": 1
+  }
+}

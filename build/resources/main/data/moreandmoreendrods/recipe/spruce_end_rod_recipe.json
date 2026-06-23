@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:stick",
+    "minecraft:spruce_slab"
+  ],
+  "result": {
+    "id": "moreandmoreendrods:spruce_end_rod",
+    "count": 1
+  }
+}

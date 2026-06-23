@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "moreandmoreendrods:stone_end_rod",
+    "minecraft:copper_ingot"
+  ],
+  "result": {
+    "id": "moreandmoreendrods:copper_end_rod",
+    "count": 1
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:end_rod",
+    "minecraft:end_rod"
+  ],
+  "result": {
+    "id": "moreandmoreendrods:long_end_rod",
+    "count": 1
+  }
+}

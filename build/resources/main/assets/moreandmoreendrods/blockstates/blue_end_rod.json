@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "moreandmoreendrods:block/blue_end_rod",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "moreandmoreendrods:block/blue_end_rod",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "moreandmoreendrods:block/blue_end_rod",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "moreandmoreendrods:block/blue_end_rod",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "moreandmoreendrods:block/blue_end_rod"
+    },
+    "facing=west": {
+      "model": "moreandmoreendrods:block/blue_end_rod",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

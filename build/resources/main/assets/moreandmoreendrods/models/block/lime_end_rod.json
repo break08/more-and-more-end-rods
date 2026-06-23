@@ -1,0 +1,8 @@
+{
+  "parent": "block/end_rod",
+  "textures": {
+    "end_rod": "moreandmoreendrods:block/lime_end_rod",
+    "particle": "moreandmoreendrods:block/lime_end_rod"
+  },
+  "render_type": "cutout"
+}

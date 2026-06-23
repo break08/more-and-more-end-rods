@@ -8,12 +8,12 @@
       "registry_name": "oak_end_rod",
       "metadata": {
         "files": [
-          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/oak_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/items/oak_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/blockstates/oak_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/models/block/oak_end_rod.json",
           "src/main/java/net/mcreator/moreandmoreendrods/block/OakEndRodBlock.java",
           "src/main/resources/assets/moreandmoreendrods/models/item/oak_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/blockstates/oak_end_rod.json"
+          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/oak_end_rod.json"
         ]
       },
       "path": "~/EndRod"
@@ -26,12 +26,12 @@
       "registry_name": "cherry_end_rod",
       "metadata": {
         "files": [
+          "src/main/resources/assets/moreandmoreendrods/blockstates/cherry_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/models/item/cherry_end_rod.json",
           "src/main/java/net/mcreator/moreandmoreendrods/block/CherryEndRodBlock.java",
-          "src/main/resources/assets/moreandmoreendrods/items/cherry_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/models/block/cherry_end_rod.json",
           "src/main/resources/data/moreandmoreendrods/loot_table/blocks/cherry_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/blockstates/cherry_end_rod.json"
+          "src/main/resources/assets/moreandmoreendrods/items/cherry_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/block/cherry_end_rod.json"
         ]
       },
       "path": "~/EndRod"
@@ -44,12 +44,12 @@
       "registry_name": "birch_end_rod",
       "metadata": {
         "files": [
-          "src/main/resources/assets/moreandmoreendrods/items/birch_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/models/block/birch_end_rod.json",
-          "src/main/java/net/mcreator/moreandmoreendrods/block/BirchEndRodBlock.java",
           "src/main/resources/assets/moreandmoreendrods/models/item/birch_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/blockstates/birch_end_rod.json",
-          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/birch_end_rod.json"
+          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/birch_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/items/birch_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/block/birch_end_rod.json",
+          "src/main/java/net/mcreator/moreandmoreendrods/block/BirchEndRodBlock.java"
         ]
       },
       "path": "~/EndRod"
@@ -62,11 +62,11 @@
       "registry_name": "spruce_end_rod",
       "metadata": {
         "files": [
-          "src/main/resources/assets/moreandmoreendrods/items/spruce_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/models/block/spruce_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/models/item/spruce_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/blockstates/spruce_end_rod.json",
           "src/main/java/net/mcreator/moreandmoreendrods/block/SpruceEndRodBlock.java",
+          "src/main/resources/assets/moreandmoreendrods/models/block/spruce_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/items/spruce_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/blockstates/spruce_end_rod.json",
           "src/main/resources/data/moreandmoreendrods/loot_table/blocks/spruce_end_rod.json"
         ]
       },
@@ -81,10 +81,10 @@
       "metadata": {
         "files": [
           "src/main/java/net/mcreator/moreandmoreendrods/block/StoneEndRodBlock.java",
-          "src/main/resources/assets/moreandmoreendrods/items/stone_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/models/block/stone_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/models/item/stone_end_rod.json",
           "src/main/resources/data/moreandmoreendrods/loot_table/blocks/stone_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/block/stone_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/items/stone_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/blockstates/stone_end_rod.json"
         ]
       },
@@ -98,12 +98,12 @@
       "registry_name": "iron_end_rod",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/moreandmoreendrods/block/IronEndRodBlock.java",
-          "src/main/resources/assets/moreandmoreendrods/items/iron_end_rod.json",
           "src/main/resources/data/moreandmoreendrods/loot_table/blocks/iron_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/item/iron_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/items/iron_end_rod.json",
+          "src/main/java/net/mcreator/moreandmoreendrods/block/IronEndRodBlock.java",
           "src/main/resources/assets/moreandmoreendrods/blockstates/iron_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/models/block/iron_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/models/item/iron_end_rod.json"
+          "src/main/resources/assets/moreandmoreendrods/models/block/iron_end_rod.json"
         ]
       },
       "path": "~/EndRod"
@@ -117,11 +117,11 @@
       "metadata": {
         "files": [
           "src/main/resources/assets/moreandmoreendrods/models/block/copper_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/models/item/copper_end_rod.json",
-          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/copper_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/items/copper_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/blockstates/copper_end_rod.json",
-          "src/main/java/net/mcreator/moreandmoreendrods/block/CopperEndRodBlock.java"
+          "src/main/resources/assets/moreandmoreendrods/models/item/copper_end_rod.json",
+          "src/main/java/net/mcreator/moreandmoreendrods/block/CopperEndRodBlock.java",
+          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/copper_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/items/copper_end_rod.json"
         ]
       },
       "path": "~/EndRod"
@@ -164,12 +164,12 @@
       "registry_name": "glowstone_end_rod",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/moreandmoreendrods/block/GlowstoneEndRodBlock.java",
-          "src/main/resources/assets/moreandmoreendrods/models/block/glowstone_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/item/glowstone_end_rod.json",
+          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/glowstone_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/blockstates/glowstone_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/items/glowstone_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/models/item/glowstone_end_rod.json",
-          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/glowstone_end_rod.json"
+          "src/main/resources/assets/moreandmoreendrods/models/block/glowstone_end_rod.json",
+          "src/main/java/net/mcreator/moreandmoreendrods/block/GlowstoneEndRodBlock.java"
         ]
       },
       "path": "~/EndRod"
@@ -182,12 +182,12 @@
       "registry_name": "emerald_end_rod",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/moreandmoreendrods/block/EmeraldEndRodBlock.java",
           "src/main/resources/assets/moreandmoreendrods/models/item/emerald_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/blockstates/emerald_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/items/emerald_end_rod.json",
+          "src/main/java/net/mcreator/moreandmoreendrods/block/EmeraldEndRodBlock.java",
+          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/emerald_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/models/block/emerald_end_rod.json",
-          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/emerald_end_rod.json"
+          "src/main/resources/assets/moreandmoreendrods/blockstates/emerald_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/items/emerald_end_rod.json"
         ]
       },
       "path": "~/EndRod"
@@ -200,12 +200,12 @@
       "registry_name": "diamond_end_rod",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/moreandmoreendrods/block/DiamondEndRodBlock.java",
+          "src/main/resources/assets/moreandmoreendrods/items/diamond_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/blockstates/diamond_end_rod.json",
-          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/diamond_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/models/block/diamond_end_rod.json",
+          "src/main/java/net/mcreator/moreandmoreendrods/block/DiamondEndRodBlock.java",
           "src/main/resources/assets/moreandmoreendrods/models/item/diamond_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/items/diamond_end_rod.json"
+          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/diamond_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/block/diamond_end_rod.json"
         ]
       },
       "path": "~/EndRod"
@@ -218,12 +218,12 @@
       "registry_name": "netherite_end_rod",
       "metadata": {
         "files": [
-          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/netherite_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/items/netherite_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/models/block/netherite_end_rod.json",
-          "src/main/java/net/mcreator/moreandmoreendrods/block/NetheriteEndRodBlock.java",
           "src/main/resources/assets/moreandmoreendrods/blockstates/netherite_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/models/item/netherite_end_rod.json"
+          "src/main/resources/assets/moreandmoreendrods/items/netherite_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/item/netherite_end_rod.json",
+          "src/main/java/net/mcreator/moreandmoreendrods/block/NetheriteEndRodBlock.java",
+          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/netherite_end_rod.json"
         ]
       },
       "path": "~/EndRod"
@@ -236,8 +236,8 @@
       "registry_name": "oak_end_rod_recipe",
       "metadata": {
         "files": [
-          "src/main/resources/data/moreandmoreendrods/advancement/recipes/oak_end_rod_recipe.json",
-          "src/main/resources/data/moreandmoreendrods/recipe/oak_end_rod_recipe.json"
+          "src/main/resources/data/moreandmoreendrods/recipe/oak_end_rod_recipe.json",
+          "src/main/resources/data/moreandmoreendrods/advancement/recipes/oak_end_rod_recipe.json"
         ]
       }
     },
@@ -249,8 +249,8 @@
       "registry_name": "cherry_end_rod_recipe",
       "metadata": {
         "files": [
-          "src/main/resources/data/moreandmoreendrods/advancement/recipes/cherry_end_rod_recipe.json",
-          "src/main/resources/data/moreandmoreendrods/recipe/cherry_end_rod_recipe.json"
+          "src/main/resources/data/moreandmoreendrods/recipe/cherry_end_rod_recipe.json",
+          "src/main/resources/data/moreandmoreendrods/advancement/recipes/cherry_end_rod_recipe.json"
         ]
       }
     },
@@ -288,8 +288,8 @@
       "registry_name": "iron_end_rod_recipe",
       "metadata": {
         "files": [
-          "src/main/resources/data/moreandmoreendrods/recipe/iron_end_rod_recipe.json",
-          "src/main/resources/data/moreandmoreendrods/advancement/recipes/iron_end_rod_recipe.json"
+          "src/main/resources/data/moreandmoreendrods/advancement/recipes/iron_end_rod_recipe.json",
+          "src/main/resources/data/moreandmoreendrods/recipe/iron_end_rod_recipe.json"
         ]
       }
     },
@@ -327,8 +327,8 @@
       "registry_name": "diamond_end_rod_recipe",
       "metadata": {
         "files": [
-          "src/main/resources/data/moreandmoreendrods/advancement/recipes/diamond_end_rod_recipe.json",
-          "src/main/resources/data/moreandmoreendrods/recipe/diamond_end_rod_recipe.json"
+          "src/main/resources/data/moreandmoreendrods/recipe/diamond_end_rod_recipe.json",
+          "src/main/resources/data/moreandmoreendrods/advancement/recipes/diamond_end_rod_recipe.json"
         ]
       }
     },
@@ -386,11 +386,11 @@
       "metadata": {
         "files": [
           "src/main/java/net/mcreator/moreandmoreendrods/block/CrimsonEndRodBlock.java",
-          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/crimson_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/items/crimson_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/models/block/crimson_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/models/item/crimson_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/blockstates/crimson_end_rod.json"
+          "src/main/resources/assets/moreandmoreendrods/blockstates/crimson_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/items/crimson_end_rod.json",
+          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/crimson_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/block/crimson_end_rod.json"
         ]
       },
       "path": "~/EndRod"
@@ -403,12 +403,12 @@
       "registry_name": "warped_end_rod",
       "metadata": {
         "files": [
-          "src/main/resources/assets/moreandmoreendrods/items/warped_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/models/block/warped_end_rod.json",
-          "src/main/java/net/mcreator/moreandmoreendrods/block/WarpedEndRodBlock.java",
-          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/warped_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/models/item/warped_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/blockstates/warped_end_rod.json"
+          "src/main/resources/assets/moreandmoreendrods/items/warped_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/blockstates/warped_end_rod.json",
+          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/warped_end_rod.json",
+          "src/main/java/net/mcreator/moreandmoreendrods/block/WarpedEndRodBlock.java",
+          "src/main/resources/assets/moreandmoreendrods/models/block/warped_end_rod.json"
         ]
       },
       "path": "~/EndRod"
@@ -421,11 +421,11 @@
       "registry_name": "exposed_copper_end_rod",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/moreandmoreendrods/block/ExposedCopperEndRodBlock.java",
-          "src/main/resources/assets/moreandmoreendrods/blockstates/exposed_copper_end_rod.json",
-          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/exposed_copper_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/models/block/exposed_copper_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/items/exposed_copper_end_rod.json",
+          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/exposed_copper_end_rod.json",
+          "src/main/java/net/mcreator/moreandmoreendrods/block/ExposedCopperEndRodBlock.java",
+          "src/main/resources/assets/moreandmoreendrods/models/block/exposed_copper_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/blockstates/exposed_copper_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/models/item/exposed_copper_end_rod.json"
         ]
       },
@@ -439,12 +439,12 @@
       "registry_name": "weathered_copper_end_rod",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/moreandmoreendrods/block/WeatheredCopperEndRodBlock.java",
-          "src/main/resources/assets/moreandmoreendrods/models/item/weathered_copper_end_rod.json",
+          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/weathered_copper_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/blockstates/weathered_copper_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/models/block/weathered_copper_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/items/weathered_copper_end_rod.json",
-          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/weathered_copper_end_rod.json"
+          "src/main/resources/assets/moreandmoreendrods/models/item/weathered_copper_end_rod.json",
+          "src/main/java/net/mcreator/moreandmoreendrods/block/WeatheredCopperEndRodBlock.java",
+          "src/main/resources/assets/moreandmoreendrods/items/weathered_copper_end_rod.json"
         ]
       },
       "path": "~/EndRod"
@@ -457,12 +457,12 @@
       "registry_name": "oxidized_copper_end_rod",
       "metadata": {
         "files": [
-          "src/main/resources/assets/moreandmoreendrods/models/block/oxidized_copper_end_rod.json",
-          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/oxidized_copper_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/items/oxidized_copper_end_rod.json",
           "src/main/java/net/mcreator/moreandmoreendrods/block/OxidizedCopperEndRodBlock.java",
-          "src/main/resources/assets/moreandmoreendrods/models/item/oxidized_copper_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/blockstates/oxidized_copper_end_rod.json"
+          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/oxidized_copper_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/block/oxidized_copper_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/blockstates/oxidized_copper_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/item/oxidized_copper_end_rod.json"
         ]
       },
       "path": "~/EndRod"
@@ -475,12 +475,12 @@
       "registry_name": "waxed_copper_end_rod",
       "metadata": {
         "files": [
-          "src/main/resources/assets/moreandmoreendrods/items/waxed_copper_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/blockstates/waxed_copper_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/models/item/waxed_copper_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/models/block/waxed_copper_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/item/waxed_copper_end_rod.json",
           "src/main/java/net/mcreator/moreandmoreendrods/block/WaxedCopperEndRodBlock.java",
-          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/waxed_copper_end_rod.json"
+          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/waxed_copper_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/items/waxed_copper_end_rod.json"
         ]
       },
       "path": "~/EndRod"
@@ -527,12 +527,12 @@
       "registry_name": "waxed_exposed_copper_end_rod",
       "metadata": {
         "files": [
-          "src/main/resources/assets/moreandmoreendrods/items/waxed_exposed_copper_end_rod.json",
+          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/waxed_exposed_copper_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/models/item/waxed_exposed_copper_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/models/block/waxed_exposed_copper_end_rod.json",
           "src/main/java/net/mcreator/moreandmoreendrods/block/WaxedExposedCopperEndRodBlock.java",
           "src/main/resources/assets/moreandmoreendrods/blockstates/waxed_exposed_copper_end_rod.json",
-          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/waxed_exposed_copper_end_rod.json"
+          "src/main/resources/assets/moreandmoreendrods/items/waxed_exposed_copper_end_rod.json"
         ]
       },
       "path": "~/EndRod"
@@ -545,12 +545,12 @@
       "registry_name": "waxed_weathered_copper_end_rod",
       "metadata": {
         "files": [
-          "src/main/resources/assets/moreandmoreendrods/models/block/waxed_weathered_copper_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/blockstates/waxed_weathered_copper_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/models/item/waxed_weathered_copper_end_rod.json",
+          "src/main/java/net/mcreator/moreandmoreendrods/block/WaxedWeatheredCopperEndRodBlock.java",
           "src/main/resources/data/moreandmoreendrods/loot_table/blocks/waxed_weathered_copper_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/items/waxed_weathered_copper_end_rod.json",
-          "src/main/java/net/mcreator/moreandmoreendrods/block/WaxedWeatheredCopperEndRodBlock.java"
+          "src/main/resources/assets/moreandmoreendrods/models/block/waxed_weathered_copper_end_rod.json"
         ]
       },
       "path": "~/EndRod"
@@ -564,10 +564,10 @@
       "metadata": {
         "files": [
           "src/main/resources/assets/moreandmoreendrods/models/block/jungle_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/models/item/jungle_end_rod.json",
-          "src/main/java/net/mcreator/moreandmoreendrods/block/JungleEndRodBlock.java",
           "src/main/resources/data/moreandmoreendrods/loot_table/blocks/jungle_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/items/jungle_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/item/jungle_end_rod.json",
+          "src/main/java/net/mcreator/moreandmoreendrods/block/JungleEndRodBlock.java",
           "src/main/resources/assets/moreandmoreendrods/blockstates/jungle_end_rod.json"
         ]
       },
@@ -581,12 +581,12 @@
       "registry_name": "acacia_end_rod",
       "metadata": {
         "files": [
-          "src/main/resources/assets/moreandmoreendrods/models/block/acacia_end_rod.json",
-          "src/main/java/net/mcreator/moreandmoreendrods/block/AcaciaEndRodBlock.java",
-          "src/main/resources/assets/moreandmoreendrods/blockstates/acacia_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/models/item/acacia_end_rod.json",
           "src/main/resources/data/moreandmoreendrods/loot_table/blocks/acacia_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/items/acacia_end_rod.json"
+          "src/main/resources/assets/moreandmoreendrods/models/block/acacia_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/items/acacia_end_rod.json",
+          "src/main/java/net/mcreator/moreandmoreendrods/block/AcaciaEndRodBlock.java",
+          "src/main/resources/assets/moreandmoreendrods/models/item/acacia_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/blockstates/acacia_end_rod.json"
         ]
       },
       "path": "~/EndRod"
@@ -599,12 +599,12 @@
       "registry_name": "dark_oak_end_rod",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/moreandmoreendrods/block/DarkOakEndRodBlock.java",
-          "src/main/resources/assets/moreandmoreendrods/models/item/dark_oak_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/blockstates/dark_oak_end_rod.json",
-          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/dark_oak_end_rod.json",
+          "src/main/java/net/mcreator/moreandmoreendrods/block/DarkOakEndRodBlock.java",
           "src/main/resources/assets/moreandmoreendrods/models/block/dark_oak_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/items/dark_oak_end_rod.json"
+          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/dark_oak_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/items/dark_oak_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/item/dark_oak_end_rod.json"
         ]
       },
       "path": "~/EndRod"
@@ -617,12 +617,12 @@
       "registry_name": "mangrove_end_rod",
       "metadata": {
         "files": [
-          "src/main/resources/assets/moreandmoreendrods/models/item/mangrove_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/models/block/mangrove_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/blockstates/mangrove_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/block/mangrove_end_rod.json",
           "src/main/resources/data/moreandmoreendrods/loot_table/blocks/mangrove_end_rod.json",
-          "src/main/java/net/mcreator/moreandmoreendrods/block/MangroveEndRodBlock.java",
-          "src/main/resources/assets/moreandmoreendrods/items/mangrove_end_rod.json"
+          "src/main/resources/assets/moreandmoreendrods/items/mangrove_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/item/mangrove_end_rod.json",
+          "src/main/java/net/mcreator/moreandmoreendrods/block/MangroveEndRodBlock.java"
         ]
       },
       "path": "~/EndRod"
@@ -635,12 +635,12 @@
       "registry_name": "prismarine_end_rod",
       "metadata": {
         "files": [
-          "src/main/resources/assets/moreandmoreendrods/items/prismarine_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/blockstates/prismarine_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/models/item/prismarine_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/models/block/prismarine_end_rod.json",
           "src/main/java/net/mcreator/moreandmoreendrods/block/PrismarineEndRodBlock.java",
-          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/prismarine_end_rod.json"
+          "src/main/resources/assets/moreandmoreendrods/blockstates/prismarine_end_rod.json",
+          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/prismarine_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/items/prismarine_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/item/prismarine_end_rod.json"
         ]
       },
       "path": "~/EndRod"
@@ -655,10 +655,10 @@
         "files": [
           "src/main/java/net/mcreator/moreandmoreendrods/block/GoldenEndRodBlock.java",
           "src/main/resources/assets/moreandmoreendrods/items/golden_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/blockstates/golden_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/models/item/golden_end_rod.json",
           "src/main/resources/data/moreandmoreendrods/loot_table/blocks/golden_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/models/block/golden_end_rod.json"
+          "src/main/resources/assets/moreandmoreendrods/models/block/golden_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/blockstates/golden_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/item/golden_end_rod.json"
         ]
       },
       "path": "~/EndRod"
@@ -671,12 +671,12 @@
       "registry_name": "shulker_end_rod",
       "metadata": {
         "files": [
-          "src/main/resources/assets/moreandmoreendrods/models/item/shulker_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/blockstates/shulker_end_rod.json",
           "src/main/resources/data/moreandmoreendrods/loot_table/blocks/shulker_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/items/shulker_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/models/block/shulker_end_rod.json",
-          "src/main/java/net/mcreator/moreandmoreendrods/block/ShulkerEndRodBlock.java"
+          "src/main/resources/assets/moreandmoreendrods/items/shulker_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/blockstates/shulker_end_rod.json",
+          "src/main/java/net/mcreator/moreandmoreendrods/block/ShulkerEndRodBlock.java",
+          "src/main/resources/assets/moreandmoreendrods/models/item/shulker_end_rod.json"
         ]
       },
       "path": "~/EndRod"
@@ -689,12 +689,12 @@
       "registry_name": "pink_end_rod",
       "metadata": {
         "files": [
-          "src/main/resources/assets/moreandmoreendrods/blockstates/pink_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/items/pink_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/models/item/pink_end_rod.json",
+          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/pink_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/models/block/pink_end_rod.json",
           "src/main/java/net/mcreator/moreandmoreendrods/block/PinkEndRodBlock.java",
-          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/pink_end_rod.json"
+          "src/main/resources/assets/moreandmoreendrods/items/pink_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/blockstates/pink_end_rod.json"
         ]
       },
       "path": "~/DyedEndRod"
@@ -707,12 +707,12 @@
       "registry_name": "blue_end_rod",
       "metadata": {
         "files": [
-          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/blue_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/blockstates/blue_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/models/item/blue_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/models/block/blue_end_rod.json",
-          "src/main/java/net/mcreator/moreandmoreendrods/block/BlueEndRodBlock.java",
-          "src/main/resources/assets/moreandmoreendrods/items/blue_end_rod.json"
+          "src/main/resources/assets/moreandmoreendrods/blockstates/blue_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/items/blue_end_rod.json",
+          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/blue_end_rod.json",
+          "src/main/java/net/mcreator/moreandmoreendrods/block/BlueEndRodBlock.java"
         ]
       },
       "path": "~/DyedEndRod"
@@ -725,11 +725,11 @@
       "registry_name": "light_blue_end_rod",
       "metadata": {
         "files": [
-          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/light_blue_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/blockstates/light_blue_end_rod.json",
           "src/main/java/net/mcreator/moreandmoreendrods/block/LightBlueEndRodBlock.java",
-          "src/main/resources/assets/moreandmoreendrods/models/item/light_blue_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/items/light_blue_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/blockstates/light_blue_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/item/light_blue_end_rod.json",
+          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/light_blue_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/models/block/light_blue_end_rod.json"
         ]
       },
@@ -743,12 +743,12 @@
       "registry_name": "purple_end_rod",
       "metadata": {
         "files": [
+          "src/main/resources/assets/moreandmoreendrods/items/purple_end_rod.json",
           "src/main/java/net/mcreator/moreandmoreendrods/block/PurpleEndRodBlock.java",
-          "src/main/resources/assets/moreandmoreendrods/models/block/purple_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/item/purple_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/blockstates/purple_end_rod.json",
           "src/main/resources/data/moreandmoreendrods/loot_table/blocks/purple_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/items/purple_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/models/item/purple_end_rod.json"
+          "src/main/resources/assets/moreandmoreendrods/models/block/purple_end_rod.json"
         ]
       },
       "path": "~/DyedEndRod"
@@ -761,12 +761,12 @@
       "registry_name": "yellow_end_rod",
       "metadata": {
         "files": [
-          "src/main/resources/assets/moreandmoreendrods/models/block/yellow_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/items/yellow_end_rod.json",
           "src/main/java/net/mcreator/moreandmoreendrods/block/YellowEndRodBlock.java",
           "src/main/resources/assets/moreandmoreendrods/blockstates/yellow_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/item/yellow_end_rod.json",
           "src/main/resources/data/moreandmoreendrods/loot_table/blocks/yellow_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/items/yellow_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/models/item/yellow_end_rod.json"
+          "src/main/resources/assets/moreandmoreendrods/models/block/yellow_end_rod.json"
         ]
       },
       "path": "~/DyedEndRod"
@@ -779,12 +779,12 @@
       "registry_name": "gray_end_rod",
       "metadata": {
         "files": [
-          "src/main/resources/assets/moreandmoreendrods/models/item/gray_end_rod.json",
-          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/gray_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/models/block/gray_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/items/gray_end_rod.json",
+          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/gray_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/blockstates/gray_end_rod.json",
-          "src/main/java/net/mcreator/moreandmoreendrods/block/GrayEndRodBlock.java"
+          "src/main/java/net/mcreator/moreandmoreendrods/block/GrayEndRodBlock.java",
+          "src/main/resources/assets/moreandmoreendrods/items/gray_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/item/gray_end_rod.json"
         ]
       },
       "path": "~/DyedEndRod"
@@ -799,10 +799,10 @@
         "files": [
           "src/main/resources/assets/moreandmoreendrods/models/item/light_gray_end_rod.json",
           "src/main/resources/data/moreandmoreendrods/loot_table/blocks/light_gray_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/models/block/light_gray_end_rod.json",
+          "src/main/java/net/mcreator/moreandmoreendrods/block/LightGrayEndRodBlock.java",
           "src/main/resources/assets/moreandmoreendrods/blockstates/light_gray_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/items/light_gray_end_rod.json",
-          "src/main/java/net/mcreator/moreandmoreendrods/block/LightGrayEndRodBlock.java"
+          "src/main/resources/assets/moreandmoreendrods/models/block/light_gray_end_rod.json"
         ]
       },
       "path": "~/DyedEndRod"
@@ -815,12 +815,12 @@
       "registry_name": "black_end_rod",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/moreandmoreendrods/block/BlackEndRodBlock.java",
           "src/main/resources/data/moreandmoreendrods/loot_table/blocks/black_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/blockstates/black_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/items/black_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/models/block/black_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/models/item/black_end_rod.json"
+          "src/main/resources/assets/moreandmoreendrods/items/black_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/item/black_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/blockstates/black_end_rod.json",
+          "src/main/java/net/mcreator/moreandmoreendrods/block/BlackEndRodBlock.java"
         ]
       },
       "path": "~/DyedEndRod"
@@ -835,10 +835,10 @@
         "files": [
           "src/main/resources/assets/moreandmoreendrods/items/orange_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/models/block/orange_end_rod.json",
-          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/orange_end_rod.json",
           "src/main/java/net/mcreator/moreandmoreendrods/block/OrangeEndRodBlock.java",
-          "src/main/resources/assets/moreandmoreendrods/models/item/orange_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/blockstates/orange_end_rod.json"
+          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/orange_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/blockstates/orange_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/item/orange_end_rod.json"
         ]
       },
       "path": "~/DyedEndRod"
@@ -851,12 +851,12 @@
       "registry_name": "red_end_rod",
       "metadata": {
         "files": [
-          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/red_end_rod.json",
-          "src/main/java/net/mcreator/moreandmoreendrods/block/RedEndRodBlock.java",
           "src/main/resources/assets/moreandmoreendrods/blockstates/red_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/models/block/red_end_rod.json",
+          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/red_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/item/red_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/items/red_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/models/item/red_end_rod.json"
+          "src/main/java/net/mcreator/moreandmoreendrods/block/RedEndRodBlock.java"
         ]
       },
       "path": "~/DyedEndRod"
@@ -869,12 +869,12 @@
       "registry_name": "cyan_end_rod",
       "metadata": {
         "files": [
-          "src/main/resources/assets/moreandmoreendrods/models/item/cyan_end_rod.json",
-          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/cyan_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/models/block/cyan_end_rod.json",
           "src/main/java/net/mcreator/moreandmoreendrods/block/CyanEndRodBlock.java",
           "src/main/resources/assets/moreandmoreendrods/blockstates/cyan_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/items/cyan_end_rod.json"
+          "src/main/resources/assets/moreandmoreendrods/items/cyan_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/block/cyan_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/item/cyan_end_rod.json",
+          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/cyan_end_rod.json"
         ]
       },
       "path": "~/DyedEndRod"
@@ -887,12 +887,12 @@
       "registry_name": "green_end_rod",
       "metadata": {
         "files": [
-          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/green_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/blockstates/green_end_rod.json",
-          "src/main/java/net/mcreator/moreandmoreendrods/block/GreenEndRodBlock.java",
           "src/main/resources/assets/moreandmoreendrods/models/block/green_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/models/item/green_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/items/green_end_rod.json"
+          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/green_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/items/green_end_rod.json",
+          "src/main/java/net/mcreator/moreandmoreendrods/block/GreenEndRodBlock.java",
+          "src/main/resources/assets/moreandmoreendrods/blockstates/green_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/item/green_end_rod.json"
         ]
       },
       "path": "~/DyedEndRod"
@@ -905,11 +905,11 @@
       "registry_name": "lime_end_rod",
       "metadata": {
         "files": [
-          "src/main/resources/assets/moreandmoreendrods/models/item/lime_end_rod.json",
           "src/main/resources/data/moreandmoreendrods/loot_table/blocks/lime_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/blockstates/lime_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/item/lime_end_rod.json",
           "src/main/java/net/mcreator/moreandmoreendrods/block/LimeEndRodBlock.java",
           "src/main/resources/assets/moreandmoreendrods/items/lime_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/blockstates/lime_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/models/block/lime_end_rod.json"
         ]
       },
@@ -1128,8 +1128,8 @@
       "registry_name": "dark_oak_end_rod_recipe",
       "metadata": {
         "files": [
-          "src/main/resources/data/moreandmoreendrods/advancement/recipes/dark_oak_end_rod_recipe.json",
-          "src/main/resources/data/moreandmoreendrods/recipe/dark_oak_end_rod_recipe.json"
+          "src/main/resources/data/moreandmoreendrods/recipe/dark_oak_end_rod_recipe.json",
+          "src/main/resources/data/moreandmoreendrods/advancement/recipes/dark_oak_end_rod_recipe.json"
         ]
       }
     },
@@ -1141,8 +1141,8 @@
       "registry_name": "mangrove_end_rod_recipe",
       "metadata": {
         "files": [
-          "src/main/resources/data/moreandmoreendrods/advancement/recipes/mangrove_end_rod_recipe.json",
-          "src/main/resources/data/moreandmoreendrods/recipe/mangrove_end_rod_recipe.json"
+          "src/main/resources/data/moreandmoreendrods/recipe/mangrove_end_rod_recipe.json",
+          "src/main/resources/data/moreandmoreendrods/advancement/recipes/mangrove_end_rod_recipe.json"
         ]
       }
     },
@@ -1154,8 +1154,8 @@
       "registry_name": "prismarine_end_rod_recipe",
       "metadata": {
         "files": [
-          "src/main/resources/data/moreandmoreendrods/recipe/prismarine_end_rod_recipe.json",
-          "src/main/resources/data/moreandmoreendrods/advancement/recipes/prismarine_end_rod_recipe.json"
+          "src/main/resources/data/moreandmoreendrods/advancement/recipes/prismarine_end_rod_recipe.json",
+          "src/main/resources/data/moreandmoreendrods/recipe/prismarine_end_rod_recipe.json"
         ]
       }
     },
@@ -1167,8 +1167,8 @@
       "registry_name": "golden_end_rod_recipe",
       "metadata": {
         "files": [
-          "src/main/resources/data/moreandmoreendrods/advancement/recipes/golden_end_rod_recipe.json",
-          "src/main/resources/data/moreandmoreendrods/recipe/golden_end_rod_recipe.json"
+          "src/main/resources/data/moreandmoreendrods/recipe/golden_end_rod_recipe.json",
+          "src/main/resources/data/moreandmoreendrods/advancement/recipes/golden_end_rod_recipe.json"
         ]
       }
     },
@@ -1206,8 +1206,8 @@
       "registry_name": "warped_end_rod_recipe",
       "metadata": {
         "files": [
-          "src/main/resources/data/moreandmoreendrods/advancement/recipes/warped_end_rod_recipe.json",
-          "src/main/resources/data/moreandmoreendrods/recipe/warped_end_rod_recipe.json"
+          "src/main/resources/data/moreandmoreendrods/recipe/warped_end_rod_recipe.json",
+          "src/main/resources/data/moreandmoreendrods/advancement/recipes/warped_end_rod_recipe.json"
         ]
       }
     },
@@ -1221,10 +1221,10 @@
         "files": [
           "src/main/resources/data/moreandmoreendrods/loot_table/blocks/amethyst_end_rod.json",
           "src/main/java/net/mcreator/moreandmoreendrods/block/AmethystEndRodBlock.java",
-          "src/main/resources/assets/moreandmoreendrods/blockstates/amethyst_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/models/block/amethyst_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/items/amethyst_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/models/item/amethyst_end_rod.json"
+          "src/main/resources/assets/moreandmoreendrods/models/item/amethyst_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/blockstates/amethyst_end_rod.json"
         ]
       },
       "path": "~/EndRod"
@@ -1237,12 +1237,12 @@
       "registry_name": "brick_end_rod",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/moreandmoreendrods/block/BrickEndRodBlock.java",
-          "src/main/resources/assets/moreandmoreendrods/models/block/brick_end_rod.json",
           "src/main/resources/data/moreandmoreendrods/loot_table/blocks/brick_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/blockstates/brick_end_rod.json",
+          "src/main/java/net/mcreator/moreandmoreendrods/block/BrickEndRodBlock.java",
           "src/main/resources/assets/moreandmoreendrods/models/item/brick_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/items/brick_end_rod.json"
+          "src/main/resources/assets/moreandmoreendrods/blockstates/brick_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/items/brick_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/block/brick_end_rod.json"
         ]
       },
       "path": "~/EndRod"
@@ -1255,12 +1255,12 @@
       "registry_name": "nether_brick_end_rod",
       "metadata": {
         "files": [
-          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/nether_brick_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/items/nether_brick_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/models/item/nether_brick_end_rod.json",
           "src/main/java/net/mcreator/moreandmoreendrods/block/NetherBrickEndRodBlock.java",
-          "src/main/resources/assets/moreandmoreendrods/blockstates/nether_brick_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/models/block/nether_brick_end_rod.json"
+          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/nether_brick_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/block/nether_brick_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/blockstates/nether_brick_end_rod.json"
         ]
       },
       "path": "~/EndRod"
@@ -1273,12 +1273,12 @@
       "registry_name": "magenta_end_rod",
       "metadata": {
         "files": [
-          "src/main/resources/assets/moreandmoreendrods/models/block/magenta_end_rod.json",
+          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/magenta_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/item/magenta_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/items/magenta_end_rod.json",
           "src/main/java/net/mcreator/moreandmoreendrods/block/MagentaEndRodBlock.java",
           "src/main/resources/assets/moreandmoreendrods/blockstates/magenta_end_rod.json",
-          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/magenta_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/models/item/magenta_end_rod.json"
+          "src/main/resources/assets/moreandmoreendrods/models/block/magenta_end_rod.json"
         ]
       },
       "path": "~/DyedEndRod"
@@ -1304,8 +1304,8 @@
       "registry_name": "amethyst_end_rod_recipe",
       "metadata": {
         "files": [
-          "src/main/resources/data/moreandmoreendrods/recipe/amethyst_end_rod_recipe.json",
-          "src/main/resources/data/moreandmoreendrods/advancement/recipes/amethyst_end_rod_recipe.json"
+          "src/main/resources/data/moreandmoreendrods/advancement/recipes/amethyst_end_rod_recipe.json",
+          "src/main/resources/data/moreandmoreendrods/recipe/amethyst_end_rod_recipe.json"
         ]
       }
     },
@@ -1343,11 +1343,11 @@
       "registry_name": "stone_brick_end_rod",
       "metadata": {
         "files": [
-          "src/main/resources/assets/moreandmoreendrods/models/block/stone_brick_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/blockstates/stone_brick_end_rod.json",
-          "src/main/java/net/mcreator/moreandmoreendrods/block/StoneBrickEndRodBlock.java",
           "src/main/resources/data/moreandmoreendrods/loot_table/blocks/stone_brick_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/items/stone_brick_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/blockstates/stone_brick_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/block/stone_brick_end_rod.json",
+          "src/main/java/net/mcreator/moreandmoreendrods/block/StoneBrickEndRodBlock.java",
           "src/main/resources/assets/moreandmoreendrods/models/item/stone_brick_end_rod.json"
         ]
       },
@@ -1374,11 +1374,11 @@
       "registry_name": "long_end_rod",
       "metadata": {
         "files": [
-          "src/main/resources/assets/moreandmoreendrods/models/block/long_end_rod.json",
           "src/main/java/net/mcreator/moreandmoreendrods/block/LongEndRodBlock.java",
-          "src/main/resources/assets/moreandmoreendrods/models/item/long_end_rod.json",
-          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/long_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/blockstates/long_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/block/long_end_rod.json",
+          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/long_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/item/long_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/items/long_end_rod.json"
         ]
       },
@@ -1392,12 +1392,12 @@
       "registry_name": "cactus_end_rod",
       "metadata": {
         "files": [
+          "src/main/resources/assets/moreandmoreendrods/models/item/cactus_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/blockstates/cactus_end_rod.json",
-          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/cactus_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/items/cactus_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/models/block/cactus_end_rod.json",
-          "src/main/java/net/mcreator/moreandmoreendrods/block/CactusEndRodBlock.java",
-          "src/main/resources/assets/moreandmoreendrods/models/item/cactus_end_rod.json"
+          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/cactus_end_rod.json",
+          "src/main/java/net/mcreator/moreandmoreendrods/block/CactusEndRodBlock.java"
         ]
       },
       "path": "~/EndRod"
@@ -1457,8 +1457,8 @@
       "registry_name": "cactus_end_rod_recipe",
       "metadata": {
         "files": [
-          "src/main/resources/data/moreandmoreendrods/advancement/recipes/cactus_end_rod_recipe.json",
-          "src/main/resources/data/moreandmoreendrods/recipe/cactus_end_rod_recipe.json"
+          "src/main/resources/data/moreandmoreendrods/recipe/cactus_end_rod_recipe.json",
+          "src/main/resources/data/moreandmoreendrods/advancement/recipes/cactus_end_rod_recipe.json"
         ]
       }
     },
@@ -1471,10 +1471,10 @@
       "metadata": {
         "files": [
           "src/main/java/net/mcreator/moreandmoreendrods/block/GlassEndRodBlock.java",
-          "src/main/resources/assets/moreandmoreendrods/models/block/glass_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/items/glass_end_rod.json",
-          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/glass_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/block/glass_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/blockstates/glass_end_rod.json",
+          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/glass_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/models/item/glass_end_rod.json"
         ]
       },
@@ -1488,12 +1488,12 @@
       "registry_name": "slime_end_rod",
       "metadata": {
         "files": [
+          "src/main/resources/assets/moreandmoreendrods/blockstates/slime_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/models/item/slime_end_rod.json",
           "src/main/resources/assets/moreandmoreendrods/items/slime_end_rod.json",
-          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/slime_end_rod.json",
-          "src/main/java/net/mcreator/moreandmoreendrods/block/SlimeEndRodBlock.java",
           "src/main/resources/assets/moreandmoreendrods/models/block/slime_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/blockstates/slime_end_rod.json"
+          "src/main/resources/data/moreandmoreendrods/loot_table/blocks/slime_end_rod.json",
+          "src/main/java/net/mcreator/moreandmoreendrods/block/SlimeEndRodBlock.java"
         ]
       },
       "path": "~/EndRod"
@@ -1506,8 +1506,8 @@
       "registry_name": "slime_end_rod_recipe",
       "metadata": {
         "files": [
-          "src/main/resources/data/moreandmoreendrods/recipe/slime_end_rod_recipe.json",
-          "src/main/resources/data/moreandmoreendrods/advancement/recipes/slime_end_rod_recipe.json"
+          "src/main/resources/data/moreandmoreendrods/advancement/recipes/slime_end_rod_recipe.json",
+          "src/main/resources/data/moreandmoreendrods/recipe/slime_end_rod_recipe.json"
         ]
       }
     },
@@ -1519,13 +1519,13 @@
       "registry_name": "dispenser_end_rod",
       "metadata": {
         "files": [
-          "src/main/resources/assets/moreandmoreendrods/models/block/dispenser_end_rod.json",
           "src/main/resources/data/moreandmoreendrods/loot_table/blocks/dispenser_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/blockstates/dispenser_end_rod.json",
-          "src/main/java/net/mcreator/moreandmoreendrods/block/DispenserEndRodBlock.java",
           "src/main/resources/assets/moreandmoreendrods/models/item/dispenser_end_rod.json",
-          "src/main/resources/assets/moreandmoreendrods/items/dispenser_end_rod.json",
-          "src/main/java/net/mcreator/moreandmoreendrods/block/entity/DispenserEndRodBlockEntity.java"
+          "src/main/resources/assets/moreandmoreendrods/blockstates/dispenser_end_rod.json",
+          "src/main/resources/assets/moreandmoreendrods/models/block/dispenser_end_rod.json",
+          "src/main/java/net/mcreator/moreandmoreendrods/block/DispenserEndRodBlock.java",
+          "src/main/java/net/mcreator/moreandmoreendrods/block/entity/DispenserEndRodBlockEntity.java",
+          "src/main/resources/assets/moreandmoreendrods/items/dispenser_end_rod.json"
         ]
       },
       "path": "~/EndRod"
@@ -1538,115 +1538,29 @@
       "registry_name": "dispenser_end_rod_archive_item_gui",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/moreandmoreendrods/world/inventory/DispenserEndRodArchiveItemGUIMenu.java",
-          "src/main/java/net/mcreator/moreandmoreendrods/client/gui/DispenserEndRodArchiveItemGUIScreen.java"
+          "src/main/java/net/mcreator/moreandmoreendrods/client/gui/DispenserEndRodArchiveItemGUIScreen.java",
+          "src/main/java/net/mcreator/moreandmoreendrods/world/inventory/DispenserEndRodArchiveItemGUIMenu.java"
         ]
       }
     },
     {
-      "name": "DispenserEndRodBlockAdded",
-      "type": "procedure",
+      "name": "ThreeEndRods",
+      "type": "painting",
       "compiles": true,
       "locked_code": false,
-      "registry_name": "dispenser_end_rod_block_added",
+      "registry_name": "three_end_rods",
       "metadata": {
-        "dependencies": [
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ],
         "files": [
-          "src/main/java/net/mcreator/moreandmoreendrods/procedures/DispenserEndRodBlockAddedProcedure.java"
+          "src/main/resources/data/moreandmoreendrods/painting_variant/three_end_rods.json"
         ]
       }
     },
     {
-      "name": "DispenserEndRodItemTaken",
+      "name": "DispenserEndRodRedstoneOnOff",
       "type": "procedure",
       "compiles": true,
       "locked_code": false,
-      "registry_name": "dispenser_end_rod_item_taken",
-      "metadata": {
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ],
-        "files": [
-          "src/main/java/net/mcreator/moreandmoreendrods/procedures/DispenserEndRodItemTakenProcedure.java"
-        ]
-      }
-    },
-    {
-      "name": "DispenserEndRodArchiveItemGUIThisGUIIsOpened",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "dispenser_end_rod_archive_item_gui_this_gui_is_opened",
-      "metadata": {
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ],
-        "files": [
-          "src/main/java/net/mcreator/moreandmoreendrods/procedures/DispenserEndRodArchiveItemGUIThisGUIIsOpenedProcedure.java"
-        ]
-      }
-    },
-    {
-      "name": "DispenserEndRodRedstoneOn",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "dispenser_end_rod_redstone_on",
+      "registry_name": "dispenser_end_rod_redstone_on_off",
       "metadata": {
         "dependencies": [
           {
@@ -1671,21 +1585,10 @@
           }
         ],
         "files": [
-          "src/main/java/net/mcreator/moreandmoreendrods/procedures/DispenserEndRodRedstoneOnProcedure.java"
+          "src/main/java/net/mcreator/moreandmoreendrods/procedures/DispenserEndRodRedstoneOnOffProcedure.java"
         ]
-      }
-    },
-    {
-      "name": "ThreeEndRods",
-      "type": "painting",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "three_end_rods",
-      "metadata": {
-        "files": [
-          "src/main/resources/data/moreandmoreendrods/painting_variant/three_end_rods.json"
-        ]
-      }
+      },
+      "path": "~/EndRod"
     }
   ],
   "variable_elements": [],
@@ -1828,34 +1731,25 @@
       "gui.moreandmoreendrods.dispenser_end_rod_archive_item_gui.label_dispenser_end_rod": "Dispenser End Rod",
       "item.moreandmoreendrods.dispenser_end_rod": "Dispenser End Rod",
       "painting.moreandmoreendrods.three_end_rods.author": "break08",
-      "painting.moreandmoreendrods.three_end_rods.title": "Three End Rods",
-      "gui.moreandmoreendrods.dispenser_end_rod_archive_item_gui.label_shooter_mod": "Shooter Mod",
-      "gui.moreandmoreendrods.dispenser_end_rod_archive_item_gui.label_fluid_mod": "Fluid Mod",
-      "gui.moreandmoreendrods.dispenser_end_rod_archive_item_gui.Mod_suffix": "",
-      "gui.moreandmoreendrods.dispenser_end_rod_archive_item_gui.Mod_prefix": "",
-      "gui.moreandmoreendrods.dispenser_end_rod_archive_item_gui.label_normal_mod": "Normal Mod",
-      "gui.moreandmoreendrods.dispenser_end_rod_archive_item_gui.label_power_archive": "Power Archive",
-      "gui.moreandmoreendrods.dispenser_end_rod_archive_item_gui.TickCooldownSlide_suffix": "",
-      "gui.moreandmoreendrods.dispenser_end_rod_archive_item_gui.TickCooldownSlide_prefix": "",
-      "gui.moreandmoreendrods.dispenser_end_rod_archive_item_gui.label_tick_cooldown": "Tick Cooldown"
+      "painting.moreandmoreendrods.three_end_rods.title": "Three End Rods"
     }
   },
   "metadata": {
     "files": [
-      "src/main/java/net/mcreator/moreandmoreendrods/network/MenuStateUpdateMessage.java",
       "src/main/java/net/mcreator/moreandmoreendrods/init/MoreandmoreendrodsModMenus.java",
       "src/main/java/net/mcreator/moreandmoreendrods/init/MoreandmoreendrodsModScreens.java",
+      "src/main/java/net/mcreator/moreandmoreendrods/network/MenuStateUpdateMessage.java",
       "src/main/resources/data/minecraft/tags/painting_variant/placeable.json",
-      "src/main/resources/data/minecraft/tags/point_of_interest_type/acquirable_job_site.json",
       "src/main/java/net/mcreator/moreandmoreendrods/init/MoreandmoreendrodsModVillagerProfessions.java",
+      "src/main/resources/data/minecraft/tags/point_of_interest_type/acquirable_job_site.json",
       "src/main/java/net/mcreator/moreandmoreendrods/init/MoreandmoreendrodsModTrades.java",
       "src/main/java/net/mcreator/moreandmoreendrods/init/MoreandmoreendrodsModBlocks.java",
       "src/main/java/net/mcreator/moreandmoreendrods/init/MoreandmoreendrodsModBlockEntities.java",
       "src/main/java/net/mcreator/moreandmoreendrods/init/MoreandmoreendrodsModItems.java",
-      "src/main/resources/pack.mcmeta",
       "src/main/java/net/mcreator/moreandmoreendrods/MoreandmoreendrodsMod.java",
-      "src/main/java/net/mcreator/moreandmoreendrods/init/MoreandmoreendrodsModTabs.java",
-      "src/main/resources/META-INF/neoforge.mods.toml"
+      "src/main/resources/META-INF/neoforge.mods.toml",
+      "src/main/resources/pack.mcmeta",
+      "src/main/java/net/mcreator/moreandmoreendrods/init/MoreandmoreendrodsModTabs.java"
     ]
   },
   "foldersRoot": {
@@ -1893,5 +1787,5 @@
     "credits": "Created using mod maker MCreator - https://mcreator.net/about",
     "modElementsPackage": "net.mcreator.moreandmoreendrods"
   },
-  "mcreatorVersion": 202600113616
+  "mcreatorVersion": 202600114619
 }

@@ -31,8 +31,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.moreandmoreendrods.world.inventory.DispenserEndRodArchiveItemGUIMenu;
-import net.mcreator.moreandmoreendrods.procedures.DispenserEndRodRedstoneOnProcedure;
-import net.mcreator.moreandmoreendrods.procedures.DispenserEndRodBlockAddedProcedure;
+import net.mcreator.moreandmoreendrods.procedures.DispenserEndRodRedstoneOnOffProcedure;
 import net.mcreator.moreandmoreendrods.block.entity.DispenserEndRodBlockEntity;
 
 import javax.annotation.Nullable;
@@ -116,18 +115,12 @@ public class DispenserEndRodBlock extends Block implements EntityBlock {
 	}
 
 	@Override
-	public void onPlace(BlockState blockstate, Level world, BlockPos pos, BlockState oldState, boolean moving) {
-		super.onPlace(blockstate, world, pos, oldState, moving);
-		DispenserEndRodBlockAddedProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
-	}
-
-	@Override
 	public void neighborChanged(BlockState blockstate, Level world, BlockPos pos, Block neighborBlock, @Nullable Orientation orientation, boolean moving) {
 		super.neighborChanged(blockstate, world, pos, neighborBlock, orientation, moving);
 		if (world.getBestNeighborSignal(pos) > 0) {
-			DispenserEndRodRedstoneOnProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), blockstate);
+			DispenserEndRodRedstoneOnOffProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), blockstate);
 		} else {
-			DispenserEndRodRedstoneOnProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), blockstate);
+			DispenserEndRodRedstoneOnOffProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), blockstate);
 		}
 	}
 

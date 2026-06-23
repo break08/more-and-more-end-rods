@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "moreandmoreendrods:iron_end_rod",
+    "minecraft:diamond"
+  ],
+  "result": {
+    "id": "moreandmoreendrods:diamond_end_rod",
+    "count": 1
+  }
+}

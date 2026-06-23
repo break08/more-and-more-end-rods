@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:stick",
+    "minecraft:oak_slab"
+  ],
+  "result": {
+    "id": "moreandmoreendrods:oak_end_rod",
+    "count": 1
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "moreandmoreendrods:black_end_rod",
+    "moreandmoreendrods:purple_end_rod",
+    "moreandmoreendrods:lime_end_rod",
+    "moreandmoreendrods:orange_end_rod",
+    "moreandmoreendrods:yellow_end_rod",
+    "moreandmoreendrods:gray_end_rod",
+    "moreandmoreendrods:light_blue_end_rod",
+    "moreandmoreendrods:blue_end_rod",
+    "moreandmoreendrods:red_end_rod",
+    "moreandmoreendrods:light_gray_end_rod",
+    "moreandmoreendrods:pink_end_rod",
+    "minecraft:end_rod",
+    "moreandmoreendrods:cyan_end_rod",
+    "moreandmoreendrods:green_end_rod"
+  ]
+}
