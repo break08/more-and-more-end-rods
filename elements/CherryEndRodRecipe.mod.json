@@ -1,14 +1,12 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "recipe",
   "definition": {
     "recipeType": "Crafting",
     "recipeRetstackSize": 1,
     "group": "",
     "unlockingItems": [
-      {
-        "value": "Blocks.CHERRY_PLANKS"
-      }
+      "Blocks.CHERRY_PLANKS"
     ],
     "cookingBookCategory": "MISC",
     "xpReward": 0.0,
@@ -16,37 +14,17 @@
     "craftingBookCategory": "MISC",
     "recipeShapeless": true,
     "recipeSlots": [
-      {
-        "value": ""
-      },
-      {
-        "value": ""
-      },
-      {
-        "value": ""
-      },
-      {
-        "value": ""
-      },
-      {
-        "value": "Items.STICK"
-      },
-      {
-        "value": ""
-      },
-      {
-        "value": ""
-      },
-      {
-        "value": "Blocks.CHERRY_SLAB"
-      },
-      {
-        "value": ""
-      }
+      "",
+      "",
+      "",
+      "",
+      "Items.STICK",
+      "",
+      "",
+      "Blocks.CHERRY_SLAB",
+      ""
     ],
-    "recipeReturnStack": {
-      "value": "CUSTOM:CherryEndRod"
-    },
+    "recipeReturnStack": "CUSTOM:CherryEndRod",
     "name": "cherry_end_rod_recipe",
     "namespace": "mod"
   }

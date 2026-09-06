@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " a ",
+    "aba",
+    " a "
+  ],
+  "key": {
+    "a": "minecraft:redstone",
+    "b": "moreandmoreendrods:stone_end_rod"
+  },
+  "result": {
+    "id": "moreandmoreendrods:dispenser_end_rod",
+    "count": 1
+  }
+}

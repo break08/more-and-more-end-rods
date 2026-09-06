@@ -3,6 +3,5 @@
   "textures": {
     "end_rod": "moreandmoreendrods:block/cherry_end_rod",
     "particle": "moreandmoreendrods:block/cherry_end_rod"
-  },
-  "render_type": "cutout"
+  }
 }

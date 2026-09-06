@@ -3,6 +3,5 @@
   "textures": {
     "end_rod": "moreandmoreendrods:block/magenta_end_rod",
     "particle": "moreandmoreendrods:block/magenta_end_rod"
-  },
-  "render_type": "cutout"
+  }
 }

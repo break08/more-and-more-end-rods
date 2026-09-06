@@ -1,5 +1,7 @@
 package net.mcreator.moreandmoreendrods.block;
 
+import org.jetbrains.annotations.Nullable;
+
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -19,26 +21,18 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.Containers;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.moreandmoreendrods.world.inventory.DispenserEndRodArchiveItemGUIMenu;
 import net.mcreator.moreandmoreendrods.procedures.DispenserEndRodRedstoneOnOffProcedure;
 import net.mcreator.moreandmoreendrods.block.entity.DispenserEndRodBlockEntity;
 
-import javax.annotation.Nullable;
-
 import java.util.function.Function;
-
-import io.netty.buffer.Unpooled;
 
 public class DispenserEndRodBlock extends Block implements EntityBlock {
 	public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
@@ -54,11 +48,6 @@ public class DispenserEndRodBlock extends Block implements EntityBlock {
 	private Function<BlockState, VoxelShape> makeShapes() {
 		return this.getShapeForEachState(state -> {
 			return switch (state.getValue(FACING)) {
-				default -> switch (state.getValue(FACE)) {
-					case FLOOR -> Shapes.or(box(9, 1, 6, 10, 16, 9), box(8, 1, 8, 9, 16, 9), box(8, 1, 6, 9, 16, 7), box(7, 1, 6, 8, 16, 9), box(6, 0, 5, 11, 1, 10));
-					case WALL -> Shapes.or(box(9, 7, 1, 10, 10, 16), box(8, 7, 1, 9, 8, 16), box(8, 9, 1, 9, 10, 16), box(7, 7, 1, 8, 10, 16), box(6, 6, 0, 11, 11, 1));
-					case CEILING -> Shapes.or(box(6, 0, 6, 7, 15, 9), box(7, 0, 8, 8, 15, 9), box(7, 0, 6, 8, 15, 7), box(8, 0, 6, 9, 15, 9), box(5, 15, 5, 10, 16, 10));
-				};
 				case NORTH -> switch (state.getValue(FACE)) {
 					case FLOOR -> Shapes.or(box(6, 1, 7, 7, 16, 10), box(7, 1, 7, 8, 16, 8), box(7, 1, 9, 8, 16, 10), box(8, 1, 7, 9, 16, 10), box(5, 0, 6, 10, 1, 11));
 					case WALL -> Shapes.or(box(6, 7, 0, 7, 10, 15), box(7, 7, 0, 8, 8, 15), box(7, 9, 0, 8, 10, 15), box(8, 7, 0, 9, 10, 15), box(5, 6, 15, 10, 11, 16));
@@ -73,6 +62,11 @@ public class DispenserEndRodBlock extends Block implements EntityBlock {
 					case FLOOR -> Shapes.or(box(7, 1, 9, 10, 16, 10), box(7, 1, 8, 8, 16, 9), box(9, 1, 8, 10, 16, 9), box(7, 1, 7, 10, 16, 8), box(6, 0, 6, 11, 1, 11));
 					case WALL -> Shapes.or(box(0, 7, 9, 15, 10, 10), box(0, 7, 8, 15, 8, 9), box(0, 9, 8, 15, 10, 9), box(0, 7, 7, 15, 10, 8), box(15, 6, 6, 16, 11, 11));
 					case CEILING -> Shapes.or(box(7, 0, 6, 10, 15, 7), box(7, 0, 7, 8, 15, 8), box(9, 0, 7, 10, 15, 8), box(7, 0, 8, 10, 15, 9), box(6, 15, 5, 11, 16, 10));
+				};
+				default -> switch (state.getValue(FACE)) {
+					case FLOOR -> Shapes.or(box(9, 1, 6, 10, 16, 9), box(8, 1, 8, 9, 16, 9), box(8, 1, 6, 9, 16, 7), box(7, 1, 6, 8, 16, 9), box(6, 0, 5, 11, 1, 10));
+					case WALL -> Shapes.or(box(9, 7, 1, 10, 10, 16), box(8, 7, 1, 9, 8, 16), box(8, 9, 1, 9, 10, 16), box(7, 7, 1, 8, 10, 16), box(6, 6, 0, 11, 11, 1));
+					case CEILING -> Shapes.or(box(6, 0, 6, 7, 15, 9), box(7, 0, 8, 8, 15, 9), box(7, 0, 6, 8, 15, 7), box(8, 0, 6, 9, 15, 9), box(5, 15, 5, 10, 16, 10));
 				};
 			};
 		}, WORKING_STATE);
@@ -96,9 +90,12 @@ public class DispenserEndRodBlock extends Block implements EntityBlock {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
+		BlockState state = super.getStateForPlacement(context);
+		if (state == null)
+			return null;
 		if (context.getClickedFace().getAxis() == Direction.Axis.Y)
-			return super.getStateForPlacement(context).setValue(FACE, context.getClickedFace().getOpposite() == Direction.UP ? AttachFace.CEILING : AttachFace.FLOOR).setValue(FACING, context.getHorizontalDirection()).setValue(WORKING_STATE, 0);
-		return super.getStateForPlacement(context).setValue(FACE, AttachFace.WALL).setValue(FACING, context.getClickedFace()).setValue(WORKING_STATE, 0);
+			return state.setValue(FACE, context.getClickedFace().getOpposite() == Direction.UP ? AttachFace.CEILING : AttachFace.FLOOR).setValue(FACING, context.getHorizontalDirection()).setValue(WORKING_STATE, 0);
+		return state.setValue(FACE, AttachFace.WALL).setValue(FACING, context.getClickedFace()).setValue(WORKING_STATE, 0);
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {
@@ -110,16 +107,9 @@ public class DispenserEndRodBlock extends Block implements EntityBlock {
 	}
 
 	@Override
-	public boolean canConnectRedstone(BlockState state, BlockGetter world, BlockPos pos, Direction side) {
-		return true;
-	}
-
-	@Override
 	public void neighborChanged(BlockState blockstate, Level world, BlockPos pos, Block neighborBlock, @Nullable Orientation orientation, boolean moving) {
 		super.neighborChanged(blockstate, world, pos, neighborBlock, orientation, moving);
 		if (world.getBestNeighborSignal(pos) > 0) {
-			DispenserEndRodRedstoneOnOffProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), blockstate);
-		} else {
 			DispenserEndRodRedstoneOnOffProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), blockstate);
 		}
 	}
@@ -127,19 +117,8 @@ public class DispenserEndRodBlock extends Block implements EntityBlock {
 	@Override
 	public InteractionResult useWithoutItem(BlockState blockstate, Level world, BlockPos pos, Player entity, BlockHitResult hit) {
 		super.useWithoutItem(blockstate, world, pos, entity, hit);
-		if (entity instanceof ServerPlayer player) {
-			player.openMenu(new MenuProvider() {
-				@Override
-				public Component getDisplayName() {
-					return Component.literal("Dispenser End Rod");
-				}
-
-				@Override
-				public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-					return new DispenserEndRodArchiveItemGUIMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
-				}
-			}, pos);
-		}
+		if (entity instanceof ServerPlayer player)
+			player.openMenu(world.getBlockEntity(pos) instanceof MenuProvider menuProvider ? menuProvider : null);
 		return InteractionResult.SUCCESS;
 	}
 
@@ -172,7 +151,7 @@ public class DispenserEndRodBlock extends Block implements EntityBlock {
 	}
 
 	@Override
-	public int getAnalogOutputSignal(BlockState blockState, Level world, BlockPos pos) {
+	public int getAnalogOutputSignal(BlockState blockState, Level world, BlockPos pos, Direction direction) {
 		BlockEntity tileentity = world.getBlockEntity(pos);
 		if (tileentity instanceof DispenserEndRodBlockEntity be)
 			return AbstractContainerMenu.getRedstoneSignalFromContainer(be);

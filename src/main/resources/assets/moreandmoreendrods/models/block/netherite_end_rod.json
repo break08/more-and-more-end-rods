@@ -3,6 +3,5 @@
   "textures": {
     "end_rod": "moreandmoreendrods:block/netherite_end_rod",
     "particle": "moreandmoreendrods:block/netherite_end_rod"
-  },
-  "render_type": "cutout"
+  }
 }

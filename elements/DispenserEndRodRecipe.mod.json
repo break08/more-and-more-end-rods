@@ -1,0 +1,31 @@
+{
+  "_fv": 89,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "recipeRetstackSize": 1,
+    "group": "",
+    "unlockingItems": [
+      "Items.REDSTONE"
+    ],
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      "",
+      "Items.REDSTONE",
+      "",
+      "Items.REDSTONE",
+      "CUSTOM:StoneEndRod",
+      "Items.REDSTONE",
+      "",
+      "Items.REDSTONE",
+      ""
+    ],
+    "recipeReturnStack": "CUSTOM:DispenserEndRod",
+    "name": "dispenser_end_rod_recipe",
+    "namespace": "mod"
+  }
+}

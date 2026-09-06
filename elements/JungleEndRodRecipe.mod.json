@@ -1,14 +1,12 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "recipe",
   "definition": {
     "recipeType": "Crafting",
     "recipeRetstackSize": 1,
     "group": "",
     "unlockingItems": [
-      {
-        "value": "Blocks.PLANKS#3"
-      }
+      "Blocks.PLANKS#3"
     ],
     "cookingBookCategory": "MISC",
     "xpReward": 0.0,
@@ -16,37 +14,17 @@
     "craftingBookCategory": "MISC",
     "recipeShapeless": true,
     "recipeSlots": [
-      {
-        "value": ""
-      },
-      {
-        "value": ""
-      },
-      {
-        "value": ""
-      },
-      {
-        "value": ""
-      },
-      {
-        "value": "Items.STICK"
-      },
-      {
-        "value": ""
-      },
-      {
-        "value": ""
-      },
-      {
-        "value": "Blocks.WOODEN_SLAB#3"
-      },
-      {
-        "value": ""
-      }
+      "",
+      "",
+      "",
+      "",
+      "Items.STICK",
+      "",
+      "",
+      "Blocks.WOODEN_SLAB#3",
+      ""
     ],
-    "recipeReturnStack": {
-      "value": "CUSTOM:JungleEndRod"
-    },
+    "recipeReturnStack": "CUSTOM:JungleEndRod",
     "name": "jungle_end_rod_recipe",
     "namespace": "mod"
   }

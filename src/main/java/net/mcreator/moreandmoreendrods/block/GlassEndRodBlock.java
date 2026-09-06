@@ -29,11 +29,6 @@ public class GlassEndRodBlock extends Block {
 	private Function<BlockState, VoxelShape> makeShapes() {
 		return this.getShapeForEachState(state -> {
 			return switch (state.getValue(FACING)) {
-				default -> switch (state.getValue(FACE)) {
-					case FLOOR -> Shapes.or(box(5, 0, 4, 12, 1, 11), box(6, 1, 5, 11, 16, 10));
-					case WALL -> Shapes.or(box(5, 5, 0, 12, 12, 1), box(6, 6, 1, 11, 11, 16));
-					case CEILING -> Shapes.or(box(4, 15, 4, 11, 16, 11), box(5, 0, 5, 10, 15, 10));
-				};
 				case NORTH -> switch (state.getValue(FACE)) {
 					case FLOOR -> Shapes.or(box(4, 0, 5, 11, 1, 12), box(5, 1, 6, 10, 16, 11));
 					case WALL -> Shapes.or(box(4, 5, 15, 11, 12, 16), box(5, 6, 0, 10, 11, 15));
@@ -48,6 +43,11 @@ public class GlassEndRodBlock extends Block {
 					case FLOOR -> Shapes.or(box(5, 0, 5, 12, 1, 12), box(6, 1, 6, 11, 16, 11));
 					case WALL -> Shapes.or(box(15, 5, 5, 16, 12, 12), box(0, 6, 6, 15, 11, 11));
 					case CEILING -> Shapes.or(box(5, 15, 4, 12, 16, 11), box(6, 0, 5, 11, 15, 10));
+				};
+				default -> switch (state.getValue(FACE)) {
+					case FLOOR -> Shapes.or(box(5, 0, 4, 12, 1, 11), box(6, 1, 5, 11, 16, 10));
+					case WALL -> Shapes.or(box(5, 5, 0, 12, 12, 1), box(6, 6, 1, 11, 11, 16));
+					case CEILING -> Shapes.or(box(4, 15, 4, 11, 16, 11), box(5, 0, 5, 10, 15, 10));
 				};
 			};
 		});
@@ -76,9 +76,12 @@ public class GlassEndRodBlock extends Block {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
+		BlockState state = super.getStateForPlacement(context);
+		if (state == null)
+			return null;
 		if (context.getClickedFace().getAxis() == Direction.Axis.Y)
-			return super.getStateForPlacement(context).setValue(FACE, context.getClickedFace().getOpposite() == Direction.UP ? AttachFace.CEILING : AttachFace.FLOOR).setValue(FACING, context.getHorizontalDirection());
-		return super.getStateForPlacement(context).setValue(FACE, AttachFace.WALL).setValue(FACING, context.getClickedFace());
+			return state.setValue(FACE, context.getClickedFace().getOpposite() == Direction.UP ? AttachFace.CEILING : AttachFace.FLOOR).setValue(FACING, context.getHorizontalDirection());
+		return state.setValue(FACE, AttachFace.WALL).setValue(FACING, context.getClickedFace());
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {

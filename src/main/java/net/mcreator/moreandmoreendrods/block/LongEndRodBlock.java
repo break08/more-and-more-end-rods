@@ -29,11 +29,6 @@ public class LongEndRodBlock extends Block {
 	private Function<BlockState, VoxelShape> makeShapes() {
 		return this.getShapeForEachState(state -> {
 			return switch (state.getValue(FACING)) {
-				default -> switch (state.getValue(FACE)) {
-					case FLOOR -> box(6, 0, 6, 10, 32, 10);
-					case WALL -> box(6, 6, 0, 10, 10, 32);
-					case CEILING -> box(6, -16, 6, 10, 16, 10);
-				};
 				case NORTH -> switch (state.getValue(FACE)) {
 					case FLOOR -> box(6, 0, 6, 10, 32, 10);
 					case WALL -> box(6, 6, -16, 10, 10, 16);
@@ -47,6 +42,11 @@ public class LongEndRodBlock extends Block {
 				case WEST -> switch (state.getValue(FACE)) {
 					case FLOOR -> box(6, 0, 6, 10, 32, 10);
 					case WALL -> box(-16, 6, 6, 16, 10, 10);
+					case CEILING -> box(6, -16, 6, 10, 16, 10);
+				};
+				default -> switch (state.getValue(FACE)) {
+					case FLOOR -> box(6, 0, 6, 10, 32, 10);
+					case WALL -> box(6, 6, 0, 10, 10, 32);
 					case CEILING -> box(6, -16, 6, 10, 16, 10);
 				};
 			};
@@ -71,9 +71,12 @@ public class LongEndRodBlock extends Block {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
+		BlockState state = super.getStateForPlacement(context);
+		if (state == null)
+			return null;
 		if (context.getClickedFace().getAxis() == Direction.Axis.Y)
-			return super.getStateForPlacement(context).setValue(FACE, context.getClickedFace().getOpposite() == Direction.UP ? AttachFace.CEILING : AttachFace.FLOOR).setValue(FACING, context.getHorizontalDirection());
-		return super.getStateForPlacement(context).setValue(FACE, AttachFace.WALL).setValue(FACING, context.getClickedFace());
+			return state.setValue(FACE, context.getClickedFace().getOpposite() == Direction.UP ? AttachFace.CEILING : AttachFace.FLOOR).setValue(FACING, context.getHorizontalDirection());
+		return state.setValue(FACE, AttachFace.WALL).setValue(FACING, context.getClickedFace());
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {

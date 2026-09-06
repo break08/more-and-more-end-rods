@@ -3,6 +3,5 @@
   "textures": {
     "end_rod": "moreandmoreendrods:block/dark_oak_log_end_rod",
     "particle": "moreandmoreendrods:block/dark_oak_log_end_rod"
-  },
-  "render_type": "cutout"
+  }
 }

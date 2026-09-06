@@ -1,14 +1,12 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "recipe",
   "definition": {
     "recipeType": "Crafting",
     "recipeRetstackSize": 1,
     "group": "",
     "unlockingItems": [
-      {
-        "value": "Items.SLIME_BALL"
-      }
+      "Items.SLIME_BALL"
     ],
     "cookingBookCategory": "MISC",
     "xpReward": 0.0,
@@ -16,37 +14,17 @@
     "craftingBookCategory": "MISC",
     "recipeShapeless": true,
     "recipeSlots": [
-      {
-        "value": ""
-      },
-      {
-        "value": ""
-      },
-      {
-        "value": ""
-      },
-      {
-        "value": ""
-      },
-      {
-        "value": "Items.SLIME_BALL"
-      },
-      {
-        "value": ""
-      },
-      {
-        "value": ""
-      },
-      {
-        "value": "Blocks.SLIME_BLOCK"
-      },
-      {
-        "value": ""
-      }
+      "",
+      "",
+      "",
+      "",
+      "Items.SLIME_BALL",
+      "",
+      "",
+      "Blocks.SLIME_BLOCK",
+      ""
     ],
-    "recipeReturnStack": {
-      "value": "CUSTOM:SlimeEndRod"
-    },
+    "recipeReturnStack": "CUSTOM:SlimeEndRod",
     "name": "slime_end_rod_recipe",
     "namespace": "mod"
   }

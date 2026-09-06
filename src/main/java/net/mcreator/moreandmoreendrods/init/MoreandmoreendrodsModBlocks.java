@@ -3,69 +3,72 @@
  */
 package net.mcreator.moreandmoreendrods.init;
 
-import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.DeferredBlock;
-
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.Identifier;
+import net.minecraft.core.registries.Registries;
 
 import net.mcreator.moreandmoreendrods.block.*;
 import net.mcreator.moreandmoreendrods.MoreandmoreendrodsMod;
 
+import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
+
 import java.util.function.Function;
 
 public class MoreandmoreendrodsModBlocks {
-	public static final DeferredRegister.Blocks REGISTRY = DeferredRegister.createBlocks(MoreandmoreendrodsMod.MODID);
-	public static final DeferredBlock<Block> OAK_END_ROD;
-	public static final DeferredBlock<Block> CHERRY_END_ROD;
-	public static final DeferredBlock<Block> BIRCH_END_ROD;
-	public static final DeferredBlock<Block> SPRUCE_END_ROD;
-	public static final DeferredBlock<Block> STONE_END_ROD;
-	public static final DeferredBlock<Block> IRON_END_ROD;
-	public static final DeferredBlock<Block> COPPER_END_ROD;
-	public static final DeferredBlock<Block> GLOWSTONE_END_ROD;
-	public static final DeferredBlock<Block> EMERALD_END_ROD;
-	public static final DeferredBlock<Block> DIAMOND_END_ROD;
-	public static final DeferredBlock<Block> NETHERITE_END_ROD;
-	public static final DeferredBlock<Block> CRIMSON_END_ROD;
-	public static final DeferredBlock<Block> WARPED_END_ROD;
-	public static final DeferredBlock<Block> EXPOSED_COPPER_END_ROD;
-	public static final DeferredBlock<Block> WEATHERED_COPPER_END_ROD;
-	public static final DeferredBlock<Block> OXIDIZED_COPPER_END_ROD;
-	public static final DeferredBlock<Block> WAXED_COPPER_END_ROD;
-	public static final DeferredBlock<Block> WAXED_EXPOSED_COPPER_END_ROD;
-	public static final DeferredBlock<Block> WAXED_WEATHERED_COPPER_END_ROD;
-	public static final DeferredBlock<Block> JUNGLE_END_ROD;
-	public static final DeferredBlock<Block> ACACIA_END_ROD;
-	public static final DeferredBlock<Block> DARK_OAK_END_ROD;
-	public static final DeferredBlock<Block> MANGROVE_END_ROD;
-	public static final DeferredBlock<Block> PRISMARINE_END_ROD;
-	public static final DeferredBlock<Block> GOLDEN_END_ROD;
-	public static final DeferredBlock<Block> SHULKER_END_ROD;
-	public static final DeferredBlock<Block> PINK_END_ROD;
-	public static final DeferredBlock<Block> BLUE_END_ROD;
-	public static final DeferredBlock<Block> LIGHT_BLUE_END_ROD;
-	public static final DeferredBlock<Block> PURPLE_END_ROD;
-	public static final DeferredBlock<Block> YELLOW_END_ROD;
-	public static final DeferredBlock<Block> GRAY_END_ROD;
-	public static final DeferredBlock<Block> LIGHT_GRAY_END_ROD;
-	public static final DeferredBlock<Block> BLACK_END_ROD;
-	public static final DeferredBlock<Block> ORANGE_END_ROD;
-	public static final DeferredBlock<Block> RED_END_ROD;
-	public static final DeferredBlock<Block> CYAN_END_ROD;
-	public static final DeferredBlock<Block> GREEN_END_ROD;
-	public static final DeferredBlock<Block> LIME_END_ROD;
-	public static final DeferredBlock<Block> AMETHYST_END_ROD;
-	public static final DeferredBlock<Block> BRICK_END_ROD;
-	public static final DeferredBlock<Block> NETHER_BRICK_END_ROD;
-	public static final DeferredBlock<Block> MAGENTA_END_ROD;
-	public static final DeferredBlock<Block> STONE_BRICK_END_ROD;
-	public static final DeferredBlock<Block> LONG_END_ROD;
-	public static final DeferredBlock<Block> CACTUS_END_ROD;
-	public static final DeferredBlock<Block> GLASS_END_ROD;
-	public static final DeferredBlock<Block> SLIME_END_ROD;
-	public static final DeferredBlock<Block> DISPENSER_END_ROD;
-	static {
+	public static Block OAK_END_ROD;
+	public static Block CHERRY_END_ROD;
+	public static Block BIRCH_END_ROD;
+	public static Block SPRUCE_END_ROD;
+	public static Block STONE_END_ROD;
+	public static Block IRON_END_ROD;
+	public static Block COPPER_END_ROD;
+	public static Block GLOWSTONE_END_ROD;
+	public static Block EMERALD_END_ROD;
+	public static Block DIAMOND_END_ROD;
+	public static Block NETHERITE_END_ROD;
+	public static Block CRIMSON_END_ROD;
+	public static Block WARPED_END_ROD;
+	public static Block EXPOSED_COPPER_END_ROD;
+	public static Block WEATHERED_COPPER_END_ROD;
+	public static Block OXIDIZED_COPPER_END_ROD;
+	public static Block WAXED_COPPER_END_ROD;
+	public static Block WAXED_EXPOSED_COPPER_END_ROD;
+	public static Block WAXED_WEATHERED_COPPER_END_ROD;
+	public static Block JUNGLE_END_ROD;
+	public static Block ACACIA_END_ROD;
+	public static Block DARK_OAK_END_ROD;
+	public static Block MANGROVE_END_ROD;
+	public static Block PRISMARINE_END_ROD;
+	public static Block GOLDEN_END_ROD;
+	public static Block SHULKER_END_ROD;
+	public static Block PINK_END_ROD;
+	public static Block BLUE_END_ROD;
+	public static Block LIGHT_BLUE_END_ROD;
+	public static Block PURPLE_END_ROD;
+	public static Block YELLOW_END_ROD;
+	public static Block GRAY_END_ROD;
+	public static Block LIGHT_GRAY_END_ROD;
+	public static Block BLACK_END_ROD;
+	public static Block ORANGE_END_ROD;
+	public static Block RED_END_ROD;
+	public static Block CYAN_END_ROD;
+	public static Block GREEN_END_ROD;
+	public static Block LIME_END_ROD;
+	public static Block AMETHYST_END_ROD;
+	public static Block BRICK_END_ROD;
+	public static Block NETHER_BRICK_END_ROD;
+	public static Block MAGENTA_END_ROD;
+	public static Block STONE_BRICK_END_ROD;
+	public static Block LONG_END_ROD;
+	public static Block CACTUS_END_ROD;
+	public static Block GLASS_END_ROD;
+	public static Block SLIME_END_ROD;
+	public static Block DISPENSER_END_ROD;
+
+	public static void load() {
 		OAK_END_ROD = register("oak_end_rod", OakEndRodBlock::new);
 		CHERRY_END_ROD = register("cherry_end_rod", CherryEndRodBlock::new);
 		BIRCH_END_ROD = register("birch_end_rod", BirchEndRodBlock::new);
@@ -115,11 +118,17 @@ public class MoreandmoreendrodsModBlocks {
 		GLASS_END_ROD = register("glass_end_rod", GlassEndRodBlock::new);
 		SLIME_END_ROD = register("slime_end_rod", SlimeEndRodBlock::new);
 		DISPENSER_END_ROD = register("dispenser_end_rod", DispenserEndRodBlock::new);
+		StrippableBlockRegistry.register(MoreandmoreendrodsModBlocks.EXPOSED_COPPER_END_ROD, MoreandmoreendrodsModBlocks.COPPER_END_ROD);
+		StrippableBlockRegistry.register(MoreandmoreendrodsModBlocks.WEATHERED_COPPER_END_ROD, MoreandmoreendrodsModBlocks.EXPOSED_COPPER_END_ROD);
+		StrippableBlockRegistry.register(MoreandmoreendrodsModBlocks.OXIDIZED_COPPER_END_ROD, MoreandmoreendrodsModBlocks.WEATHERED_COPPER_END_ROD);
+		StrippableBlockRegistry.register(MoreandmoreendrodsModBlocks.WAXED_COPPER_END_ROD, MoreandmoreendrodsModBlocks.COPPER_END_ROD);
+		StrippableBlockRegistry.register(MoreandmoreendrodsModBlocks.WAXED_EXPOSED_COPPER_END_ROD, MoreandmoreendrodsModBlocks.EXPOSED_COPPER_END_ROD);
+		StrippableBlockRegistry.register(MoreandmoreendrodsModBlocks.WAXED_WEATHERED_COPPER_END_ROD, MoreandmoreendrodsModBlocks.WEATHERED_COPPER_END_ROD);
 	}
 
 	// Start of user code block custom blocks
 	// End of user code block custom blocks
-	private static <B extends Block> DeferredBlock<B> register(String name, Function<BlockBehaviour.Properties, ? extends B> supplier) {
-		return REGISTRY.registerBlock(name, supplier);
+	private static <B extends Block> B register(String name, Function<BlockBehaviour.Properties, B> supplier) {
+		return (B) Blocks.register(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MoreandmoreendrodsMod.MODID, name)), (Function<BlockBehaviour.Properties, Block>) supplier, BlockBehaviour.Properties.of());
 	}
 }

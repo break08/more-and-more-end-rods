@@ -1,14 +1,12 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "recipe",
   "definition": {
     "recipeType": "Crafting",
     "recipeRetstackSize": 1,
     "group": "",
     "unlockingItems": [
-      {
-        "value": "Blocks.PLANKS#1"
-      }
+      "Blocks.PLANKS#1"
     ],
     "cookingBookCategory": "MISC",
     "xpReward": 0.0,
@@ -16,37 +14,17 @@
     "craftingBookCategory": "MISC",
     "recipeShapeless": true,
     "recipeSlots": [
-      {
-        "value": ""
-      },
-      {
-        "value": ""
-      },
-      {
-        "value": ""
-      },
-      {
-        "value": ""
-      },
-      {
-        "value": "Items.STICK"
-      },
-      {
-        "value": ""
-      },
-      {
-        "value": ""
-      },
-      {
-        "value": "Blocks.WOODEN_SLAB#1"
-      },
-      {
-        "value": ""
-      }
+      "",
+      "",
+      "",
+      "",
+      "Items.STICK",
+      "",
+      "",
+      "Blocks.WOODEN_SLAB#1",
+      ""
     ],
-    "recipeReturnStack": {
-      "value": "CUSTOM:SpruceEndRod"
-    },
+    "recipeReturnStack": "CUSTOM:SpruceEndRod",
     "name": "spruce_end_rod_recipe",
     "namespace": "mod"
   }

@@ -1,15 +1,11 @@
 package net.mcreator.moreandmoreendrods.block;
 
-import net.neoforged.neoforge.common.ItemAbility;
-import net.neoforged.neoforge.common.ItemAbilities;
-
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.EndRodBlock;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.util.RandomSource;
@@ -19,19 +15,10 @@ import net.minecraft.core.BlockPos;
 
 import net.mcreator.moreandmoreendrods.procedures.CopperEndRodOnTickUpdateProcedure;
 import net.mcreator.moreandmoreendrods.procedures.CopperEndRodOnBlockRightclickedProcedure;
-import net.mcreator.moreandmoreendrods.init.MoreandmoreendrodsModBlocks;
 
 public class WeatheredCopperEndRodBlock extends EndRodBlock {
 	public WeatheredCopperEndRodBlock(BlockBehaviour.Properties properties) {
 		super(properties.sound(SoundType.METAL).strength(1f, 10f).noOcclusion().randomTicks().isRedstoneConductor((bs, br, bp) -> false).forceSolidOff());
-	}
-
-	@Override
-	public BlockState getToolModifiedState(BlockState blockstate, UseOnContext context, ItemAbility itemAbility, boolean simulate) {
-		if (ItemAbilities.AXE_STRIP == itemAbility && context.getItemInHand().canPerformAction(itemAbility)) {
-			return MoreandmoreendrodsModBlocks.EXPOSED_COPPER_END_ROD.get().withPropertiesOf(blockstate);
-		}
-		return super.getToolModifiedState(blockstate, context, itemAbility, simulate);
 	}
 
 	@Override

@@ -5,6 +5,5 @@
     "particle": "moreandmoreendrods:block/long_end_rod",
     "0": "moreandmoreendrods:block/long_end_rod",
     "1": "moreandmoreendrods:block/rod_under"
-  },
-  "render_type": "cutout"
+  }
 }

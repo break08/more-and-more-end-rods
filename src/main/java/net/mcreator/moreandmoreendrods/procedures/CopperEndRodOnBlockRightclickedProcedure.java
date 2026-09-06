@@ -9,7 +9,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.core.BlockPos;
 import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.advancements.AdvancementHolder;
@@ -21,10 +21,10 @@ public class CopperEndRodOnBlockRightclickedProcedure {
 		if (entity == null)
 			return;
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.HONEYCOMB) {
-			if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == MoreandmoreendrodsModBlocks.COPPER_END_ROD.get()) {
+			if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == MoreandmoreendrodsModBlocks.COPPER_END_ROD) {
 				{
 					BlockPos _bp = BlockPos.containing(x, y, z);
-					BlockState _bs = MoreandmoreendrodsModBlocks.WAXED_COPPER_END_ROD.get().defaultBlockState();
+					BlockState _bs = MoreandmoreendrodsModBlocks.WAXED_COPPER_END_ROD.defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Property<?> _propertyOld : _bso.getProperties()) {
 						Property _propertyNew = _bs.getBlock().getStateDefinition().getProperty(_propertyOld.getName());
@@ -36,10 +36,10 @@ public class CopperEndRodOnBlockRightclickedProcedure {
 					}
 					world.setBlock(_bp, _bs, 3);
 				}
-			} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == MoreandmoreendrodsModBlocks.EXPOSED_COPPER_END_ROD.get()) {
+			} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == MoreandmoreendrodsModBlocks.EXPOSED_COPPER_END_ROD) {
 				{
 					BlockPos _bp = BlockPos.containing(x, y, z);
-					BlockState _bs = MoreandmoreendrodsModBlocks.WAXED_EXPOSED_COPPER_END_ROD.get().defaultBlockState();
+					BlockState _bs = MoreandmoreendrodsModBlocks.WAXED_EXPOSED_COPPER_END_ROD.defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Property<?> _propertyOld : _bso.getProperties()) {
 						Property _propertyNew = _bs.getBlock().getStateDefinition().getProperty(_propertyOld.getName());
@@ -51,10 +51,10 @@ public class CopperEndRodOnBlockRightclickedProcedure {
 					}
 					world.setBlock(_bp, _bs, 3);
 				}
-			} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == MoreandmoreendrodsModBlocks.WEATHERED_COPPER_END_ROD.get()) {
+			} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == MoreandmoreendrodsModBlocks.WEATHERED_COPPER_END_ROD) {
 				{
 					BlockPos _bp = BlockPos.containing(x, y, z);
-					BlockState _bs = MoreandmoreendrodsModBlocks.WAXED_WEATHERED_COPPER_END_ROD.get().defaultBlockState();
+					BlockState _bs = MoreandmoreendrodsModBlocks.WAXED_WEATHERED_COPPER_END_ROD.defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Property<?> _propertyOld : _bso.getProperties()) {
 						Property _propertyNew = _bs.getBlock().getStateDefinition().getProperty(_propertyOld.getName());
@@ -68,7 +68,7 @@ public class CopperEndRodOnBlockRightclickedProcedure {
 				}
 			}
 			if (entity instanceof ServerPlayer _player && _player.level() instanceof ServerLevel _level) {
-				AdvancementHolder _adv = _level.getServer().getAdvancements().get(ResourceLocation.parse("minecraft:husbandry/wax_on"));
+				AdvancementHolder _adv = _level.getServer().getAdvancements().get(Identifier.parse("minecraft:husbandry/wax_on"));
 				if (_adv != null) {
 					AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 					if (!_ap.isDone()) {

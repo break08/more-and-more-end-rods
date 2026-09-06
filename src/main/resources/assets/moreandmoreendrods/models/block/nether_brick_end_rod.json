@@ -3,6 +3,5 @@
   "textures": {
     "end_rod": "moreandmoreendrods:block/nether_brick_end_rod",
     "particle": "moreandmoreendrods:block/nether_brick_end_rod"
-  },
-  "render_type": "cutout"
+  }
 }

@@ -15,7 +15,7 @@
     "hidden": false
   },
   "criteria": {
-    "rich_sheep_0": {
+    "rich_sheep_1": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [

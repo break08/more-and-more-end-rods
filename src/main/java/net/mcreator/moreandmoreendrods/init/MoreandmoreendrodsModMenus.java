@@ -3,29 +3,41 @@
  */
 package net.mcreator.moreandmoreendrods.init;
 
-import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.network.PacketDistributor;
-import net.neoforged.neoforge.common.extensions.IMenuTypeExtension;
-import net.neoforged.neoforge.client.network.ClientPacketDistributor;
-
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.Registry;
 import net.minecraft.client.Minecraft;
 
 import net.mcreator.moreandmoreendrods.world.inventory.DispenserEndRodArchiveItemGUIMenu;
 import net.mcreator.moreandmoreendrods.network.MenuStateUpdateMessage;
 import net.mcreator.moreandmoreendrods.MoreandmoreendrodsMod;
 
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+
 import java.util.Map;
 
 public class MoreandmoreendrodsModMenus {
-	public static final DeferredRegister<MenuType<?>> REGISTRY = DeferredRegister.create(Registries.MENU, MoreandmoreendrodsMod.MODID);
-	public static final DeferredHolder<MenuType<?>, MenuType<DispenserEndRodArchiveItemGUIMenu>> DISPENSER_END_ROD_ARCHIVE_ITEM_GUI = REGISTRY.register("dispenser_end_rod_archive_item_gui",
-			() -> IMenuTypeExtension.create(DispenserEndRodArchiveItemGUIMenu::new));
+	public static MenuType<DispenserEndRodArchiveItemGUIMenu> DISPENSER_END_ROD_ARCHIVE_ITEM_GUI;
+
+	public static void load() {
+		DISPENSER_END_ROD_ARCHIVE_ITEM_GUI = register("dispenser_end_rod_archive_item_gui", DispenserEndRodArchiveItemGUIMenu::new);
+		DispenserEndRodArchiveItemGUIMenu.screenInit();
+		PayloadTypeRegistry.serverboundPlay().register(MenuStateUpdateMessage.TYPE, MenuStateUpdateMessage.STREAM_CODEC);
+		ServerPlayNetworking.registerGlobalReceiver(MenuStateUpdateMessage.TYPE, MenuStateUpdateMessage::handleMenuState);
+	}
+
+	public static void clientLoad() {
+		PayloadTypeRegistry.clientboundPlay().register(MenuStateUpdateMessage.TYPE, MenuStateUpdateMessage.STREAM_CODEC);
+		ClientPlayNetworking.registerGlobalReceiver(MenuStateUpdateMessage.TYPE, MenuStateUpdateMessage::handleClientMenuState);
+	}
 
 	public interface MenuAccessor {
 		Map<String, Object> getMenuState();
@@ -35,11 +47,11 @@ public class MoreandmoreendrodsModMenus {
 		default void sendMenuStateUpdate(Player player, int elementType, String name, Object elementState, boolean needClientUpdate) {
 			getMenuState().put(elementType + ":" + name, elementState);
 			if (player instanceof ServerPlayer serverPlayer) {
-				PacketDistributor.sendToPlayer(serverPlayer, new MenuStateUpdateMessage(elementType, name, elementState));
-			} else if (player.level().isClientSide) {
-				if (Minecraft.getInstance().screen instanceof MoreandmoreendrodsModScreens.ScreenAccessor accessor && needClientUpdate)
+				ServerPlayNetworking.send(serverPlayer, new MenuStateUpdateMessage(elementType, name, elementState));
+			} else if (player.level().isClientSide()) {
+				if (Minecraft.getInstance().screen instanceof MoreandmoreendrodsModScreens.FabricScreenAccessor accessor && needClientUpdate)
 					accessor.updateMenuState(elementType, name, elementState);
-				ClientPacketDistributor.sendToServer(new MenuStateUpdateMessage(elementType, name, elementState));
+				ClientPlayNetworking.send(new MenuStateUpdateMessage(elementType, name, elementState));
 			}
 		}
 
@@ -50,5 +62,9 @@ public class MoreandmoreendrodsModMenus {
 				return defaultValue;
 			}
 		}
+	}
+
+	private static <M extends AbstractContainerMenu> MenuType<M> register(String registryname, MenuType.MenuSupplier<M> element) {
+		return Registry.register(BuiltInRegistries.MENU, Identifier.fromNamespaceAndPath(MoreandmoreendrodsMod.MODID, registryname), new MenuType<>(element, FeatureFlags.DEFAULT_FLAGS));
 	}
 }

@@ -1,26 +1,25 @@
 /*
- *    MCreator note: This file will be REGENERATED on each build.
+ *	MCreator note: This file will be REGENERATED on each build.
  */
 package net.mcreator.moreandmoreendrods.init;
 
-import net.neoforged.neoforge.registries.RegisterEvent;
-import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.bus.api.SubscribeEvent;
-
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.entity.npc.VillagerProfession;
+import net.minecraft.world.item.trading.TradeSet;
+import net.minecraft.world.entity.npc.villager.VillagerProfession;
 import net.minecraft.world.entity.ai.village.poi.PoiTypes;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.Identifier;
 import net.minecraft.network.chat.Component;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.Registry;
 import net.minecraft.core.Holder;
 
 import net.mcreator.moreandmoreendrods.MoreandmoreendrodsMod;
+
+import net.fabricmc.fabric.api.object.builder.v1.world.poi.PoiHelper;
 
 import java.util.function.Supplier;
 import java.util.function.Predicate;
@@ -28,39 +27,40 @@ import java.util.Optional;
 import java.util.Map;
 import java.util.HashMap;
 
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+
 import com.google.common.collect.ImmutableSet;
 
-@EventBusSubscriber
 public class MoreandmoreendrodsModVillagerProfessions {
 	private static final Map<String, ProfessionPoiType> POI_TYPES = new HashMap<>();
-	public static final DeferredRegister<VillagerProfession> PROFESSIONS = DeferredRegister.create(Registries.VILLAGER_PROFESSION, MoreandmoreendrodsMod.MODID);
-	public static final DeferredHolder<VillagerProfession, VillagerProfession> END_ROD_SELLER = registerProfession("end_rod_seller", () -> MoreandmoreendrodsModBlocks.EMERALD_END_ROD.get(),
-			() -> BuiltInRegistries.SOUND_EVENT.getValue(ResourceLocation.parse("entity.villager.work_toolsmith")));
+	public static VillagerProfession END_ROD_SELLER;
 
-	private static DeferredHolder<VillagerProfession, VillagerProfession> registerProfession(String name, Supplier<Block> block, Supplier<SoundEvent> soundEvent) {
-		POI_TYPES.put(name, new ProfessionPoiType(block, null));
-		return PROFESSIONS.register(name, () -> {
-			Predicate<Holder<PoiType>> poiPredicate = poiTypeHolder -> (POI_TYPES.get(name).poiType != null) && (poiTypeHolder.value() == POI_TYPES.get(name).poiType.value());
-			return new VillagerProfession(Component.translatable("entity.villager." + MoreandmoreendrodsMod.MODID + "." + name), poiPredicate, poiPredicate, ImmutableSet.of(), ImmutableSet.of(), soundEvent.get());
-		});
+	public static void load() {
+		END_ROD_SELLER = registerProfession("end_rod_seller", () -> MoreandmoreendrodsModBlocks.EMERALD_END_ROD, () -> BuiltInRegistries.SOUND_EVENT.getValue(Identifier.parse("entity.villager.work_toolsmith")));
+		for (Map.Entry<String, ProfessionPoiType> entry : POI_TYPES.entrySet()) {
+			Block block = entry.getValue().block.get();
+			String name = entry.getKey();
+			Optional<Holder<PoiType>> existingCheck = PoiTypes.forState(block.defaultBlockState());
+			if (existingCheck.isPresent()) {
+				MoreandmoreendrodsMod.LOGGER.error("Skipping villager profession " + name + " that uses POI block " + block + " that is already in use by " + existingCheck);
+				continue;
+			}
+			PoiType poiType = PoiHelper.register(Identifier.fromNamespaceAndPath("moreandmoreendrods", name), 1, 1, ImmutableSet.copyOf(block.getStateDefinition().getPossibleStates()));
+			entry.getValue().poiType = BuiltInRegistries.POINT_OF_INTEREST_TYPE.wrapAsHolder(poiType);
+		}
 	}
 
-	@SubscribeEvent
-	public static void registerProfessionPointsOfInterest(RegisterEvent event) {
-		event.register(Registries.POINT_OF_INTEREST_TYPE, registerHelper -> {
-			for (Map.Entry<String, ProfessionPoiType> entry : POI_TYPES.entrySet()) {
-				Block block = entry.getValue().block.get();
-				String name = entry.getKey();
-				Optional<Holder<PoiType>> existingCheck = PoiTypes.forState(block.defaultBlockState());
-				if (existingCheck.isPresent()) {
-					MoreandmoreendrodsMod.LOGGER.error("Skipping villager profession " + name + " that uses POI block " + block + " that is already in use by " + existingCheck);
-					continue;
-				}
-				PoiType poiType = new PoiType(ImmutableSet.copyOf(block.getStateDefinition().getPossibleStates()), 1, 1);
-				registerHelper.register(ResourceLocation.fromNamespaceAndPath("moreandmoreendrods", name), poiType);
-				entry.getValue().poiType = BuiltInRegistries.POINT_OF_INTEREST_TYPE.wrapAsHolder(poiType);
-			}
-		});
+	private static VillagerProfession registerProfession(String name, Supplier<Block> block, Supplier<SoundEvent> soundEvent) {
+		POI_TYPES.put(name, new ProfessionPoiType(block, null));
+		Predicate<Holder<PoiType>> poiPredicate = poiTypeHolder -> (POI_TYPES.get(name).poiType != null) && (poiTypeHolder.value() == POI_TYPES.get(name).poiType.value());
+		return Registry.register(BuiltInRegistries.VILLAGER_PROFESSION, Identifier.fromNamespaceAndPath(MoreandmoreendrodsMod.MODID, name),
+				new VillagerProfession(Component.translatable("entity.villager." + MoreandmoreendrodsMod.MODID + "." + name), poiPredicate, poiPredicate, ImmutableSet.of(), ImmutableSet.of(), soundEvent.get(),
+						Int2ObjectMap.ofEntries(Int2ObjectMap.entry(1, tradeSetResourceKey(name, 1)), Int2ObjectMap.entry(2, tradeSetResourceKey(name, 2)), Int2ObjectMap.entry(3, tradeSetResourceKey(name, 3)),
+								Int2ObjectMap.entry(4, tradeSetResourceKey(name, 4)), Int2ObjectMap.entry(5, tradeSetResourceKey(name, 5)))));
+	}
+
+	private static ResourceKey<TradeSet> tradeSetResourceKey(String name, int level) {
+		return ResourceKey.create(Registries.TRADE_SET, Identifier.fromNamespaceAndPath("moreandmoreendrods", name + "/level_" + level));
 	}
 
 	private static class ProfessionPoiType {

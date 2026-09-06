@@ -3,7 +3,6 @@ package net.mcreator.moreandmoreendrods.block;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.AttachFace;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -13,7 +12,6 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.InsideBlockEffectApplier;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.core.Direction;
@@ -36,11 +34,6 @@ public class CactusEndRodBlock extends Block {
 	private Function<BlockState, VoxelShape> makeShapes() {
 		return this.getShapeForEachState(state -> {
 			return switch (state.getValue(FACING)) {
-				default -> switch (state.getValue(FACE)) {
-					case FLOOR -> box(6, 0, 6, 10, 16, 10);
-					case WALL -> box(6, 6, 0, 10, 10, 16);
-					case CEILING -> box(6, 0, 6, 10, 16, 10);
-				};
 				case NORTH -> switch (state.getValue(FACE)) {
 					case FLOOR -> box(6, 0, 6, 10, 16, 10);
 					case WALL -> box(6, 6, 0, 10, 10, 16);
@@ -54,6 +47,11 @@ public class CactusEndRodBlock extends Block {
 				case WEST -> switch (state.getValue(FACE)) {
 					case FLOOR -> box(6, 0, 6, 10, 16, 10);
 					case WALL -> box(0, 6, 6, 16, 10, 10);
+					case CEILING -> box(6, 0, 6, 10, 16, 10);
+				};
+				default -> switch (state.getValue(FACE)) {
+					case FLOOR -> box(6, 0, 6, 10, 16, 10);
+					case WALL -> box(6, 6, 0, 10, 10, 16);
 					case CEILING -> box(6, 0, 6, 10, 16, 10);
 				};
 			};
@@ -78,9 +76,12 @@ public class CactusEndRodBlock extends Block {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
+		BlockState state = super.getStateForPlacement(context);
+		if (state == null)
+			return null;
 		if (context.getClickedFace().getAxis() == Direction.Axis.Y)
-			return super.getStateForPlacement(context).setValue(FACE, context.getClickedFace().getOpposite() == Direction.UP ? AttachFace.CEILING : AttachFace.FLOOR).setValue(FACING, context.getHorizontalDirection());
-		return super.getStateForPlacement(context).setValue(FACE, AttachFace.WALL).setValue(FACING, context.getClickedFace());
+			return state.setValue(FACE, context.getClickedFace().getOpposite() == Direction.UP ? AttachFace.CEILING : AttachFace.FLOOR).setValue(FACING, context.getHorizontalDirection());
+		return state.setValue(FACE, AttachFace.WALL).setValue(FACING, context.getClickedFace());
 	}
 
 	public BlockState rotate(BlockState state, Rotation rot) {
@@ -92,18 +93,8 @@ public class CactusEndRodBlock extends Block {
 	}
 
 	@Override
-	public int getFlammability(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
-		return 20;
-	}
-
-	@Override
-	public PathType getBlockPathType(BlockState state, BlockGetter world, BlockPos pos, Mob entity) {
-		return PathType.DANGER_FIRE;
-	}
-
-	@Override
-	public void entityInside(BlockState blockstate, Level world, BlockPos pos, Entity entity, InsideBlockEffectApplier insideBlockEffectApplier) {
-		super.entityInside(blockstate, world, pos, entity, insideBlockEffectApplier);
+	public void entityInside(BlockState blockstate, Level world, BlockPos pos, Entity entity, InsideBlockEffectApplier insideBlockEffectApplier, boolean isPrecise) {
+		super.entityInside(blockstate, world, pos, entity, insideBlockEffectApplier, isPrecise);
 		CactusEndRodEntityCollidesInTheBlockProcedure.execute(world, entity);
 	}
 }

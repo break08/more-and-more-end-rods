@@ -1,5 +1,7 @@
 package net.mcreator.moreandmoreendrods.block.entity;
 
+import org.jetbrains.annotations.Nullable;
+
 import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.block.state.BlockState;
@@ -21,8 +23,6 @@ import net.minecraft.core.BlockPos;
 import net.mcreator.moreandmoreendrods.world.inventory.DispenserEndRodArchiveItemGUIMenu;
 import net.mcreator.moreandmoreendrods.init.MoreandmoreendrodsModBlockEntities;
 
-import javax.annotation.Nullable;
-
 import java.util.stream.IntStream;
 
 import io.netty.buffer.Unpooled;
@@ -31,7 +31,7 @@ public class DispenserEndRodBlockEntity extends RandomizableContainerBlockEntity
 	private NonNullList<ItemStack> stacks = NonNullList.withSize(9, ItemStack.EMPTY);
 
 	public DispenserEndRodBlockEntity(BlockPos position, BlockState state) {
-		super(MoreandmoreendrodsModBlockEntities.DISPENSER_END_ROD.get(), position, state);
+		super(MoreandmoreendrodsModBlockEntities.DISPENSER_END_ROD, position, state);
 	}
 
 	@Override
@@ -84,7 +84,7 @@ public class DispenserEndRodBlockEntity extends RandomizableContainerBlockEntity
 
 	@Override
 	public AbstractContainerMenu createMenu(int id, Inventory inventory) {
-		return new DispenserEndRodArchiveItemGUIMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(this.worldPosition));
+		return new DispenserEndRodArchiveItemGUIMenu(id, inventory, this, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(this.worldPosition));
 	}
 
 	@Override

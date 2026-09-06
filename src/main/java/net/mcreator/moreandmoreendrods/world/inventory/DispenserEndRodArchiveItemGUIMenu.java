@@ -1,23 +1,18 @@
 package net.mcreator.moreandmoreendrods.world.inventory;
 
-import net.neoforged.neoforge.items.wrapper.InvWrapper;
-import net.neoforged.neoforge.items.SlotItemHandler;
-import net.neoforged.neoforge.items.ItemStackHandler;
-import net.neoforged.neoforge.items.IItemHandlerModifiable;
-import net.neoforged.neoforge.items.IItemHandler;
-import net.neoforged.neoforge.capabilities.Capabilities;
-
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.inventory.ContainerInput;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.Container;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
@@ -41,18 +36,28 @@ public class DispenserEndRodArchiveItemGUIMenu extends AbstractContainerMenu imp
 	public final Player entity;
 	public int x, y, z;
 	private ContainerLevelAccess access = ContainerLevelAccess.NULL;
-	private IItemHandler internal;
+	private final Container inventory;
 	private final Map<Integer, Slot> customSlots = new HashMap<>();
 	private boolean bound = false;
 	private Supplier<Boolean> boundItemMatcher = null;
 	private Entity boundEntity = null;
 	private BlockEntity boundBlockEntity = null;
+	private ItemStack boundItem = null;
+
+	public DispenserEndRodArchiveItemGUIMenu(int id, Inventory inv) {
+		this(id, inv, new SimpleContainer(9));
+		this.x = (int) inv.player.getX();
+		this.y = (int) inv.player.getY();
+		this.z = (int) inv.player.getZ();
+		access = ContainerLevelAccess.create(inv.player.level(), new BlockPos(x, y, z));
+	}
 
 	public DispenserEndRodArchiveItemGUIMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-		super(MoreandmoreendrodsModMenus.DISPENSER_END_ROD_ARCHIVE_ITEM_GUI.get(), id);
-		this.entity = inv.player;
-		this.world = inv.player.level();
-		this.internal = new ItemStackHandler(9);
+		this(id, inv, new SimpleContainer(9), extraData);
+	}
+
+	public DispenserEndRodArchiveItemGUIMenu(int id, Inventory inv, Container container, FriendlyByteBuf extraData) {
+		this(id, inv, container);
 		BlockPos pos = null;
 		if (extraData != null) {
 			pos = extraData.readBlockPos();
@@ -62,74 +67,70 @@ public class DispenserEndRodArchiveItemGUIMenu extends AbstractContainerMenu imp
 			access = ContainerLevelAccess.create(world, pos);
 		}
 		if (pos != null) {
-			if (extraData.readableBytes() == 1) { // bound to item
+			if (extraData.readableBytes() == 1) {
 				byte hand = extraData.readByte();
-				ItemStack itemstack = hand == 0 ? this.entity.getMainHandItem() : this.entity.getOffhandItem();
-				this.boundItemMatcher = () -> itemstack == (hand == 0 ? this.entity.getMainHandItem() : this.entity.getOffhandItem());
-				IItemHandler cap = itemstack.getCapability(Capabilities.ItemHandler.ITEM);
-				if (cap != null) {
-					this.internal = cap;
-					this.bound = true;
-				}
-			} else if (extraData.readableBytes() > 1) { // bound to entity
-				extraData.readByte(); // drop padding
+				boundItem = hand == 0 ? this.entity.getMainHandItem() : this.entity.getOffhandItem();
+				this.boundItemMatcher = () -> boundItem == (hand == 0 ? this.entity.getMainHandItem() : this.entity.getOffhandItem());
+				this.bound = true;
+			} else if (extraData.readableBytes() > 1) {
+				extraData.readByte();
 				boundEntity = world.getEntity(extraData.readVarInt());
-				if (boundEntity != null) {
-					IItemHandler cap = boundEntity.getCapability(Capabilities.ItemHandler.ENTITY);
-					if (cap != null) {
-						this.internal = cap;
-						this.bound = true;
-					}
-				}
-			} else { // might be bound to block
-				boundBlockEntity = this.world.getBlockEntity(pos);
-				if (boundBlockEntity instanceof BaseContainerBlockEntity baseContainerBlockEntity) {
-					this.internal = new InvWrapper(baseContainerBlockEntity);
+				if (boundEntity != null)
 					this.bound = true;
-				}
+			} else {
+				boundBlockEntity = this.world.getBlockEntity(pos);
+				if (boundBlockEntity instanceof BaseContainerBlockEntity)
+					this.bound = true;
 			}
 		}
-		this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 75, 21) {
+	}
+
+	private DispenserEndRodArchiveItemGUIMenu(int id, Inventory inv, Container container) {
+		super(MoreandmoreendrodsModMenus.DISPENSER_END_ROD_ARCHIVE_ITEM_GUI, id);
+		this.entity = inv.player;
+		this.world = inv.player.level();
+		this.inventory = container;
+		this.customSlots.put(0, this.addSlot(new Slot(inventory, 0, 75, 21) {
 			private final int slot = 0;
 			private int x = DispenserEndRodArchiveItemGUIMenu.this.x;
 			private int y = DispenserEndRodArchiveItemGUIMenu.this.y;
 		}));
-		this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 94, 21) {
+		this.customSlots.put(1, this.addSlot(new Slot(inventory, 1, 94, 21) {
 			private final int slot = 1;
 			private int x = DispenserEndRodArchiveItemGUIMenu.this.x;
 			private int y = DispenserEndRodArchiveItemGUIMenu.this.y;
 		}));
-		this.customSlots.put(2, this.addSlot(new SlotItemHandler(internal, 2, 113, 21) {
+		this.customSlots.put(2, this.addSlot(new Slot(inventory, 2, 113, 21) {
 			private final int slot = 2;
 			private int x = DispenserEndRodArchiveItemGUIMenu.this.x;
 			private int y = DispenserEndRodArchiveItemGUIMenu.this.y;
 		}));
-		this.customSlots.put(3, this.addSlot(new SlotItemHandler(internal, 3, 75, 41) {
+		this.customSlots.put(3, this.addSlot(new Slot(inventory, 3, 75, 41) {
 			private final int slot = 3;
 			private int x = DispenserEndRodArchiveItemGUIMenu.this.x;
 			private int y = DispenserEndRodArchiveItemGUIMenu.this.y;
 		}));
-		this.customSlots.put(4, this.addSlot(new SlotItemHandler(internal, 4, 94, 41) {
+		this.customSlots.put(4, this.addSlot(new Slot(inventory, 4, 94, 41) {
 			private final int slot = 4;
 			private int x = DispenserEndRodArchiveItemGUIMenu.this.x;
 			private int y = DispenserEndRodArchiveItemGUIMenu.this.y;
 		}));
-		this.customSlots.put(5, this.addSlot(new SlotItemHandler(internal, 5, 113, 41) {
+		this.customSlots.put(5, this.addSlot(new Slot(inventory, 5, 113, 41) {
 			private final int slot = 5;
 			private int x = DispenserEndRodArchiveItemGUIMenu.this.x;
 			private int y = DispenserEndRodArchiveItemGUIMenu.this.y;
 		}));
-		this.customSlots.put(6, this.addSlot(new SlotItemHandler(internal, 6, 75, 61) {
+		this.customSlots.put(6, this.addSlot(new Slot(inventory, 6, 75, 61) {
 			private final int slot = 6;
 			private int x = DispenserEndRodArchiveItemGUIMenu.this.x;
 			private int y = DispenserEndRodArchiveItemGUIMenu.this.y;
 		}));
-		this.customSlots.put(7, this.addSlot(new SlotItemHandler(internal, 7, 94, 61) {
+		this.customSlots.put(7, this.addSlot(new Slot(inventory, 7, 94, 61) {
 			private final int slot = 7;
 			private int x = DispenserEndRodArchiveItemGUIMenu.this.x;
 			private int y = DispenserEndRodArchiveItemGUIMenu.this.y;
 		}));
-		this.customSlots.put(8, this.addSlot(new SlotItemHandler(internal, 8, 113, 61) {
+		this.customSlots.put(8, this.addSlot(new Slot(inventory, 8, 113, 61) {
 			private final int slot = 8;
 			private int x = DispenserEndRodArchiveItemGUIMenu.this.x;
 			private int y = DispenserEndRodArchiveItemGUIMenu.this.y;
@@ -151,13 +152,13 @@ public class DispenserEndRodArchiveItemGUIMenu extends AbstractContainerMenu imp
 			else if (this.boundEntity != null)
 				return this.boundEntity.isAlive();
 		}
-		return true;
+		return this.inventory.stillValid(player);
 	}
 
 	@Override
 	public ItemStack quickMoveStack(Player playerIn, int index) {
 		ItemStack itemstack = ItemStack.EMPTY;
-		Slot slot = (Slot) this.slots.get(index);
+		Slot slot = this.slots.get(index);
 		if (slot != null && slot.hasItem()) {
 			ItemStack itemstack1 = slot.getItem();
 			itemstack = itemstack1.copy();
@@ -165,6 +166,8 @@ public class DispenserEndRodArchiveItemGUIMenu extends AbstractContainerMenu imp
 				if (!this.moveItemStackTo(itemstack1, 9, this.slots.size(), true))
 					return ItemStack.EMPTY;
 				slot.onQuickCraft(itemstack1, itemstack);
+			} else if (boundItem != null && itemstack1 == boundItem) {
+				return ItemStack.EMPTY;
 			} else if (!this.moveItemStackTo(itemstack1, 0, 9, false)) {
 				if (index < 9 + 27) {
 					if (!this.moveItemStackTo(itemstack1, 9 + 27, this.slots.size(), true))
@@ -189,82 +192,79 @@ public class DispenserEndRodArchiveItemGUIMenu extends AbstractContainerMenu imp
 	}
 
 	@Override
-	protected boolean moveItemStackTo(ItemStack p_38904_, int p_38905_, int p_38906_, boolean p_38907_) {
-		boolean flag = false;
-		int i = p_38905_;
-		if (p_38907_) {
-			i = p_38906_ - 1;
+	public void clicked(int slotId, int button, ContainerInput containerInput, Player player) {
+		if (containerInput == ContainerInput.SWAP && boundItem != null) {
+			if (slotId >= 0 && slotId < this.slots.size()) {
+				ItemStack slotItem = this.slots.get(slotId).getItem();
+				ItemStack hotbarItem = player.getInventory().getItem(button);
+				if (slotItem == boundItem || hotbarItem == boundItem) {
+					return;
+				}
+			}
 		}
-		if (p_38904_.isStackable()) {
-			while (!p_38904_.isEmpty() && (p_38907_ ? i >= p_38905_ : i < p_38906_)) {
-				Slot slot = this.slots.get(i);
-				ItemStack itemstack = slot.getItem();
-				if (slot.mayPlace(itemstack) && !itemstack.isEmpty() && ItemStack.isSameItemSameComponents(p_38904_, itemstack)) {
-					int j = itemstack.getCount() + p_38904_.getCount();
-					int k = slot.getMaxStackSize(itemstack);
-					if (j <= k) {
-						p_38904_.setCount(0);
-						itemstack.setCount(j);
-						slot.set(itemstack);
-						flag = true;
-					} else if (itemstack.getCount() < k) {
-						p_38904_.shrink(k - itemstack.getCount());
-						itemstack.setCount(k);
-						slot.set(itemstack);
-						flag = true;
+		super.clicked(slotId, button, containerInput, player);
+	}
+
+	@Override
+	protected boolean moveItemStackTo(ItemStack itemstack, int i, int j, boolean bl) {
+		int l;
+		ItemStack itemstack2;
+		Slot slot;
+		boolean bl2 = false;
+		int k = i;
+		if (bl) {
+			k = j - 1;
+		}
+		if (itemstack.isStackable()) {
+			while (!itemstack.isEmpty() && (bl ? k >= i : k < j)) {
+				slot = this.slots.get(k);
+				itemstack2 = slot.getItem();
+				if (!itemstack2.isEmpty() && ItemStack.isSameItemSameComponents(itemstack, itemstack2)) {
+					int m;
+					l = itemstack2.getCount() + itemstack.getCount();
+					if (l <= (m = slot.getMaxStackSize(itemstack2))) {
+						itemstack.setCount(0);
+						itemstack2.setCount(l);
+						slot.set(itemstack2);
+						bl2 = true;
+					} else if (itemstack2.getCount() < m) {
+						itemstack.shrink(m - itemstack2.getCount());
+						itemstack2.setCount(m);
+						slot.set(itemstack2);
+						bl2 = true;
 					}
 				}
-				if (p_38907_) {
-					i--;
-				} else {
-					i++;
+				if (bl) {
+					--k;
+					continue;
 				}
+				++k;
 			}
 		}
-		if (!p_38904_.isEmpty()) {
-			if (p_38907_) {
-				i = p_38906_ - 1;
-			} else {
-				i = p_38905_;
-			}
-			while (p_38907_ ? i >= p_38905_ : i < p_38906_) {
-				Slot slot1 = this.slots.get(i);
-				ItemStack itemstack1 = slot1.getItem();
-				if (itemstack1.isEmpty() && slot1.mayPlace(p_38904_)) {
-					int l = slot1.getMaxStackSize(p_38904_);
-					slot1.setByPlayer(p_38904_.split(Math.min(p_38904_.getCount(), l)));
-					slot1.setChanged();
-					flag = true;
+		if (!itemstack.isEmpty()) {
+			k = bl ? j - 1 : i;
+			while (bl ? k >= i : k < j) {
+				slot = this.slots.get(k);
+				itemstack2 = slot.getItem();
+				if (itemstack2.isEmpty() && slot.mayPlace(itemstack)) {
+					l = slot.getMaxStackSize(itemstack);
+					slot.setByPlayer(itemstack.split(Math.min(itemstack.getCount(), l)));
+					bl2 = true;
 					break;
 				}
-				if (p_38907_) {
-					i--;
-				} else {
-					i++;
+				if (bl) {
+					--k;
+					continue;
 				}
+				++k;
 			}
 		}
-		return flag;
+		return bl2;
 	}
 
 	@Override
 	public void removed(Player playerIn) {
 		super.removed(playerIn);
-		if (!bound && playerIn instanceof ServerPlayer serverPlayer) {
-			if (!serverPlayer.isAlive() || serverPlayer.hasDisconnected()) {
-				for (int j = 0; j < internal.getSlots(); ++j) {
-					playerIn.drop(internal.getStackInSlot(j), false);
-					if (internal instanceof IItemHandlerModifiable ihm)
-						ihm.setStackInSlot(j, ItemStack.EMPTY);
-				}
-			} else {
-				for (int i = 0; i < internal.getSlots(); ++i) {
-					playerIn.getInventory().placeItemBackInInventory(internal.getStackInSlot(i));
-					if (internal instanceof IItemHandlerModifiable ihm)
-						ihm.setStackInSlot(i, ItemStack.EMPTY);
-				}
-			}
-		}
 	}
 
 	@Override
@@ -275,5 +275,8 @@ public class DispenserEndRodArchiveItemGUIMenu extends AbstractContainerMenu imp
 	@Override
 	public Map<String, Object> getMenuState() {
 		return menuState;
+	}
+
+	public static void screenInit() {
 	}
 }

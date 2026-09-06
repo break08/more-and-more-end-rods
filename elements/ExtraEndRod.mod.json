@@ -1,11 +1,9 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "tab",
   "definition": {
     "name": "Extra End Rod",
-    "icon": {
-      "value": "CUSTOM:OakEndRod"
-    },
+    "icon": "CUSTOM:OakEndRod",
     "showSearch": true
   }
 }

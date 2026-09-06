@@ -5,6 +5,5 @@
     "particle": "moreandmoreendrods:block/slime_end_rod",
     "0": "moreandmoreendrods:block/slime_end_rod",
     "1": "moreandmoreendrods:block/under_sl-endrod"
-  },
-  "render_type": "translucent"
+  }
 }

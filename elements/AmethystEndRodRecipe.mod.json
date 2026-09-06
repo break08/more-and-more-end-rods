@@ -1,14 +1,12 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "recipe",
   "definition": {
     "recipeType": "Crafting",
     "recipeRetstackSize": 1,
     "group": "",
     "unlockingItems": [
-      {
-        "value": "Items.AMETHYST_SHARD"
-      }
+      "Items.AMETHYST_SHARD"
     ],
     "cookingBookCategory": "MISC",
     "xpReward": 0.0,
@@ -16,37 +14,17 @@
     "craftingBookCategory": "MISC",
     "recipeShapeless": true,
     "recipeSlots": [
-      {
-        "value": ""
-      },
-      {
-        "value": ""
-      },
-      {
-        "value": ""
-      },
-      {
-        "value": ""
-      },
-      {
-        "value": "Items.AMETHYST_SHARD"
-      },
-      {
-        "value": ""
-      },
-      {
-        "value": ""
-      },
-      {
-        "value": "Blocks.AMETHYST_BLOCK"
-      },
-      {
-        "value": ""
-      }
+      "",
+      "",
+      "",
+      "",
+      "Items.AMETHYST_SHARD",
+      "",
+      "",
+      "Blocks.AMETHYST_BLOCK",
+      ""
     ],
-    "recipeReturnStack": {
-      "value": "CUSTOM:AmethystEndRod"
-    },
+    "recipeReturnStack": "CUSTOM:AmethystEndRod",
     "name": "amethyst_end_rod_recipe",
     "namespace": "mod"
   }

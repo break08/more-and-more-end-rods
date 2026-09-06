@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "moreandmoreendrods",
+  "version": "2.0.0",
+  "name": "MoreAndMoreEndRods",
+  "description": "Add More End Rods Variants in Minecraft",
+  "authors": [
+    "break08"
+  ],
+  "contact": {
+    "homepage": "https://modrinth.com/mod/more-and-more-end-rods",
+    "sources": ""
+  },
+  "license": "MIT License",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.mcreator.moreandmoreendrods.MoreandmoreendrodsMod"
+    ],
+    "client": [
+      "net.mcreator.moreandmoreendrods.MoreandmoreendrodsModClient"
+    ]
+  },
+  "mixins": [
+    "moreandmoreendrods.mixins.json"
+  ],
+  "accessWidener": "META-INF/moreandmoreendrods.classtweaker",
+  "depends": {
+    "fabricloader": ">=0.19.3",
+    "minecraft": "~26.1.2",
+    "java": ">=25",
+    "fabric-api": "*"
+  }
+}

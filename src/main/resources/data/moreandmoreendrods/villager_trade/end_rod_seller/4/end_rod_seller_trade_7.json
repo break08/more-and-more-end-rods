@@ -1,0 +1,12 @@
+{
+  "wants": {
+    "id": "moreandmoreendrods:diamond_end_rod"
+  },
+  "gives": {
+    "id": "minecraft:emerald",
+    "count": 15
+  },
+  "max_uses": 10,
+  "xp": 15,
+  "reputation_discount": 0.05
+}

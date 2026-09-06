@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:glass",
+  "result": {
+    "id": "moreandmoreendrods:glass_end_rod",
+    "count": 1
+  }
+}

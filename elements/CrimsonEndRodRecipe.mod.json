@@ -1,14 +1,12 @@
 {
-  "_fv": 85,
+  "_fv": 89,
   "_type": "recipe",
   "definition": {
     "recipeType": "Crafting",
     "recipeRetstackSize": 1,
     "group": "",
     "unlockingItems": [
-      {
-        "value": "Blocks.CRIMSON_PLANKS"
-      }
+      "Blocks.CRIMSON_PLANKS"
     ],
     "cookingBookCategory": "MISC",
     "xpReward": 0.0,
@@ -16,37 +14,17 @@
     "craftingBookCategory": "MISC",
     "recipeShapeless": true,
     "recipeSlots": [
-      {
-        "value": ""
-      },
-      {
-        "value": ""
-      },
-      {
-        "value": ""
-      },
-      {
-        "value": ""
-      },
-      {
-        "value": "Items.STICK"
-      },
-      {
-        "value": ""
-      },
-      {
-        "value": ""
-      },
-      {
-        "value": "Blocks.CRIMSON_SLAB"
-      },
-      {
-        "value": ""
-      }
+      "",
+      "",
+      "",
+      "",
+      "Items.STICK",
+      "",
+      "",
+      "Blocks.CRIMSON_SLAB",
+      ""
     ],
-    "recipeReturnStack": {
-      "value": "CUSTOM:CrimsonEndRod"
-    },
+    "recipeReturnStack": "CUSTOM:CrimsonEndRod",
     "name": "crimson_end_rod_recipe",
     "namespace": "mod"
   }
