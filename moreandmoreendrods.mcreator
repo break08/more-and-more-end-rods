@@ -1575,7 +1575,7 @@
     {
       "name": "DispenserEndRodRedstoneOnOff",
       "type": "procedure",
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "dispenser_end_rod_redstone_on_off",
       "metadata": {

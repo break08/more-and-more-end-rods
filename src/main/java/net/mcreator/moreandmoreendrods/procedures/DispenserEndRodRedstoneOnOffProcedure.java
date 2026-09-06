@@ -10,17 +10,17 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.Container;
 
 public class DispenserEndRodRedstoneOnOffProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, BlockState blockstate) {
 		ItemStack item = ItemStack.EMPTY;
-		double slot = 0;
-		slot = 0;
-		BlockPos pos = new BlockPos(x, y, z);
+		int slot = 0;
+		BlockPos pos = new BlockPos((int)x, (int)y, (int)z);
 		BlockEntity be = world.getBlockEntity(pos);
 		for (int _i1 = 0; _i1 < 9; _i1++) {
-			if (!()) {
-			    item = ;
+			if (be instanceof Container container && !(container.getItem(slot) == ItemStack.EMPTY)) {
+			    item = container.getItem(slot);
 				item.setCount(1);
 				if (world instanceof ServerLevel _level) {
 					ItemEntity entityToSpawn = new ItemEntity(_level, (x + (getDirectionFromBlockState(blockstate)).getStepX() + 0.5), (y + (getDirectionFromBlockState(blockstate)).getStepY() + 0.5),
@@ -28,6 +28,7 @@ public class DispenserEndRodRedstoneOnOffProcedure {
 					entityToSpawn.setPickUpDelay(1);
 					_level.addFreshEntity(entityToSpawn);
 				}
+				container.removeItem(slot, 1);
 				break;
 			}
 			slot = slot + 1;

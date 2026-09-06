@@ -2,3 +2,17 @@
 .gradle/
 .mcreator/
 build/
+
+.idea/
+*.iml
+out/
+bin/
+
+!gradle/wrapper/gradle-wrapper.jar
+
+.DS_Store
+Thumbs.db
+
+*.log
+
+run/
