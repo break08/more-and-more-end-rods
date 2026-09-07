@@ -19,8 +19,8 @@ public class DispenserEndRodRedstoneOnOffProcedure {
 		BlockPos pos = new BlockPos((int)x, (int)y, (int)z);
 		BlockEntity be = world.getBlockEntity(pos);
 		for (int _i1 = 0; _i1 < 9; _i1++) {
-			if (be instanceof Container container && !(container.getItem(slot) == ItemStack.EMPTY)) {
-			    item = container.getItem(slot);
+			if (be instanceof Container container && !(container.getItem(slot).isEmpty())) {
+			    item = container.getItem(slot).copy();
 				item.setCount(1);
 				if (world instanceof ServerLevel _level) {
 					ItemEntity entityToSpawn = new ItemEntity(_level, (x + (getDirectionFromBlockState(blockstate)).getStepX() + 0.5), (y + (getDirectionFromBlockState(blockstate)).getStepY() + 0.5),
