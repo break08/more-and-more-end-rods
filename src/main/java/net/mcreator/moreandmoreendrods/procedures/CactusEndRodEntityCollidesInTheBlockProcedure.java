@@ -1,8 +1,10 @@
 package net.mcreator.moreandmoreendrods.procedures;
 
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.tags.TagKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.Identifier;
@@ -12,10 +14,13 @@ public class CactusEndRodEntityCollidesInTheBlockProcedure {
 	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
-		{
-			Entity _ent = entity;
-			if (_ent.level() instanceof ServerLevel _serverLevel) {
-				_ent.hurtServer(_serverLevel, new DamageSource(world.registryAccess().lookupOrThrow(Registries.DAMAGE_TYPE).getOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.parse("moreandmoreendrods:pocked_by_cactus_end_rod")))), 1);
+		if (!entity.is(TagKey.create(Registries.ENTITY_TYPE, Identifier.parse("moreandmoreendrods:immune_to_end_rod_damage"))) && !(entity instanceof LivingEntity)) {
+			{
+				Entity _ent = entity;
+				if (_ent.level() instanceof ServerLevel _serverLevel) {
+					_ent.hurtServer(_serverLevel, new DamageSource(world.registryAccess().lookupOrThrow(Registries.DAMAGE_TYPE).getOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.parse("moreandmoreendrods:pocked_by_cactus_end_rod")))),
+							1);
+				}
 			}
 		}
 	}

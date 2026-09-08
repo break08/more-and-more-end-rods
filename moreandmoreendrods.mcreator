@@ -1604,8 +1604,7 @@
         "files": [
           "src/main/java/net/mcreator/moreandmoreendrods/procedures/DispenserEndRodRedstoneOnOffProcedure.java"
         ]
-      },
-      "path": "~/EndRod"
+      }
     },
     {
       "name": "DispenserEndRodRecipe",
@@ -1677,6 +1676,9 @@
     ],
     "VILLAGER_TRADES:moreandmoreendrods:end_rod_seller/level_5": [
       "~EndRodSellerTrade@end_rod_seller_trade_8"
+    ],
+    "ENTITIES:mod:immune_to_end_rod_damage": [
+      "EntityBoat"
     ],
     "POINTS_OF_INTEREST:minecraft:acquirable_job_site": [
       "~EndRodSeller@CUSTOM:EndRodSeller"
@@ -1852,12 +1854,13 @@
   "workspaceSettings": {
     "modid": "moreandmoreendrods",
     "modName": "MoreAndMoreEndRods",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "Add More End Rods Variants in Minecraft",
     "author": "break08",
     "websiteURL": "https://modrinth.com/mod/more-and-more-end-rods",
     "license": "MIT License",
     "serverSideOnly": false,
+    "modPicture": "end_rod_painting",
     "requiredMods": [],
     "dependencies": [],
     "dependants": [],

@@ -20,7 +20,6 @@
     "particleTexture": "",
     "blockBase": "EndRod",
     "blockSetType": "OAK",
-    "pottedPlant": "",
     "leavesParticleChance": 0.0,
     "tintType": "No tint",
     "isItemTinted": false,
