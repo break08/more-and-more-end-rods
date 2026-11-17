@@ -45,6 +45,7 @@ public class MoreandmoreendrodsMod implements ModInitializer {
 		MoreandmoreendrodsModVillagerProfessions.load();
 		tick();
 		// Start of user code block mod init
+		net.mcreator.moreandmoreendrods.init.MoreandmoreendrodsModBlockEntities.load();
 		net.mcreator.moreandmoreendrods.init.MoreandmoreendrodsModItems.load();
 		// End of user code block mod init
 	}
