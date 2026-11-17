@@ -1,5 +1,6 @@
 package net.mcreator.moreandmoreendrods.block;
 
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.SoundType;
@@ -12,7 +13,7 @@ import net.mcreator.moreandmoreendrods.procedures.CopperEndRodOnTickUpdateProced
 
 public class OxidizedCopperEndRodBlock extends EndRodBlock {
 	public OxidizedCopperEndRodBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.METAL).strength(1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).forceSolidOff());
+		super(properties.sound(SoundType.METAL).strength(1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).instrument(NoteBlockInstrument.TRUMPET_OXIDIZED).forceSolidOff());
 	}
 
 	@Override

@@ -2,6 +2,7 @@ package net.mcreator.moreandmoreendrods.procedures;
 
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.item.ItemStack;
@@ -11,6 +12,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.Container;
+import net.minecraft.world.phys.Vec3;
 
 public class DispenserEndRodRedstoneOnOffProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, BlockState blockstate) {
@@ -22,11 +24,15 @@ public class DispenserEndRodRedstoneOnOffProcedure {
 			if (be instanceof Container container && !(container.getItem(slot).isEmpty())) {
 			    item = container.getItem(slot).copy();
 				item.setCount(1);
+				Direction dir = getBlockDirection(world, BlockPos.containing(x, y, z));
 				if (world instanceof ServerLevel _level) {
-					ItemEntity entityToSpawn = new ItemEntity(_level, (x + (getDirectionFromBlockState(blockstate)).getStepX() + 0.5), (y + (getDirectionFromBlockState(blockstate)).getStepY() + 0.5),
-							(z + (getDirectionFromBlockState(blockstate)).getStepZ() + 0.5), item);
-					entityToSpawn.setPickUpDelay(1);
-					_level.addFreshEntity(entityToSpawn);
+				    double px = x + 0.5 + dir.getStepX() * 0.7;
+				    double py = y + 0.5 + dir.getStepY() * 0.7 - 0.125; // ItemEntity cao 0.25, toạ độ là đáy
+				    double pz = z + 0.5 + dir.getStepZ() * 0.7;
+				    ItemEntity entityToSpawn = new ItemEntity(_level, px, py, pz, item);
+				    entityToSpawn.setDeltaMovement(Vec3.ZERO);
+				    entityToSpawn.setPickUpDelay(1);
+				    _level.addFreshEntity(entityToSpawn);
 				}
 				container.removeItem(slot, 1);
 				break;
@@ -42,6 +48,19 @@ public class DispenserEndRodRedstoneOnOffProcedure {
 			return Direction.fromAxisAndDirection((Direction.Axis) blockState.getValue(ep), Direction.AxisDirection.POSITIVE);
 		return Direction.NORTH;
 	}
+
+	private static Direction getBlockDirection(LevelAccessor world, BlockPos pos) {
+		BlockState blockState = world.getBlockState(pos);
+		Property<?> property = blockState.getBlock().getStateDefinition().getProperty("facing");
+		if (property != null && blockState.getValue(property) instanceof Direction direction)
+			return direction;
+		else if (blockState.hasProperty(BlockStateProperties.AXIS))
+			return Direction.fromAxisAndDirection(blockState.getValue(BlockStateProperties.AXIS), Direction.AxisDirection.POSITIVE);
+		else if (blockState.hasProperty(BlockStateProperties.HORIZONTAL_AXIS))
+			return Direction.fromAxisAndDirection(blockState.getValue(BlockStateProperties.HORIZONTAL_AXIS), Direction.AxisDirection.POSITIVE);
+		return Direction.NORTH;
+	}
+
 
 	private static Property<?> getPropertyByName(BlockState state, String name) {
 		for (Property<?> property : state.getProperties()) {
