@@ -12,6 +12,8 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.Identifier;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.LightningBolt;
+import net.minecraft.world.entity.EntityTypes;
 
 import net.mcreator.moreandmoreendrods.init.MoreandmoreendrodsModBlocks;
 
@@ -67,13 +69,15 @@ public class CopperEndRodOnTickUpdateProcedure {
 		}
 		if (world instanceof Level _lvl11 && _lvl11.isThundering()) {
 			if (world instanceof ServerLevel _level) {
-				Entity entityToSpawn = EntityType.LIGHTNING_BOLT.spawn(_level, BlockPos.containing(x, y, z), EntitySpawnReason.MOB_SUMMONED);
+				Entity entityToSpawn = EntityTypes.LIGHTNING_BOLT.spawn(_level, BlockPos.containing(x, y, z), EntitySpawnReason.MOB_SUMMONED);
+
+				//EntityType.LIGHTNING_BOLT.spawn(_level, BlockPos.containing(x, y, z), EntitySpawnReason.MOB_SUMMONED);
 				if (entityToSpawn != null) {
 					entityToSpawn.setYRot(world.getRandom().nextFloat() * 360F);
 				}
 			}
 			if (world instanceof ServerLevel _level) {
-				Entity entityToSpawn = EntityType.LIGHTNING_BOLT.spawn(_level, BlockPos.containing(x, y, z), EntitySpawnReason.MOB_SUMMONED);
+				Entity entityToSpawn = EntityTypes.LIGHTNING_BOLT.spawn(_level, BlockPos.containing(x, y, z), EntitySpawnReason.MOB_SUMMONED);
 				if (entityToSpawn != null) {
 					entityToSpawn.setYRot(world.getRandom().nextFloat() * 360F);
 				}

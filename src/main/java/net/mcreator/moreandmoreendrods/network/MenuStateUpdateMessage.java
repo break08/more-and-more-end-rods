@@ -55,7 +55,7 @@ public record MenuStateUpdateMessage(int elementType, String name, Object elemen
 		context.server().execute(() -> {
 			if (context.player().containerMenu instanceof MoreandmoreendrodsModMenus.MenuAccessor menu) {
 				menu.getMenuState().put(message.elementType + ":" + message.name, message.elementState);
-				if (Minecraft.getInstance().screen instanceof MoreandmoreendrodsModScreens.FabricScreenAccessor accessor) {
+				if (Minecraft.getInstance().gui.screen() instanceof MoreandmoreendrodsModScreens.FabricScreenAccessor accessor) {
 					accessor.updateMenuState(message.elementType, message.name, message.elementState);
 				}
 			}
@@ -68,7 +68,7 @@ public record MenuStateUpdateMessage(int elementType, String name, Object elemen
 		context.client().execute(() -> {
 			if (context.player().containerMenu instanceof MoreandmoreendrodsModMenus.MenuAccessor menu) {
 				menu.getMenuState().put(message.elementType + ":" + message.name, message.elementState);
-				if (Minecraft.getInstance().screen instanceof MoreandmoreendrodsModScreens.FabricScreenAccessor accessor) {
+				if (Minecraft.getInstance().gui.screen() instanceof MoreandmoreendrodsModScreens.FabricScreenAccessor accessor) {
 					accessor.updateMenuState(message.elementType, message.name, message.elementState);
 				}
 			}

@@ -130,7 +130,7 @@
       "name": "CopperEndRodOnTickUpdate",
       "type": "procedure",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "copper_end_rod_on_tick_update",
       "metadata": {
         "dependencies": [
@@ -1862,7 +1862,7 @@
     "dependencies": [],
     "dependants": [],
     "mcreatorDependencies": [],
-    "currentGenerator": "fabric-26.1.2",
+    "currentGenerator": "fabric-26.2",
     "credits": "Created using mod maker MCreator - https://mcreator.net/about",
     "modElementsPackage": "net.mcreator.moreandmoreendrods"
   },

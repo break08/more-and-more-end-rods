@@ -1,7 +1,6 @@
 package net.mcreator.moreandmoreendrods.world.inventory;
 
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.inventory.Slot;
@@ -13,6 +12,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.Container;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
@@ -53,7 +53,34 @@ public class DispenserEndRodArchiveItemGUIMenu extends AbstractContainerMenu imp
 	}
 
 	public DispenserEndRodArchiveItemGUIMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-		this(id, inv, new SimpleContainer(9), extraData);
+		this(id, inv, resolveBlockContainer(inv, extraData), extraData);
+	}
+
+	private static Container resolveBlockContainer(Inventory inv, FriendlyByteBuf extraData) {
+		// The MenuType factory uses this constructor on both sides. Keep a temporary
+		// mirror on the client (slot sync populates it), but on the dedicated/integrated
+		// server bind procedure-opened GUIs to the real block inventory at the supplied
+		// position. This makes "Open GUI at x/y/z" persist items just like a GUI
+		// opened directly by its bound block entity.
+		if (extraData != null && !inv.player.level().isClientSide()) {
+			extraData.markReaderIndex();
+			try {
+				BlockPos pos = extraData.readBlockPos();
+				// Item/entity-bound internal opens append marker data after BlockPos. Only
+				// treat a buffer containing exactly the position as a block-bound open.
+				if (extraData.readableBytes() == 0) {
+					BlockEntity blockEntity = inv.player.level().getBlockEntity(pos);
+					if (blockEntity instanceof Container blockContainer && blockContainer.getContainerSize() >= 9) {
+						return blockContainer;
+					}
+				}
+			} catch (IndexOutOfBoundsException ignored) {
+				// Malformed/short extra data: fall back to a temporary GUI inventory.
+			} finally {
+				extraData.resetReaderIndex();
+			}
+		}
+		return new SimpleContainer(9);
 	}
 
 	public DispenserEndRodArchiveItemGUIMenu(int id, Inventory inv, Container container, FriendlyByteBuf extraData) {
@@ -69,8 +96,9 @@ public class DispenserEndRodArchiveItemGUIMenu extends AbstractContainerMenu imp
 		if (pos != null) {
 			if (extraData.readableBytes() == 1) {
 				byte hand = extraData.readByte();
-				boundItem = hand == 0 ? this.entity.getMainHandItem() : this.entity.getOffhandItem();
-				this.boundItemMatcher = () -> boundItem == (hand == 0 ? this.entity.getMainHandItem() : this.entity.getOffhandItem());
+				ItemStack itemstack = hand == 0 ? this.entity.getMainHandItem() : this.entity.getOffhandItem();
+				this.boundItem = itemstack;
+				this.boundItemMatcher = () -> itemstack == (hand == 0 ? this.entity.getMainHandItem() : this.entity.getOffhandItem());
 				this.bound = true;
 			} else if (extraData.readableBytes() > 1) {
 				extraData.readByte();
@@ -79,13 +107,16 @@ public class DispenserEndRodArchiveItemGUIMenu extends AbstractContainerMenu imp
 					this.bound = true;
 			} else {
 				boundBlockEntity = this.world.getBlockEntity(pos);
-				if (boundBlockEntity instanceof BaseContainerBlockEntity)
+				// Do not mark a temporary SimpleContainer as bound merely because a
+				// container block exists at this position. The backing inventory itself
+				// must be that block entity, otherwise closing the GUI can lose items.
+				if (boundBlockEntity instanceof Container && this.inventory == boundBlockEntity)
 					this.bound = true;
 			}
 		}
 	}
 
-	private DispenserEndRodArchiveItemGUIMenu(int id, Inventory inv, Container container) {
+	public DispenserEndRodArchiveItemGUIMenu(int id, Inventory inv, Container container) {
 		super(MoreandmoreendrodsModMenus.DISPENSER_END_ROD_ARCHIVE_ITEM_GUI, id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
@@ -158,7 +189,7 @@ public class DispenserEndRodArchiveItemGUIMenu extends AbstractContainerMenu imp
 	@Override
 	public ItemStack quickMoveStack(Player playerIn, int index) {
 		ItemStack itemstack = ItemStack.EMPTY;
-		Slot slot = this.slots.get(index);
+		Slot slot = (Slot) this.slots.get(index);
 		if (slot != null && slot.hasItem()) {
 			ItemStack itemstack1 = slot.getItem();
 			itemstack = itemstack1.copy();
@@ -265,6 +296,27 @@ public class DispenserEndRodArchiveItemGUIMenu extends AbstractContainerMenu imp
 	@Override
 	public void removed(Player playerIn) {
 		super.removed(playerIn);
+		// Only clear temporary, unbound GUI slots that are explicitly configured to drop/return
+		// their contents when the GUI closes. Bound block/entity/item inventories must persist.
+		if (!bound && playerIn instanceof ServerPlayer serverPlayer) {
+			if (!serverPlayer.isAlive() || serverPlayer.hasDisconnected()) {
+				for (int i = 0; i < inventory.getContainerSize(); ++i) {
+					ItemStack stack = inventory.getItem(i);
+					if (!stack.isEmpty()) {
+						playerIn.drop(stack.copy(), false);
+						inventory.setItem(i, ItemStack.EMPTY);
+					}
+				}
+			} else {
+				for (int i = 0; i < inventory.getContainerSize(); ++i) {
+					ItemStack stack = inventory.getItem(i);
+					if (!stack.isEmpty()) {
+						playerIn.getInventory().placeItemBackInInventory(stack);
+						inventory.setItem(i, ItemStack.EMPTY);
+					}
+				}
+			}
+		}
 	}
 
 	@Override
