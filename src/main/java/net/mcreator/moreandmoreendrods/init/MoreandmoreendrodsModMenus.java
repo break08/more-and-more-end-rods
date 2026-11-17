@@ -37,7 +37,7 @@ public class MoreandmoreendrodsModMenus {
 			if (player instanceof ServerPlayer serverPlayer) {
 				PacketDistributor.sendToPlayer(serverPlayer, new MenuStateUpdateMessage(elementType, name, elementState));
 			} else if (player.level().isClientSide()) {
-				if (Minecraft.getInstance().screen instanceof MoreandmoreendrodsModScreens.ScreenAccessor accessor && needClientUpdate)
+				if (Minecraft.getInstance().gui.screen() instanceof MoreandmoreendrodsModScreens.ScreenAccessor accessor && needClientUpdate)
 					accessor.updateMenuState(elementType, name, elementState);
 				ClientPacketDistributor.sendToServer(new MenuStateUpdateMessage(elementType, name, elementState));
 			}

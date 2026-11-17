@@ -1811,8 +1811,7 @@
       "src/main/java/net/mcreator/moreandmoreendrods/MoreandmoreendrodsMod.java",
       "src/main/resources/META-INF/neoforge.mods.toml",
       "src/main/resources/pack.mcmeta",
-      "src/main/java/net/mcreator/moreandmoreendrods/init/MoreandmoreendrodsModTabs.java",
-      "src/main/resources/moreandmoreendrods.mixins.json"
+      "src/main/java/net/mcreator/moreandmoreendrods/init/MoreandmoreendrodsModTabs.java"
     ]
   },
   "foldersRoot": {
@@ -1846,7 +1845,7 @@
     "dependencies": [],
     "dependants": [],
     "mcreatorDependencies": [],
-    "currentGenerator": "neoforge-26.1.2",
+    "currentGenerator": "neoforge-26.2",
     "credits": "Created using mod maker MCreator - https://mcreator.net/about",
     "modElementsPackage": "net.mcreator.moreandmoreendrods"
   },

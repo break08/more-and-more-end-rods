@@ -248,12 +248,12 @@ public class DispenserEndRodArchiveItemGUIMenu extends AbstractContainerMenu imp
 				destSlot = startSlot;
 			}
 			while (backwards ? destSlot >= startSlot : destSlot < endSlot) {
-				Slot slotx = this.slots.get(destSlot);
-				ItemStack targetx = slotx.getItem();
-				if (targetx.isEmpty() && slotx.mayPlace(itemStack)) {
-					int maxStackSize = slotx.getMaxStackSize(itemStack);
-					slotx.setByPlayer(itemStack.split(Math.min(itemStack.getCount(), maxStackSize)));
-					slotx.setChanged();
+				Slot slot = this.slots.get(destSlot);
+				ItemStack target = slot.getItem();
+				if (target.isEmpty() && slot.mayPlace(itemStack)) {
+					int maxStackSize = slot.getMaxStackSize(itemStack);
+					slot.setByPlayer(itemStack.split(Math.min(itemStack.getCount(), maxStackSize)));
+					slot.set(target);
 					anythingChanged = true;
 					break;
 				}

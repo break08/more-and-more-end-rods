@@ -14,8 +14,6 @@ description="Add More End Rods Variants in Minecraft"
 # Start of user code block mod configuration
 # End of user code block mod configuration
 
-[[mixins]]
-    config = "moreandmoreendrods.mixins.json"
 
 # Start of user code block custom mixins
 # End of user code block custom mixins
@@ -23,14 +21,14 @@ description="Add More End Rods Variants in Minecraft"
 [[dependencies.moreandmoreendrods]]
     modId="neoforge"
     type="required"
-    versionRange="[26.1.2.95,)"
+    versionRange="[26.2.0.59,)"
     ordering="AFTER"
     side="BOTH"
 
 [[dependencies.moreandmoreendrods]]
     modId="minecraft"
     type="required"
-    versionRange="[26.1.2]"
+    versionRange="[26.2]"
     ordering="AFTER"
     side="BOTH"
 
