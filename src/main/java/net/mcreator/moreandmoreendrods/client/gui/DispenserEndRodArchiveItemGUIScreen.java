@@ -13,7 +13,9 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.mcreator.moreandmoreendrods.world.inventory.DispenserEndRodArchiveItemGUIMenu;
 import net.mcreator.moreandmoreendrods.init.MoreandmoreendrodsModScreens;
 
-public class DispenserEndRodArchiveItemGUIScreen extends AbstractContainerScreen<DispenserEndRodArchiveItemGUIMenu> implements MoreandmoreendrodsModScreens.FabricScreenAccessor {
+import com.mojang.blaze3d.platform.InputConstants;
+
+public class DispenserEndRodArchiveItemGUIScreen extends AbstractContainerScreen<DispenserEndRodArchiveItemGUIMenu> implements MoreandmoreendrodsModScreens.ScreenAccessor {
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
@@ -48,7 +50,7 @@ public class DispenserEndRodArchiveItemGUIScreen extends AbstractContainerScreen
 
 	@Override
 	public boolean keyPressed(KeyEvent event) {
-		int key = event.key();
+		int key = InputConstants.getKey(event).getValue();
 		if (key == 256) {
 			this.minecraft.player.closeContainer();
 			return true;

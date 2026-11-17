@@ -1,7 +1,5 @@
 package net.mcreator.moreandmoreendrods.block;
 
-import org.jetbrains.annotations.Nullable;
-
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -21,18 +19,26 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.Containers;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
+import net.mcreator.moreandmoreendrods.world.inventory.DispenserEndRodArchiveItemGUIMenu;
 import net.mcreator.moreandmoreendrods.procedures.DispenserEndRodRedstoneOnOffProcedure;
 import net.mcreator.moreandmoreendrods.block.entity.DispenserEndRodBlockEntity;
 
+import javax.annotation.Nullable;
+
 import java.util.function.Function;
+
+import io.netty.buffer.Unpooled;
 
 public class DispenserEndRodBlock extends Block implements EntityBlock {
 	public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
@@ -107,6 +113,11 @@ public class DispenserEndRodBlock extends Block implements EntityBlock {
 	}
 
 	@Override
+	public boolean canConnectRedstone(BlockState state, BlockGetter world, BlockPos pos, Direction side) {
+		return true;
+	}
+
+	@Override
 	public void neighborChanged(BlockState blockstate, Level world, BlockPos pos, Block neighborBlock, @Nullable Orientation orientation, boolean moving) {
 		super.neighborChanged(blockstate, world, pos, neighborBlock, orientation, moving);
 		if (world.getBestNeighborSignal(pos) > 0) {
@@ -117,8 +128,19 @@ public class DispenserEndRodBlock extends Block implements EntityBlock {
 	@Override
 	public InteractionResult useWithoutItem(BlockState blockstate, Level world, BlockPos pos, Player entity, BlockHitResult hit) {
 		super.useWithoutItem(blockstate, world, pos, entity, hit);
-		if (entity instanceof ServerPlayer player)
-			player.openMenu(world.getBlockEntity(pos) instanceof MenuProvider menuProvider ? menuProvider : null);
+		if (entity instanceof ServerPlayer player) {
+			player.openMenu(new MenuProvider() {
+				@Override
+				public Component getDisplayName() {
+					return Component.literal("Dispenser End Rod");
+				}
+
+				@Override
+				public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+					return new DispenserEndRodArchiveItemGUIMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
+				}
+			}, pos);
+		}
 		return InteractionResult.SUCCESS;
 	}
 

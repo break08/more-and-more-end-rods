@@ -17,8 +17,7 @@ public class CactusEndRodEntityCollidesInTheBlockProcedure {
 			{
 				Entity _ent = entity;
 				if (_ent.level() instanceof ServerLevel _serverLevel) {
-					_ent.hurtServer(_serverLevel, new DamageSource(world.registryAccess().lookupOrThrow(Registries.DAMAGE_TYPE).getOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.parse("moreandmoreendrods:pocked_by_cactus_end_rod")))),
-							1);
+					_ent.hurtServer(_serverLevel, new DamageSource(world.holderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.parse("moreandmoreendrods:pocked_by_cactus_end_rod")))), 1);
 				}
 			}
 		}

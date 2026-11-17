@@ -1,13 +1,24 @@
 package net.mcreator.moreandmoreendrods.block;
 
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.EndRodBlock;
-
-import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.core.Direction;
+import net.minecraft.core.BlockPos;
 
 public class StoneEndRodBlock extends EndRodBlock {
 	public StoneEndRodBlock(BlockBehaviour.Properties properties) {
 		super(properties.strength(1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).forceSolidOff());
-		FlammableBlockRegistry.getDefaultInstance().add(this, 15, 160);
+	}
+
+	@Override
+	public int getFlammability(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
+		return 15;
+	}
+
+	@Override
+	public int getFireSpreadSpeed(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
+		return 160;
 	}
 }

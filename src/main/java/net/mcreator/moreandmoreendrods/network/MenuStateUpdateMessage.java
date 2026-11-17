@@ -1,8 +1,15 @@
 package net.mcreator.moreandmoreendrods.network;
 
+import net.neoforged.neoforge.network.handling.IPayloadContext;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.bus.api.SubscribeEvent;
+
 import net.minecraft.resources.Identifier;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.client.Minecraft;
@@ -11,9 +18,7 @@ import net.mcreator.moreandmoreendrods.init.MoreandmoreendrodsModScreens;
 import net.mcreator.moreandmoreendrods.init.MoreandmoreendrodsModMenus;
 import net.mcreator.moreandmoreendrods.MoreandmoreendrodsMod;
 
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-
+@EventBusSubscriber
 public record MenuStateUpdateMessage(int elementType, String name, Object elementState) implements CustomPacketPayload {
 	public static final Type<MenuStateUpdateMessage> TYPE = new Type<>(Identifier.fromNamespaceAndPath(MoreandmoreendrodsMod.MODID, "menustate_update"));
 	public static final StreamCodec<RegistryFriendlyByteBuf, MenuStateUpdateMessage> STREAM_CODEC = StreamCodec.of(MenuStateUpdateMessage::write, MenuStateUpdateMessage::read);
@@ -49,29 +54,24 @@ public record MenuStateUpdateMessage(int elementType, String name, Object elemen
 		return TYPE;
 	}
 
-	public static void handleMenuState(final MenuStateUpdateMessage message, final ServerPlayNetworking.Context context) {
+	public static void handleMenuState(final MenuStateUpdateMessage message, final IPayloadContext context) {
 		if (message.name.length() > 256 || message.elementState instanceof String string && string.length() > 8192)
 			return;
-		context.server().execute(() -> {
+		context.enqueueWork(() -> {
 			if (context.player().containerMenu instanceof MoreandmoreendrodsModMenus.MenuAccessor menu) {
 				menu.getMenuState().put(message.elementType + ":" + message.name, message.elementState);
-				if (Minecraft.getInstance().screen instanceof MoreandmoreendrodsModScreens.FabricScreenAccessor accessor) {
+				if (context.flow() == PacketFlow.CLIENTBOUND && Minecraft.getInstance().screen instanceof MoreandmoreendrodsModScreens.ScreenAccessor accessor) {
 					accessor.updateMenuState(message.elementType, message.name, message.elementState);
 				}
 			}
+		}).exceptionally(e -> {
+			context.connection().disconnect(Component.literal(e.getMessage()));
+			return null;
 		});
 	}
 
-	public static void handleClientMenuState(final MenuStateUpdateMessage message, final ClientPlayNetworking.Context context) {
-		if (message.name.length() > 256 || message.elementState instanceof String string && string.length() > 8192)
-			return;
-		context.client().execute(() -> {
-			if (context.player().containerMenu instanceof MoreandmoreendrodsModMenus.MenuAccessor menu) {
-				menu.getMenuState().put(message.elementType + ":" + message.name, message.elementState);
-				if (Minecraft.getInstance().screen instanceof MoreandmoreendrodsModScreens.FabricScreenAccessor accessor) {
-					accessor.updateMenuState(message.elementType, message.name, message.elementState);
-				}
-			}
-		});
+	@SubscribeEvent
+	public static void registerMessage(FMLCommonSetupEvent event) {
+		MoreandmoreendrodsMod.addNetworkMessage(MenuStateUpdateMessage.TYPE, MenuStateUpdateMessage.STREAM_CODEC, MenuStateUpdateMessage::handleMenuState);
 	}
 }

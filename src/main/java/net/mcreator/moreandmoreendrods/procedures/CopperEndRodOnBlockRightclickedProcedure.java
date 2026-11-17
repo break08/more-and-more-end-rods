@@ -21,10 +21,10 @@ public class CopperEndRodOnBlockRightclickedProcedure {
 		if (entity == null)
 			return;
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.HONEYCOMB) {
-			if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == MoreandmoreendrodsModBlocks.COPPER_END_ROD) {
+			if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == MoreandmoreendrodsModBlocks.COPPER_END_ROD.get()) {
 				{
 					BlockPos _bp = BlockPos.containing(x, y, z);
-					BlockState _bs = MoreandmoreendrodsModBlocks.WAXED_COPPER_END_ROD.defaultBlockState();
+					BlockState _bs = MoreandmoreendrodsModBlocks.WAXED_COPPER_END_ROD.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Property<?> _propertyOld : _bso.getProperties()) {
 						Property _propertyNew = _bs.getBlock().getStateDefinition().getProperty(_propertyOld.getName());
@@ -36,10 +36,10 @@ public class CopperEndRodOnBlockRightclickedProcedure {
 					}
 					world.setBlock(_bp, _bs, 3);
 				}
-			} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == MoreandmoreendrodsModBlocks.EXPOSED_COPPER_END_ROD) {
+			} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == MoreandmoreendrodsModBlocks.EXPOSED_COPPER_END_ROD.get()) {
 				{
 					BlockPos _bp = BlockPos.containing(x, y, z);
-					BlockState _bs = MoreandmoreendrodsModBlocks.WAXED_EXPOSED_COPPER_END_ROD.defaultBlockState();
+					BlockState _bs = MoreandmoreendrodsModBlocks.WAXED_EXPOSED_COPPER_END_ROD.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Property<?> _propertyOld : _bso.getProperties()) {
 						Property _propertyNew = _bs.getBlock().getStateDefinition().getProperty(_propertyOld.getName());
@@ -51,10 +51,10 @@ public class CopperEndRodOnBlockRightclickedProcedure {
 					}
 					world.setBlock(_bp, _bs, 3);
 				}
-			} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == MoreandmoreendrodsModBlocks.WEATHERED_COPPER_END_ROD) {
+			} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == MoreandmoreendrodsModBlocks.WEATHERED_COPPER_END_ROD.get()) {
 				{
 					BlockPos _bp = BlockPos.containing(x, y, z);
-					BlockState _bs = MoreandmoreendrodsModBlocks.WAXED_WEATHERED_COPPER_END_ROD.defaultBlockState();
+					BlockState _bs = MoreandmoreendrodsModBlocks.WAXED_WEATHERED_COPPER_END_ROD.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Property<?> _propertyOld : _bso.getProperties()) {
 						Property _propertyNew = _bs.getBlock().getStateDefinition().getProperty(_propertyOld.getName());
