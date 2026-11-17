@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "moreandmoreendrods:cherry_end_rod_recipe"
+        "recipes": "moreandmoreendrods:cherry_end_rod_recipe"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

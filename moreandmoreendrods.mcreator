@@ -1801,15 +1801,16 @@
   },
   "metadata": {
     "files": [
+      "src/main/java/net/mcreator/moreandmoreendrods/init/MoreandmoreendrodsModVillagerProfessions.java",
       "src/main/java/net/mcreator/moreandmoreendrods/init/MoreandmoreendrodsModMenus.java",
       "src/main/java/net/mcreator/moreandmoreendrods/init/MoreandmoreendrodsModScreens.java",
       "src/main/java/net/mcreator/moreandmoreendrods/network/MenuStateUpdateMessage.java",
-      "src/main/java/net/mcreator/moreandmoreendrods/init/MoreandmoreendrodsModVillagerProfessions.java",
       "src/main/java/net/mcreator/moreandmoreendrods/init/MoreandmoreendrodsModBlocks.java",
-      "src/main/java/net/mcreator/moreandmoreendrods/init/MoreandmoreendrodsModBlockEntities.java",
       "src/main/java/net/mcreator/moreandmoreendrods/init/MoreandmoreendrodsModItems.java",
       "src/main/java/net/mcreator/moreandmoreendrods/mixin/ServerPlayerMixin.java",
       "src/main/java/net/mcreator/moreandmoreendrods/mixin/RepairItemRecipeMixin.java",
+      "src/main/java/net/mcreator/moreandmoreendrods/init/MoreandmoreendrodsModBlockEntities.java",
+      "src/main/resources/META-INF/moreandmoreendrods.classtweaker",
       "src/main/resources/fabric.mod.json",
       "src/main/java/net/mcreator/moreandmoreendrods/mixin/ExperienceOrbMixin.java",
       "src/main/java/net/mcreator/moreandmoreendrods/mixin/ItemStackMixin.java",
@@ -1817,7 +1818,6 @@
       "src/main/java/net/mcreator/moreandmoreendrods/mixin/CommandsMixin.java",
       "src/main/java/net/mcreator/moreandmoreendrods/MoreandmoreendrodsMod.java",
       "src/main/java/net/mcreator/moreandmoreendrods/event/BlockEvents.java",
-      "src/main/resources/META-INF/moreandmoreendrods.classtweaker",
       "src/main/java/net/mcreator/moreandmoreendrods/event/PlayerEvents.java",
       "src/main/java/net/mcreator/moreandmoreendrods/event/ItemEvents.java",
       "src/main/java/net/mcreator/moreandmoreendrods/MoreandmoreendrodsModClient.java",
@@ -1852,7 +1852,7 @@
   "workspaceSettings": {
     "modid": "moreandmoreendrods",
     "modName": "MoreAndMoreEndRods",
-    "version": "2.0.2",
+    "version": "2.0.3",
     "description": "Add More End Rods Variants in Minecraft",
     "author": "break08",
     "websiteURL": "https://modrinth.com/mod/more-and-more-end-rods",
@@ -1862,9 +1862,9 @@
     "dependencies": [],
     "dependants": [],
     "mcreatorDependencies": [],
-    "currentGenerator": "fabric-26.2",
+    "currentGenerator": "fabric-26.3",
     "credits": "Created using mod maker MCreator - https://mcreator.net/about",
     "modElementsPackage": "net.mcreator.moreandmoreendrods"
   },
-  "mcreatorVersion": 202600233518
+  "mcreatorVersion": 202600344621
 }

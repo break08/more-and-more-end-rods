@@ -4,12 +4,13 @@
 package net.mcreator.moreandmoreendrods.init;
 
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.Identifier;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.Registry;
 
 import net.mcreator.moreandmoreendrods.MoreandmoreendrodsMod;
 
@@ -121,7 +122,7 @@ public class MoreandmoreendrodsModItems {
 	// Start of user code block custom items
 	// End of user code block custom items
 	private static <I extends Item> I register(String name, Function<Item.Properties, ? extends I> supplier) {
-		return (I) Items.registerItem(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MoreandmoreendrodsMod.MODID, name)), (Function<Item.Properties, Item>) supplier);
+		return (I) registerItem(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MoreandmoreendrodsMod.MODID, name)), (Function<Item.Properties, Item>) supplier, new Item.Properties());
 	}
 
 	private static Item block(Block block, String name) {
@@ -129,6 +130,14 @@ public class MoreandmoreendrodsModItems {
 	}
 
 	private static Item block(Block block, String name, Item.Properties properties) {
-		return Items.registerItem(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MoreandmoreendrodsMod.MODID, name)), prop -> new BlockItem(block, prop), properties);
+		return registerItem(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MoreandmoreendrodsMod.MODID, name)), prop -> new BlockItem(block, prop), properties);
+	}
+
+	private static Item registerItem(final ResourceKey<Item> id, final Function<Item.Properties, Item> itemFactory, final Item.Properties properties) {
+		Item item = (Item) itemFactory.apply(properties.setId(id));
+		if (item instanceof BlockItem blockItem) {
+			blockItem.registerBlocks(Item.BY_BLOCK, item);
+		}
+		return (Item) Registry.register(BuiltInRegistries.ITEM, id, item);
 	}
 }

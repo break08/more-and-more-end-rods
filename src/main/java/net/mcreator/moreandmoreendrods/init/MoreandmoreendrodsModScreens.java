@@ -3,8 +3,6 @@
  */
 package net.mcreator.moreandmoreendrods.init;
 
-import org.lwjgl.glfw.GLFW;
-
 import net.minecraft.util.Mth;
 import net.minecraft.util.ARGB;
 import net.minecraft.network.chat.Component;
@@ -23,6 +21,7 @@ import net.fabricmc.api.EnvType;
 import java.text.DecimalFormat;
 
 import com.mojang.blaze3d.platform.cursor.CursorTypes;
+import com.mojang.blaze3d.platform.InputConstants;
 
 @Environment(EnvType.CLIENT)
 public class MoreandmoreendrodsModScreens {
@@ -106,8 +105,8 @@ public class MoreandmoreendrodsModScreens {
 		@Override
 		public boolean keyPressed(KeyEvent event) {
 			int keyCode = event.key();
-			boolean flag = keyCode == GLFW.GLFW_KEY_LEFT;
-			if (flag || keyCode == GLFW.GLFW_KEY_RIGHT) {
+			boolean flag = keyCode == InputConstants.KEY_LEFT;
+			if (flag || keyCode == InputConstants.KEY_RIGHT) {
 				if (this.minValue > this.maxValue)
 					flag = !flag;
 				float f = flag ? -1F : 1F;

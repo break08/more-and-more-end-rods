@@ -67,4 +67,8 @@ public class MoreandmoreendrodsModMenus {
 	private static <M extends AbstractContainerMenu> MenuType<M> register(String registryname, MenuType.MenuSupplier<M> element) {
 		return Registry.register(BuiltInRegistries.MENU, Identifier.fromNamespaceAndPath(MoreandmoreendrodsMod.MODID, registryname), new MenuType<>(element, FeatureFlags.DEFAULT_FLAGS));
 	}
+
+	public interface BoundBlock {
+		Class<? extends AbstractContainerMenu> getBoundMenuClass();
+	}
 }

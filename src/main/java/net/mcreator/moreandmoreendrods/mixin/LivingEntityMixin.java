@@ -8,6 +8,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Mixin;
 
 import net.minecraft.world.level.gamerules.GameRules;
+import net.minecraft.world.item.component.SwingAnimation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.LivingEntity;
@@ -28,8 +29,8 @@ public abstract class LivingEntityMixin {
 		return false;
 	}
 
-	@Inject(method = "swing(Lnet/minecraft/world/InteractionHand;Z)V", at = @At("HEAD"))
-	public void swing(InteractionHand hand, boolean updateSelf, CallbackInfo ci) {
+	@Inject(method = "swing(Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/item/component/SwingAnimation;Z)Z", at = @At("HEAD"))
+	public void swing(InteractionHand hand, SwingAnimation swingAnimation, boolean updateSelf, CallbackInfoReturnable<Boolean> cir) {
 		ItemStack stack = ((LivingEntity) (Object) this).getItemInHand(hand);
 		if (!stack.isEmpty()) {
 		}
@@ -39,9 +40,8 @@ public abstract class LivingEntityMixin {
 	public void startUsingItem(InteractionHand hand, CallbackInfo ci) {
 		LivingEntity entity = (LivingEntity) (Object) this;
 		ItemStack stack = entity.getItemInHand(hand);
-		if (!stack.isEmpty() && !entity.isUsingItem()) {
+		if (!stack.isEmpty() && !entity.isUsingItem())
 			LivingEntityEvents.START_USE_ITEM.invoker().onStartUseItem(entity, stack);
-		}
 	}
 
 	@Inject(method = "heal(F)V", at = @At("HEAD"), cancellable = true)

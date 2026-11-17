@@ -13,7 +13,7 @@ import net.minecraft.core.registries.Registries;
 import net.mcreator.moreandmoreendrods.block.*;
 import net.mcreator.moreandmoreendrods.MoreandmoreendrodsMod;
 
-import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
+import net.fabricmc.fabric.api.item.v1.BlockTransformerHelper;
 
 import java.util.function.Function;
 
@@ -118,12 +118,12 @@ public class MoreandmoreendrodsModBlocks {
 		GLASS_END_ROD = register("glass_end_rod", GlassEndRodBlock::new);
 		SLIME_END_ROD = register("slime_end_rod", SlimeEndRodBlock::new);
 		DISPENSER_END_ROD = register("dispenser_end_rod", DispenserEndRodBlock::new);
-		StrippableBlockRegistry.register(MoreandmoreendrodsModBlocks.EXPOSED_COPPER_END_ROD, MoreandmoreendrodsModBlocks.COPPER_END_ROD);
-		StrippableBlockRegistry.register(MoreandmoreendrodsModBlocks.WEATHERED_COPPER_END_ROD, MoreandmoreendrodsModBlocks.EXPOSED_COPPER_END_ROD);
-		StrippableBlockRegistry.register(MoreandmoreendrodsModBlocks.OXIDIZED_COPPER_END_ROD, MoreandmoreendrodsModBlocks.WEATHERED_COPPER_END_ROD);
-		StrippableBlockRegistry.register(MoreandmoreendrodsModBlocks.WAXED_COPPER_END_ROD, MoreandmoreendrodsModBlocks.COPPER_END_ROD);
-		StrippableBlockRegistry.register(MoreandmoreendrodsModBlocks.WAXED_EXPOSED_COPPER_END_ROD, MoreandmoreendrodsModBlocks.EXPOSED_COPPER_END_ROD);
-		StrippableBlockRegistry.register(MoreandmoreendrodsModBlocks.WAXED_WEATHERED_COPPER_END_ROD, MoreandmoreendrodsModBlocks.WEATHERED_COPPER_END_ROD);
+		BlockTransformerHelper.registerStripping(MoreandmoreendrodsModBlocks.EXPOSED_COPPER_END_ROD, MoreandmoreendrodsModBlocks.COPPER_END_ROD);
+		BlockTransformerHelper.registerStripping(MoreandmoreendrodsModBlocks.WEATHERED_COPPER_END_ROD, MoreandmoreendrodsModBlocks.EXPOSED_COPPER_END_ROD);
+		BlockTransformerHelper.registerStripping(MoreandmoreendrodsModBlocks.OXIDIZED_COPPER_END_ROD, MoreandmoreendrodsModBlocks.WEATHERED_COPPER_END_ROD);
+		BlockTransformerHelper.registerStripping(MoreandmoreendrodsModBlocks.WAXED_COPPER_END_ROD, MoreandmoreendrodsModBlocks.COPPER_END_ROD);
+		BlockTransformerHelper.registerStripping(MoreandmoreendrodsModBlocks.WAXED_EXPOSED_COPPER_END_ROD, MoreandmoreendrodsModBlocks.EXPOSED_COPPER_END_ROD);
+		BlockTransformerHelper.registerStripping(MoreandmoreendrodsModBlocks.WAXED_WEATHERED_COPPER_END_ROD, MoreandmoreendrodsModBlocks.WEATHERED_COPPER_END_ROD);
 	}
 
 	// Start of user code block custom blocks

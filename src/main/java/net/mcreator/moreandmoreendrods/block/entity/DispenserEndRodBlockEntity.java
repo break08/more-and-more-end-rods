@@ -114,6 +114,8 @@ public class DispenserEndRodBlockEntity extends RandomizableContainerBlockEntity
 
 	@Override
 	public boolean canPlaceItemThroughFace(int index, ItemStack itemstack, @Nullable Direction direction) {
+		if (this.getItem(index).getCount() >= this.getMaxStackSize(itemstack))
+			return false;
 		return this.canPlaceItem(index, itemstack);
 	}
 

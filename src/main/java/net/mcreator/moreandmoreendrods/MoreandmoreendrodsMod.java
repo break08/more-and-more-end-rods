@@ -8,7 +8,10 @@ import org.apache.logging.log4j.LogManager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.server.TickTask;
 
-import net.mcreator.moreandmoreendrods.init.*;
+import net.mcreator.moreandmoreendrods.init.MoreandmoreendrodsModVillagerProfessions;
+import net.mcreator.moreandmoreendrods.init.MoreandmoreendrodsModTabs;
+import net.mcreator.moreandmoreendrods.init.MoreandmoreendrodsModMenus;
+import net.mcreator.moreandmoreendrods.init.MoreandmoreendrodsModBlocks;
 
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
@@ -38,12 +41,11 @@ public class MoreandmoreendrodsMod implements ModInitializer {
 		LOGGER.info("Initializing MoreandmoreendrodsMod");
 		MoreandmoreendrodsModTabs.load();
 		MoreandmoreendrodsModBlocks.load();
-		MoreandmoreendrodsModBlockEntities.load();
-		MoreandmoreendrodsModItems.load();
 		MoreandmoreendrodsModMenus.load();
 		MoreandmoreendrodsModVillagerProfessions.load();
 		tick();
 		// Start of user code block mod init
+		net.mcreator.moreandmoreendrods.init.MoreandmoreendrodsModItems.load();
 		// End of user code block mod init
 	}
 

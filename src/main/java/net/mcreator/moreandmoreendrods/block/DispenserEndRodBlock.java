@@ -29,19 +29,21 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
+import net.mcreator.moreandmoreendrods.world.inventory.DispenserEndRodArchiveItemGUIMenu;
 import net.mcreator.moreandmoreendrods.procedures.DispenserEndRodRedstoneOnOffProcedure;
+import net.mcreator.moreandmoreendrods.init.MoreandmoreendrodsModMenus;
 import net.mcreator.moreandmoreendrods.block.entity.DispenserEndRodBlockEntity;
 
 import java.util.function.Function;
 
-public class DispenserEndRodBlock extends Block implements EntityBlock {
+public class DispenserEndRodBlock extends Block implements EntityBlock, MoreandmoreendrodsModMenus.BoundBlock {
 	public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
 	public static final EnumProperty<AttachFace> FACE = FaceAttachedHorizontalDirectionalBlock.FACE;
 	public static final IntegerProperty WORKING_STATE = IntegerProperty.create("working_state", 0, 2);
 	private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public DispenserEndRodBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.GRAVEL).strength(1f, 10f).noOcclusion().pushReaction(PushReaction.PUSH_ONLY).isRedstoneConductor((bs, br, bp) -> false));
+		super(properties.sound(SoundType.GRAVEL).strength(1f, 10f).noOcclusion().pushReaction(PushReaction.PUSH).isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(FACE, AttachFace.WALL).setValue(WORKING_STATE, 0));
 	}
 
@@ -126,6 +128,11 @@ public class DispenserEndRodBlock extends Block implements EntityBlock {
 	public MenuProvider getMenuProvider(BlockState state, Level worldIn, BlockPos pos) {
 		BlockEntity tileEntity = worldIn.getBlockEntity(pos);
 		return tileEntity instanceof MenuProvider menuProvider ? menuProvider : null;
+	}
+
+	@Override
+	public Class<? extends AbstractContainerMenu> getBoundMenuClass() {
+		return DispenserEndRodArchiveItemGUIMenu.class;
 	}
 
 	@Override

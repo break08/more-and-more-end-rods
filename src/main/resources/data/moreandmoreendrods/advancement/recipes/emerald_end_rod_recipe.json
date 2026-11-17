@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "moreandmoreendrods:emerald_end_rod_recipe"
+        "recipes": "moreandmoreendrods:emerald_end_rod_recipe"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

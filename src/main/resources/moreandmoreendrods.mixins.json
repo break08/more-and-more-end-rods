@@ -10,9 +10,7 @@
     "BlockItemMixin",
     "BoneMealItemMixin",
     "CommandsMixin",
-    "ExperienceOrbMixin",
-    "RepairItemRecipeMixin",
-    "ServerPlayerMixin"
+    "ExperienceOrbMixin"
   ],
   "client": [],
   "injectors": {
