@@ -5,7 +5,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.EndRodBlock;
 
 public class IronEndRodBlock extends EndRodBlock {
-	public IronEndRodBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.METAL).strength(3f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).forceSolidOff());
+	public IronEndRodBlock() {
+		super(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(3f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).forceSolidOff());
 	}
 }

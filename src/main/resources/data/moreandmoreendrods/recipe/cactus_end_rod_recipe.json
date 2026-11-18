@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "minecraft:end_rod",
-    "minecraft:cactus"
+    {
+      "item": "minecraft:end_rod"
+    },
+    {
+      "item": "minecraft:cactus"
+    }
   ],
   "result": {
     "id": "moreandmoreendrods:cactus_end_rod",

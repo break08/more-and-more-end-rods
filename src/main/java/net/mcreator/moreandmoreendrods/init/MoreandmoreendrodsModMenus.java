@@ -9,7 +9,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.Registry;
 import net.minecraft.client.Minecraft;
@@ -30,12 +30,12 @@ public class MoreandmoreendrodsModMenus {
 	public static void load() {
 		DISPENSER_END_ROD_ARCHIVE_ITEM_GUI = register("dispenser_end_rod_archive_item_gui", DispenserEndRodArchiveItemGUIMenu::new);
 		DispenserEndRodArchiveItemGUIMenu.screenInit();
-		PayloadTypeRegistry.serverboundPlay().register(MenuStateUpdateMessage.TYPE, MenuStateUpdateMessage.STREAM_CODEC);
+		PayloadTypeRegistry.playC2S().register(MenuStateUpdateMessage.TYPE, MenuStateUpdateMessage.STREAM_CODEC);
 		ServerPlayNetworking.registerGlobalReceiver(MenuStateUpdateMessage.TYPE, MenuStateUpdateMessage::handleMenuState);
 	}
 
 	public static void clientLoad() {
-		PayloadTypeRegistry.clientboundPlay().register(MenuStateUpdateMessage.TYPE, MenuStateUpdateMessage.STREAM_CODEC);
+		PayloadTypeRegistry.playS2C().register(MenuStateUpdateMessage.TYPE, MenuStateUpdateMessage.STREAM_CODEC);
 		ClientPlayNetworking.registerGlobalReceiver(MenuStateUpdateMessage.TYPE, MenuStateUpdateMessage::handleClientMenuState);
 	}
 
@@ -48,7 +48,7 @@ public class MoreandmoreendrodsModMenus {
 			getMenuState().put(elementType + ":" + name, elementState);
 			if (player instanceof ServerPlayer serverPlayer) {
 				ServerPlayNetworking.send(serverPlayer, new MenuStateUpdateMessage(elementType, name, elementState));
-			} else if (player.level().isClientSide()) {
+			} else if (player.level().isClientSide) {
 				if (Minecraft.getInstance().screen instanceof MoreandmoreendrodsModScreens.FabricScreenAccessor accessor && needClientUpdate)
 					accessor.updateMenuState(elementType, name, elementState);
 				ClientPlayNetworking.send(new MenuStateUpdateMessage(elementType, name, elementState));
@@ -65,6 +65,6 @@ public class MoreandmoreendrodsModMenus {
 	}
 
 	private static <M extends AbstractContainerMenu> MenuType<M> register(String registryname, MenuType.MenuSupplier<M> element) {
-		return Registry.register(BuiltInRegistries.MENU, Identifier.fromNamespaceAndPath(MoreandmoreendrodsMod.MODID, registryname), new MenuType<>(element, FeatureFlags.DEFAULT_FLAGS));
+		return Registry.register(BuiltInRegistries.MENU, ResourceLocation.fromNamespaceAndPath(MoreandmoreendrodsMod.MODID, registryname), new MenuType<>(element, FeatureFlags.DEFAULT_FLAGS));
 	}
 }

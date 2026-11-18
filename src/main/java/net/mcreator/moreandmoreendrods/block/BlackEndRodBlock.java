@@ -5,7 +5,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.EndRodBlock;
 
 public class BlackEndRodBlock extends EndRodBlock {
-	public BlackEndRodBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.GRAVEL).strength(1f, 10f).lightLevel(blockstate -> 14).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).forceSolidOff());
+	public BlackEndRodBlock() {
+		super(BlockBehaviour.Properties.of().sound(SoundType.GRAVEL).strength(1f, 10f).lightLevel(blockstate -> 14).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).forceSolidOff());
 	}
 }

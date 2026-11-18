@@ -4,91 +4,74 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Mixin;
 
-import net.minecraft.world.level.gamerules.GameRules;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.server.level.ServerLevel;
 
-import net.mcreator.moreandmoreendrods.event.LivingEntityEvents;
+import net.mcreator.moreandmoreendrods.trigger.MoreandmoreendrodsModTriggers;
 
 @Mixin(LivingEntity.class)
-public abstract class LivingEntityMixin {
-	@Shadow
-	protected int lastHurtByPlayerMemoryTime;
-
-	@Shadow
-	protected boolean isAlwaysExperienceDropper() {
-		return false;
+public class LivingEntityMixin {
+	@Inject(method = "heal", at = @At("RETURN"))
+	private void onHeal(float amount, CallbackInfo callback) {
+		MoreandmoreendrodsModTriggers.fireHealed((LivingEntity) (Object) this, amount);
 	}
 
-	@Inject(method = "swing(Lnet/minecraft/world/InteractionHand;Z)V", at = @At("HEAD"))
-	public void swing(InteractionHand hand, boolean updateSelf, CallbackInfo ci) {
-		ItemStack stack = ((LivingEntity) (Object) this).getItemInHand(hand);
-		if (!stack.isEmpty()) {
-		}
+	@Inject(method = "causeFallDamage", at = @At("HEAD"))
+	private void onFall(float distance, float multiplier, DamageSource source, CallbackInfoReturnable<Boolean> callback) {
+		MoreandmoreendrodsModTriggers.fireFalls((LivingEntity) (Object) this, distance, multiplier, source);
 	}
 
-	@Inject(method = "startUsingItem(Lnet/minecraft/world/InteractionHand;)V", at = @At("HEAD"))
-	public void startUsingItem(InteractionHand hand, CallbackInfo ci) {
-		LivingEntity entity = (LivingEntity) (Object) this;
-		ItemStack stack = entity.getItemInHand(hand);
-		if (!stack.isEmpty() && !entity.isUsingItem())
-			LivingEntityEvents.START_USE_ITEM.invoker().onStartUseItem(entity, stack);
+	@Inject(method = "jumpFromGround", at = @At("HEAD"))
+	private void onJump(CallbackInfo callback) {
+		MoreandmoreendrodsModTriggers.fireJumps((LivingEntity) (Object) this);
 	}
 
-	@Inject(method = "heal(F)V", at = @At("HEAD"), cancellable = true)
-	public void heal(float amount, CallbackInfo ci) {
-		if (!LivingEntityEvents.ENTITY_HEAL.invoker().onEntityHeal((LivingEntity) (Object) this, amount))
-			ci.cancel();
-	}
-
-	@Inject(method = "applyItemBlocking(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/damagesource/DamageSource;F)F", at = @At("HEAD"), cancellable = true)
-	public void applyItemBlocking(ServerLevel serverLevel, DamageSource damageSource, float f, CallbackInfoReturnable<Float> cir) {
-		if (!LivingEntityEvents.ENTITY_BLOCK.invoker().onEntityBlock((LivingEntity) (Object) this, damageSource, (double) f))
-			cir.cancel();
-	}
-
-	@Inject(method = "dropExperience(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/Entity;)V", at = @At("HEAD"), cancellable = true)
-	public void dropExperience(ServerLevel serverLevel, Entity entity, CallbackInfo ci) {
+	@Inject(method = "hurt", at = @At("HEAD"))
+	private void onHurt(DamageSource source, float amount, CallbackInfoReturnable<Boolean> callback) {
 		LivingEntity self = (LivingEntity) (Object) this;
-		if (!self.wasExperienceConsumed() && (this.isAlwaysExperienceDropper() || this.lastHurtByPlayerMemoryTime > 0 && self.shouldDropExperience() && serverLevel.getGameRules().get(GameRules.MOB_DROPS))) {
-			if (!LivingEntityEvents.ENTITY_DROP_XP.invoker().onEntityDropXp(self, self.getLastHurtByPlayer(), (double) self.getExperienceReward(serverLevel, entity)))
-				ci.cancel();
+		if (self.isDamageSourceBlocked(source))
+			MoreandmoreendrodsModTriggers.fireShieldBlock(self, source, amount);
+	}
+
+	@Inject(method = "setItemInHand", at = @At("HEAD"))
+	private void onSetItemInHand(net.minecraft.world.InteractionHand hand, ItemStack stack, CallbackInfo callback) {
+		if (hand == net.minecraft.world.InteractionHand.OFF_HAND) {
+			LivingEntity self = (LivingEntity) (Object) this;
+			MoreandmoreendrodsModTriggers.fireSwitchHand(self, self.getMainHandItem(), stack);
 		}
 	}
 
-	@Inject(method = "causeFallDamage(DFLnet/minecraft/world/damagesource/DamageSource;)Z", at = @At("HEAD"), cancellable = true)
-	public void causeFallDamage(double d, float f, DamageSource damageSource, CallbackInfoReturnable<Boolean> cir) {
-		if (!LivingEntityEvents.ENTITY_FALL.invoker().onEntityFall((LivingEntity) (Object) this, d, (double) f))
-			cir.setReturnValue(false);
+	@Inject(method = "startUsingItem", at = @At("HEAD"))
+	private void onStartUsing(net.minecraft.world.InteractionHand hand, CallbackInfo callback) {
+		LivingEntity self = (LivingEntity) (Object) this;
+		MoreandmoreendrodsModTriggers.fireUseItemStart(self, self.getItemInHand(hand), self.getUseItemRemainingTicks());
 	}
 
-	@Inject(method = "onItemPickup(Lnet/minecraft/world/entity/item/ItemEntity;)V", at = @At("HEAD"))
-	public void onItemPickup(ItemEntity itemEntity, CallbackInfo ci) {
-		LivingEntityEvents.ENTITY_PICKUP_ITEM.invoker().onEntityPickupItem(itemEntity.getOwner(), itemEntity.getItem());
+	@Inject(method = "stopUsingItem", at = @At("HEAD"))
+	private void onStopUsing(CallbackInfo callback) {
+		LivingEntity self = (LivingEntity) (Object) this;
+		if (!self.getUseItem().isEmpty())
+			MoreandmoreendrodsModTriggers.fireUseItemStop(self, self.getUseItem(), self.getUseItemRemainingTicks());
 	}
 
-	@Inject(method = "jumpFromGround()V", at = @At("TAIL"))
-	public void jumpFromGround(CallbackInfo ci) {
-		LivingEntityEvents.ENTITY_JUMP.invoker().onEntityJump((LivingEntity) (Object) this);
+	@Inject(method = "completeUsingItem", at = @At("HEAD"))
+	private void onCompleteUsing(CallbackInfo callback) {
+		LivingEntity self = (LivingEntity) (Object) this;
+		MoreandmoreendrodsModTriggers.fireUseItemFinish(self, self.getUseItem(), self.getUseItemRemainingTicks());
 	}
 
-	@Inject(method = "releaseUsingItem()V", at = @At("HEAD"))
-	public void releaseUsingItem(CallbackInfo ci) {
-		LivingEntity entity = (LivingEntity) (Object) this;
-		if (!entity.getUseItem().isEmpty())
-			LivingEntityEvents.ENTITY_STOP_USING_ITEM.invoker().onStopUsingItem(entity, entity.getUseItem(), entity.getUseItemRemainingTicks());
+	@Inject(method = "dropExperience", at = @At("HEAD"))
+	private void onDropExperience(net.minecraft.world.entity.Entity source, CallbackInfo callback) {
+		LivingEntity self = (LivingEntity) (Object) this;
+		MoreandmoreendrodsModTriggers.fireDropXp(self, 0, 0, source);
 	}
 
-	@Inject(method = "tick()V", at = @At("TAIL"))
-	public void tick(CallbackInfo ci) {
-		LivingEntityEvents.END_ENTITY_TICK.invoker().onEndTick((LivingEntity) (Object) this);
+	@Inject(method = "checkTotemDeathProtection", at = @At("RETURN"))
+	private void onTotem(DamageSource source, CallbackInfoReturnable<Boolean> callback) {
+		if (callback.getReturnValueZ())
+			MoreandmoreendrodsModTriggers.fireUseTotem((LivingEntity) (Object) this, source, ((LivingEntity) (Object) this).getOffhandItem());
 	}
 }

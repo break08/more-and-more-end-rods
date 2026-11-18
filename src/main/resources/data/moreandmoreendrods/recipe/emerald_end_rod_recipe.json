@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "moreandmoreendrods:stone_end_rod",
-    "minecraft:emerald"
+    {
+      "item": "moreandmoreendrods:stone_end_rod"
+    },
+    {
+      "item": "minecraft:emerald"
+    }
   ],
   "result": {
     "id": "moreandmoreendrods:emerald_end_rod",

@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "minecraft:stick",
-    "minecraft:warped_slab"
+    {
+      "item": "minecraft:stick"
+    },
+    {
+      "item": "minecraft:warped_slab"
+    }
   ],
   "result": {
     "id": "moreandmoreendrods:warped_end_rod",

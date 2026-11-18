@@ -12,8 +12,8 @@ import net.minecraft.core.BlockPos;
 import net.mcreator.moreandmoreendrods.procedures.CopperEndRodOnTickUpdateProcedure;
 
 public class WaxedCopperEndRodBlock extends EndRodBlock {
-	public WaxedCopperEndRodBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.METAL).strength(2f, 10f).noOcclusion().randomTicks().isRedstoneConductor((bs, br, bp) -> false).instrument(NoteBlockInstrument.TRUMPET).forceSolidOff());
+	public WaxedCopperEndRodBlock() {
+		super(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(2f, 10f).noOcclusion().randomTicks().isRedstoneConductor((bs, br, bp) -> false).instrument(NoteBlockInstrument.HARP).forceSolidOff());
 	}
 
 	@Override

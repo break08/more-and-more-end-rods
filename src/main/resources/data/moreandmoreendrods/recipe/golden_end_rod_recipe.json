@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "moreandmoreendrods:stone_end_rod",
-    "minecraft:gold_ingot"
+    {
+      "item": "moreandmoreendrods:stone_end_rod"
+    },
+    {
+      "item": "minecraft:gold_ingot"
+    }
   ],
   "result": {
     "id": "moreandmoreendrods:golden_end_rod",

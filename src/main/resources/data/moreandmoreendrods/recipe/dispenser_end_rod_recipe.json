@@ -7,8 +7,12 @@
     " a "
   ],
   "key": {
-    "a": "minecraft:redstone",
-    "b": "moreandmoreendrods:stone_end_rod"
+    "a": {
+      "item": "minecraft:redstone"
+    },
+    "b": {
+      "item": "moreandmoreendrods:stone_end_rod"
+    }
   },
   "result": {
     "id": "moreandmoreendrods:dispenser_end_rod",

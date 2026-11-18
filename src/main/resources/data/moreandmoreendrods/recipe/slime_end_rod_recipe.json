@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "minecraft:slime_ball",
-    "minecraft:slime_block"
+    {
+      "item": "minecraft:slime_ball"
+    },
+    {
+      "item": "minecraft:slime_block"
+    }
   ],
   "result": {
     "id": "moreandmoreendrods:slime_end_rod",

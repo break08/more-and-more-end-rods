@@ -17,8 +17,8 @@ import net.mcreator.moreandmoreendrods.procedures.CopperEndRodOnTickUpdateProced
 import net.mcreator.moreandmoreendrods.procedures.CopperEndRodOnBlockRightclickedProcedure;
 
 public class CopperEndRodBlock extends EndRodBlock {
-	public CopperEndRodBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.METAL).strength(2f, 10f).noOcclusion().randomTicks().isRedstoneConductor((bs, br, bp) -> false).forceSolidOff());
+	public CopperEndRodBlock() {
+		super(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(2f, 10f).noOcclusion().randomTicks().isRedstoneConductor((bs, br, bp) -> false).forceSolidOff());
 	}
 
 	@Override

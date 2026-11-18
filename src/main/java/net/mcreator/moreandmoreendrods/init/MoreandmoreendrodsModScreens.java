@@ -6,14 +6,10 @@ package net.mcreator.moreandmoreendrods.init;
 import org.lwjgl.glfw.GLFW;
 
 import net.minecraft.util.Mth;
-import net.minecraft.util.ARGB;
 import net.minecraft.network.chat.Component;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.gui.components.AbstractSliderButton;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.GuiGraphics;
 
 import net.mcreator.moreandmoreendrods.client.gui.DispenserEndRodArchiveItemGUIScreen;
 
@@ -21,8 +17,6 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
 import java.text.DecimalFormat;
-
-import com.mojang.blaze3d.platform.cursor.CursorTypes;
 
 @Environment(EnvType.CLIENT)
 public class MoreandmoreendrodsModScreens {
@@ -93,19 +87,18 @@ public class MoreandmoreendrodsModScreens {
 		}
 
 		@Override
-		public void onClick(MouseButtonEvent event, boolean doubleClick) {
-			this.setValueFromMouse(event.x());
+		public void onClick(double mouseX, double mouseY) {
+			this.setValueFromMouse(mouseX);
 		}
 
 		@Override
-		protected void onDrag(MouseButtonEvent event, double dx, double dy) {
-			super.onDrag(event, dx, dy);
-			this.setValueFromMouse(event.x());
+		protected void onDrag(double mouseX, double mouseY, double dragX, double dragY) {
+			super.onDrag(mouseX, mouseY, dragX, dragY);
+			this.setValueFromMouse(mouseX);
 		}
 
 		@Override
-		public boolean keyPressed(KeyEvent event) {
-			int keyCode = event.key();
+		public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
 			boolean flag = keyCode == GLFW.GLFW_KEY_LEFT;
 			if (flag || keyCode == GLFW.GLFW_KEY_RIGHT) {
 				if (this.minValue > this.maxValue)
@@ -158,15 +151,9 @@ public class MoreandmoreendrodsModScreens {
 		}
 
 		@Override
-		public void extractWidgetRenderState(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTick) {
-			guiGraphics.blitSprite(RenderPipelines.GUI_TEXTURED, this.getSprite(), this.getX(), this.getY(), this.getWidth(), this.getHeight(), ARGB.white(this.alpha));
-			guiGraphics.blitSprite(RenderPipelines.GUI_TEXTURED, this.getHandleSprite(), this.getX() + (int) (this.value * (double) (this.width - 8)), this.getY(), 8, this.getHeight(), ARGB.white(this.alpha));
-			int i = this.active ? 16777215 : 10526880;
-			var message = getMessage().copy().withStyle(style -> style.withColor(i)); // TODO 1.21.11: Inefficient, check how Vanilla does this
-			this.extractScrollingStringOverContents(guiGraphics.textRendererForWidget(this, GuiGraphicsExtractor.HoveredTextEffects.NONE), message, 2);
-
-			if (this.isHovered())
-				guiGraphics.requestCursor(this.dragging ? CursorTypes.RESIZE_EW : CursorTypes.POINTING_HAND);
+		public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+			// Vanilla widget rendering is used on 1.21.1, the sprite accessors only exist in newer versions
+			super.renderWidget(guiGraphics, mouseX, mouseY, partialTick);
 		}
 	}
 }

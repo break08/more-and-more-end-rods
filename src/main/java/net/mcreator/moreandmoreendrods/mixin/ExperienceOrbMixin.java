@@ -7,17 +7,13 @@ import org.spongepowered.asm.mixin.Mixin;
 
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.ExperienceOrb;
-import net.minecraft.server.level.ServerPlayer;
 
-import net.mcreator.moreandmoreendrods.event.PlayerEvents;
+import net.mcreator.moreandmoreendrods.trigger.MoreandmoreendrodsModTriggers;
 
 @Mixin(ExperienceOrb.class)
-public abstract class ExperienceOrbMixin {
-	@Inject(method = "playerTouch(Lnet/minecraft/world/entity/player/Player;)V", at = @At("HEAD"), cancellable = true)
-	public void playerTouch(Player player, CallbackInfo ci) {
-		if (player instanceof ServerPlayer serverPlayer)
-			if (serverPlayer.takeXpDelay == 0)
-				if (!PlayerEvents.PICKUP_XP.invoker().onPickupXp(serverPlayer))
-					ci.cancel();
+public class ExperienceOrbMixin {
+	@Inject(method = "playerTouch", at = @At("HEAD"))
+	private void onPlayerTouch(Player player, CallbackInfo callback) {
+		MoreandmoreendrodsModTriggers.firePickupXp(player);
 	}
 }

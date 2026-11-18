@@ -1,12 +1,12 @@
 /*
- *	MCreator note: This file will be REGENERATED on each build.
+ *    MCreator note: This file will be REGENERATED on each build.
  */
 package net.mcreator.moreandmoreendrods.init;
 
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.Identifier;
 import net.minecraft.network.chat.Component;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -14,13 +14,15 @@ import net.minecraft.core.Registry;
 
 import net.mcreator.moreandmoreendrods.MoreandmoreendrodsMod;
 
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+
 public class MoreandmoreendrodsModTabs {
-	public static ResourceKey<CreativeModeTab> TAB_EXTRA_END_ROD = ResourceKey.create(Registries.CREATIVE_MODE_TAB, Identifier.fromNamespaceAndPath(MoreandmoreendrodsMod.MODID, "extra_end_rod"));
+	public static final ResourceKey<CreativeModeTab> TAB_EXTRA_END_ROD = ResourceKey.create(Registries.CREATIVE_MODE_TAB, ResourceLocation.fromNamespaceAndPath(MoreandmoreendrodsMod.MODID, "extra_end_rod"));
 
 	public static void load() {
 		Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, TAB_EXTRA_END_ROD,
-				CreativeModeTab.builder(CreativeModeTab.Row.TOP, 0).title(Component.translatable("item_group.moreandmoreendrods.extra_end_rod")).icon(() -> new ItemStack(MoreandmoreendrodsModBlocks.OAK_END_ROD)).type(CreativeModeTab.Type.SEARCH)
-						.backgroundTexture(Identifier.withDefaultNamespace("textures/gui/container/creative_inventory/tab_item_search.png")).displayItems((parameters, tabData) -> {
+				FabricItemGroup.builder().title(Component.translatable("item_group.moreandmoreendrods.extra_end_rod")).icon(() -> new ItemStack(MoreandmoreendrodsModBlocks.OAK_END_ROD)).type(CreativeModeTab.Type.SEARCH)
+						.backgroundTexture(ResourceLocation.withDefaultNamespace("textures/gui/container/creative_inventory/tab_item_search.png")).displayItems((parameters, tabData) -> {
 							tabData.accept(MoreandmoreendrodsModBlocks.OAK_END_ROD.asItem());
 							tabData.accept(MoreandmoreendrodsModBlocks.CHERRY_END_ROD.asItem());
 							tabData.accept(MoreandmoreendrodsModBlocks.BIRCH_END_ROD.asItem());

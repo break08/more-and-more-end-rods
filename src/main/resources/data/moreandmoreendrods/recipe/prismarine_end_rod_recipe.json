@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "minecraft:stick",
-    "minecraft:prismarine_slab"
+    {
+      "item": "minecraft:stick"
+    },
+    {
+      "item": "minecraft:prismarine_slab"
+    }
   ],
   "result": {
     "id": "moreandmoreendrods:prismarine_end_rod",

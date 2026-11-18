@@ -1,6 +1,8 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": "minecraft:cobblestone",
+  "ingredient": {
+    "item": "minecraft:cobblestone"
+  },
   "result": {
     "id": "moreandmoreendrods:stone_end_rod",
     "count": 1

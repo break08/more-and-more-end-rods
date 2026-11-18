@@ -1,41 +1,40 @@
 plugins {
-    id 'net.fabricmc.fabric-loom' version '1.17-SNAPSHOT'
+    id 'fabric-loom' version '1.15.5'
 }
 
-version = '1.0'
 base.archivesName = "modid"
+version = '1.0'
+group = 'com.yourname.modid'
+actualmodid = 'moreandmoreendrods'
 
 loom {
-    if (file("src/main/resources/META-INF/moreandmoreendrods.classtweaker").exists())
-        accessWidenerPath = file("src/main/resources/META-INF/moreandmoreendrods.classtweaker")
+    mixin {
+        useLegacyMixinAp = true
+        defaultRefmapName = actualmodid + ".refmap.json"
+    }
+
+    if (file("src/main/resources/moreandmoreendrods.accesswidener").exists())
+        accessWidenerPath = file("src/main/resources/moreandmoreendrods.accesswidener")
 }
 
 dependencies {
-    minecraft "com.mojang:minecraft:26.1.2"
-    implementation "net.fabricmc:fabric-loader:0.19.3"
+    minecraft "com.mojang:minecraft:1.21.1"
+    mappings loom.officialMojangMappings()
+    modImplementation "net.fabricmc:fabric-loader:0.20.1"
 
     // Fabric API
-    implementation "net.fabricmc.fabric-api:fabric-api:0.155.2+26.1.2"
-}
-
-// We need to do this because MCreator doesn't allow to split armor textures in multiple folders
-tasks.named('processResources', ProcessResources) {
-    doLast {
-        copy {
-            from(layout.buildDirectory.dir("resources/main/assets/moreandmoreendrods/textures/entity/equipment/humanoid"))
-            into(layout.buildDirectory.dir("resources/main/assets/moreandmoreendrods/textures/entity/equipment/humanoid_leggings"))
-        }
-    }
+    modImplementation "net.fabricmc.fabric-api:fabric-api:0.116.17+1.21.1"
 }
 
 tasks.withType(JavaCompile).configureEach {
-    it.options.release = 25
+    it.options.release = 21
+    it.options.encoding = 'UTF-8'
 }
 
 java {
     withSourcesJar()
-    sourceCompatibility = JavaVersion.VERSION_25
-    targetCompatibility = JavaVersion.VERSION_25
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 apply from: 'mcreator.gradle'

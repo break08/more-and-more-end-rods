@@ -1,16 +1,13 @@
 package net.mcreator.moreandmoreendrods.world.inventory;
 
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.ContainerInput;
+import net.minecraft.world.inventory.ClickType;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.Container;
 import net.minecraft.network.FriendlyByteBuf;
@@ -40,8 +37,6 @@ public class DispenserEndRodArchiveItemGUIMenu extends AbstractContainerMenu imp
 	private final Map<Integer, Slot> customSlots = new HashMap<>();
 	private boolean bound = false;
 	private Supplier<Boolean> boundItemMatcher = null;
-	private Entity boundEntity = null;
-	private BlockEntity boundBlockEntity = null;
 	private ItemStack boundItem = null;
 
 	public DispenserEndRodArchiveItemGUIMenu(int id, Inventory inv) {
@@ -67,25 +62,17 @@ public class DispenserEndRodArchiveItemGUIMenu extends AbstractContainerMenu imp
 			access = ContainerLevelAccess.create(world, pos);
 		}
 		if (pos != null) {
-			if (extraData.readableBytes() == 1) {
+			if (extraData.readableBytes() == 1) { // bound to item
 				byte hand = extraData.readByte();
-				boundItem = hand == 0 ? this.entity.getMainHandItem() : this.entity.getOffhandItem();
-				this.boundItemMatcher = () -> boundItem == (hand == 0 ? this.entity.getMainHandItem() : this.entity.getOffhandItem());
+				ItemStack itemstack = hand == 0 ? this.entity.getMainHandItem() : this.entity.getOffhandItem();
+				this.boundItem = itemstack;
+				this.boundItemMatcher = () -> itemstack == (hand == 0 ? this.entity.getMainHandItem() : this.entity.getOffhandItem());
 				this.bound = true;
-			} else if (extraData.readableBytes() > 1) {
-				extraData.readByte();
-				boundEntity = world.getEntity(extraData.readVarInt());
-				if (boundEntity != null)
-					this.bound = true;
-			} else {
-				boundBlockEntity = this.world.getBlockEntity(pos);
-				if (boundBlockEntity instanceof BaseContainerBlockEntity)
-					this.bound = true;
 			}
 		}
 	}
 
-	private DispenserEndRodArchiveItemGUIMenu(int id, Inventory inv, Container container) {
+	public DispenserEndRodArchiveItemGUIMenu(int id, Inventory inv, Container container) {
 		super(MoreandmoreendrodsModMenus.DISPENSER_END_ROD_ARCHIVE_ITEM_GUI, id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
@@ -147,10 +134,6 @@ public class DispenserEndRodArchiveItemGUIMenu extends AbstractContainerMenu imp
 		if (this.bound) {
 			if (this.boundItemMatcher != null)
 				return this.boundItemMatcher.get();
-			else if (this.boundBlockEntity != null)
-				return AbstractContainerMenu.stillValid(this.access, player, this.boundBlockEntity.getBlockState().getBlock());
-			else if (this.boundEntity != null)
-				return this.boundEntity.isAlive();
 		}
 		return this.inventory.stillValid(player);
 	}
@@ -158,7 +141,7 @@ public class DispenserEndRodArchiveItemGUIMenu extends AbstractContainerMenu imp
 	@Override
 	public ItemStack quickMoveStack(Player playerIn, int index) {
 		ItemStack itemstack = ItemStack.EMPTY;
-		Slot slot = this.slots.get(index);
+		Slot slot = (Slot) this.slots.get(index);
 		if (slot != null && slot.hasItem()) {
 			ItemStack itemstack1 = slot.getItem();
 			itemstack = itemstack1.copy();
@@ -192,8 +175,8 @@ public class DispenserEndRodArchiveItemGUIMenu extends AbstractContainerMenu imp
 	}
 
 	@Override
-	public void clicked(int slotId, int button, ContainerInput containerInput, Player player) {
-		if (containerInput == ContainerInput.SWAP && boundItem != null) {
+	public void clicked(int slotId, int button, ClickType clickType, Player player) {
+		if (clickType == ClickType.SWAP && boundItem != null) {
 			if (slotId >= 0 && slotId < this.slots.size()) {
 				ItemStack slotItem = this.slots.get(slotId).getItem();
 				ItemStack hotbarItem = player.getInventory().getItem(button);
@@ -202,7 +185,7 @@ public class DispenserEndRodArchiveItemGUIMenu extends AbstractContainerMenu imp
 				}
 			}
 		}
-		super.clicked(slotId, button, containerInput, player);
+		super.clicked(slotId, button, clickType, player);
 	}
 
 	@Override

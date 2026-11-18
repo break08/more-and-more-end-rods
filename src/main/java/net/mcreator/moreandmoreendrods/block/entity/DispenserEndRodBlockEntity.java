@@ -2,8 +2,6 @@ package net.mcreator.moreandmoreendrods.block.entity;
 
 import org.jetbrains.annotations.Nullable;
 
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.item.ItemStack;
@@ -35,18 +33,19 @@ public class DispenserEndRodBlockEntity extends RandomizableContainerBlockEntity
 	}
 
 	@Override
-	public void loadAdditional(ValueInput valueInput) {
-		super.loadAdditional(valueInput);
-		if (!this.tryLoadLootTable(valueInput))
+	public void loadAdditional(CompoundTag compound, HolderLookup.Provider lookupProvider) {
+		super.loadAdditional(compound, lookupProvider);
+		if (!this.tryLoadLootTable(compound))
 			this.stacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
-		ContainerHelper.loadAllItems(valueInput, this.stacks);
+		ContainerHelper.loadAllItems(compound, this.stacks, lookupProvider);
 	}
 
 	@Override
-	public void saveAdditional(ValueOutput valueOutput) {
-		super.saveAdditional(valueOutput);
-		if (!this.trySaveLootTable(valueOutput))
-			ContainerHelper.saveAllItems(valueOutput, this.stacks);
+	public void saveAdditional(CompoundTag compound, HolderLookup.Provider lookupProvider) {
+		super.saveAdditional(compound, lookupProvider);
+		if (!this.trySaveLootTable(compound)) {
+			ContainerHelper.saveAllItems(compound, this.stacks, lookupProvider);
+		}
 	}
 
 	@Override
@@ -83,7 +82,7 @@ public class DispenserEndRodBlockEntity extends RandomizableContainerBlockEntity
 	}
 
 	@Override
-	public AbstractContainerMenu createMenu(int id, Inventory inventory) {
+	protected AbstractContainerMenu createMenu(int id, Inventory inventory) {
 		return new DispenserEndRodArchiveItemGUIMenu(id, inventory, this, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(this.worldPosition));
 	}
 
@@ -114,6 +113,8 @@ public class DispenserEndRodBlockEntity extends RandomizableContainerBlockEntity
 
 	@Override
 	public boolean canPlaceItemThroughFace(int index, ItemStack itemstack, @Nullable Direction direction) {
+		if (this.getItem(index).getCount() >= this.getMaxStackSize(itemstack))
+			return false;
 		return this.canPlaceItem(index, itemstack);
 	}
 

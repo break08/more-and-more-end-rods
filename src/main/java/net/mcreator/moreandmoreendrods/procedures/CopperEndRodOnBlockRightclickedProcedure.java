@@ -8,8 +8,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.BlockPos;
 import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.advancements.AdvancementHolder;
@@ -67,8 +66,8 @@ public class CopperEndRodOnBlockRightclickedProcedure {
 					world.setBlock(_bp, _bs, 3);
 				}
 			}
-			if (entity instanceof ServerPlayer _player && _player.level() instanceof ServerLevel _level) {
-				AdvancementHolder _adv = _level.getServer().getAdvancements().get(Identifier.parse("minecraft:husbandry/wax_on"));
+			if (entity instanceof ServerPlayer _player) {
+				AdvancementHolder _adv = _player.server.getAdvancements().get(ResourceLocation.parse("minecraft:husbandry/wax_on"));
 				if (_adv != null) {
 					AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 					if (!_ap.isDone()) {

@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "minecraft:stick",
-    "minecraft:crimson_slab"
+    {
+      "item": "minecraft:stick"
+    },
+    {
+      "item": "minecraft:crimson_slab"
+    }
   ],
   "result": {
     "id": "moreandmoreendrods:crimson_end_rod",

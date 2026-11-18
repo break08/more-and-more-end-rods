@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "minecraft:stick",
-    "minecraft:jungle_slab"
+    {
+      "item": "minecraft:stick"
+    },
+    {
+      "item": "minecraft:jungle_slab"
+    }
   ],
   "result": {
     "id": "moreandmoreendrods:jungle_end_rod",

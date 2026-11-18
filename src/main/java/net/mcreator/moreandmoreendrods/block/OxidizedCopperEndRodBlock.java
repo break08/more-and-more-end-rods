@@ -12,8 +12,8 @@ import net.minecraft.core.BlockPos;
 import net.mcreator.moreandmoreendrods.procedures.CopperEndRodOnTickUpdateProcedure;
 
 public class OxidizedCopperEndRodBlock extends EndRodBlock {
-	public OxidizedCopperEndRodBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.METAL).strength(1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).instrument(NoteBlockInstrument.TRUMPET_OXIDIZED).forceSolidOff());
+	public OxidizedCopperEndRodBlock() {
+		super(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).instrument(NoteBlockInstrument.HARP).forceSolidOff());
 	}
 
 	@Override

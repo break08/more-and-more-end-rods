@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "#minecraft:coloured_end_rod",
-    "minecraft:purple_dye"
+    {
+      "tag": "minecraft:coloured_end_rod"
+    },
+    {
+      "item": "minecraft:purple_dye"
+    }
   ],
   "result": {
     "id": "moreandmoreendrods:purple_end_rod",

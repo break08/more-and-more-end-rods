@@ -1,22 +1,39 @@
 {
   "required": true,
   "package": "net.mcreator.moreandmoreendrods.mixin",
-  "compatibilityLevel": "JAVA_25",
-  "refmap": "moreandmoreendrods.refmap.json",
+  "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "LivingEntityMixin",
-    "PlayerMixin",
-    "ItemStackMixin",
     "BlockItemMixin",
-    "BoneMealItemMixin",
-    "CommandsMixin",
+    "ResultSlotMixin",
+    "FurnaceResultSlotMixin",
+    "ItemStackMixin",
+    "LivingEntityMixin",
+    "EntityThunderMixin",
+    "TamableAnimalMixin",
+    "MobMixin",
+    "PlayerSleepMixin",
+    "ItemEntityMixin",
+    "PlayerEventsMixin",
+    "FishingHookMixin",
+    "HoeItemMixin",
     "ExperienceOrbMixin",
-    "RepairItemRecipeMixin",
-    "ServerPlayerMixin"
+    "ExplosionMixin",
+    "FarmBlockMixin",
+    "CropGrowthMixin",
+    "SaplingGrowthMixin",
+    "EntityDimensionMixin",
+    "ServerPlayerDimensionMixin",
+    "PlayerCriticalMixin",
+    "PlayerAdvancementsMixin",
+    "CommandManagerMixin",
+    "ItemCraftingRemainderMixin"
   ],
-  "client": [],
+  "client": [
+    "MinecraftAttackMixin",
+    "MinecraftUseItemMixin"
+  ],
   "injectors": {
-    "defaultRequire": 1
+    "defaultRequire": 0
   },
   "minVersion": "0.8.4"
 }

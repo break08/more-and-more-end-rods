@@ -5,7 +5,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.EndRodBlock;
 
 public class ShulkerEndRodBlock extends EndRodBlock {
-	public ShulkerEndRodBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.BAMBOO_SAPLING).strength(1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).forceSolidOff());
+	public ShulkerEndRodBlock() {
+		super(BlockBehaviour.Properties.of().sound(SoundType.BAMBOO_SAPLING).strength(1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false).forceSolidOff());
 	}
 }
