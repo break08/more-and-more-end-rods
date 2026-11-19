@@ -11,7 +11,7 @@ import net.minecraft.core.Registry;
 import net.mcreator.moreandmoreendrods.block.*;
 import net.mcreator.moreandmoreendrods.MoreandmoreendrodsMod;
 
-import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
+import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 
 import java.util.function.Supplier;
